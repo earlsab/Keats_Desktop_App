@@ -1,0 +1,11 @@
+C:\Users\earlsab\AppData\Local\Temporary Projects\Keats_Desktop_App\bin\Debug\Keats_Desktop_App.exe.config
+\\Mac\Home\Documents\Visual Studio 2012\Projects\Keats_Desktop_App\Keats_Desktop_App\bin\Debug\Keats_Desktop_App.exe.config
+\\Mac\Home\Documents\Visual Studio 2012\Projects\Keats_Desktop_App\Keats_Desktop_App\bin\Debug\Keats_Desktop_App.exe
+\\Mac\Home\Documents\Visual Studio 2012\Projects\Keats_Desktop_App\Keats_Desktop_App\bin\Debug\Keats_Desktop_App.pdb
+\\Mac\Home\Documents\Visual Studio 2012\Projects\Keats_Desktop_App\Keats_Desktop_App\bin\Debug\Keats_Desktop_App.xml
+\\Mac\Home\Documents\Visual Studio 2012\Projects\Keats_Desktop_App\Keats_Desktop_App\obj\Debug\Keats_Desktop_App.Form1.resources
+\\Mac\Home\Documents\Visual Studio 2012\Projects\Keats_Desktop_App\Keats_Desktop_App\obj\Debug\Keats_Desktop_App.Resources.resources
+\\Mac\Home\Documents\Visual Studio 2012\Projects\Keats_Desktop_App\Keats_Desktop_App\obj\Debug\Keats_Desktop_App.vbproj.GenerateResource.Cache
+\\Mac\Home\Documents\Visual Studio 2012\Projects\Keats_Desktop_App\Keats_Desktop_App\obj\Debug\Keats_Desktop_App.exe
+\\Mac\Home\Documents\Visual Studio 2012\Projects\Keats_Desktop_App\Keats_Desktop_App\obj\Debug\Keats_Desktop_App.xml
+\\Mac\Home\Documents\Visual Studio 2012\Projects\Keats_Desktop_App\Keats_Desktop_App\obj\Debug\Keats_Desktop_App.pdb
