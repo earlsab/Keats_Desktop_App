@@ -20,7 +20,7 @@ Public Class LoginForm1
             Try
                 VUid = Me.UsernameTextBox.Text()
                 VPass = Me.PasswordTextBox.Text()
-                StrLogin = "Select username from account where username = '" & VUid & "' " _
+            StrLogin = "Select * from account where username = '" & VUid & "' " _
                           & "and password='" & VPass & "'"
                 CmdLogin = New DB2Command(StrLogin, DBConnLogin)
                 RdrLogin = CmdLogin.ExecuteReader
