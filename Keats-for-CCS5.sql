@@ -87,18 +87,18 @@ date_created timestamp,
     --FOREIGN KEY(food_id) REFERENCES food(id)
 );
 
-CREATE TABLE account_type(
+/*CREATE TABLE account_type(
     id int PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
     name varchar(50) UNIQUE NOT NULL,
     account_type_desc varchar(100)
-);
+);*/
 
 CREATE TABLE account(
     id int PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
     username varchar(50) UNIQUE NOT NULL,
-    password varchar(50) NOT NULL,
-    account_type_id int NOT NULL,
-    FOREIGN KEY(account_type_id) REFERENCES account_type(id)
+    password varchar(50) NOT NULL
+--    account_type_id int NOT NULL,
+--    FOREIGN KEY(account_type_id) REFERENCES account_type(id)
 );
 
 CREATE TABLE diet_plan(
