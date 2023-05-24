@@ -1,9 +1,9 @@
 ﻿Imports IBM.Data.DB2
 
 Module Globals
-    Public DBUser = "earlsab"
+    Public DBUser = "Petey"
     Public DBPassword = "1234"
-    Public DBDatabase = "keats"
+    Public DBDatabase = "Keats"
 End Module
 
 Public Class LoginForm1
