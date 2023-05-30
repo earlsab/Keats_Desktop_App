@@ -1,8 +1,8 @@
 ﻿Imports IBM.Data.DB2
 
 Module Globals
-    Public DBUser = "Petey"
-    Public DBPassword = "Coolguy11"
+    Public DBUser = "earlsab"
+    Public DBPassword = "1234"
     Public DBDatabase = "Keats"
     Public DBConnLogin As Common.DbConnection
 End Module
@@ -29,7 +29,7 @@ Public Class LoginForm1
             VPass = Me.PasswordTextBox.Text()
             StrLogin = "Select * from account where username = '" & VUid & "' " _
                           & "and password='" & VPass & "'"
-            CmdLogin = New DB2Command(StrLogin, DBConnLogin)
+            CmdLogin = New DB2Command(StrLogin, Globals.DBConnLogin)
             RdrLogin = CmdLogin.ExecuteReader
             'This but checks if the code is there...
             If RdrLogin.HasRows Then
@@ -67,10 +67,10 @@ Public Class LoginForm1
 
     Private Sub LoginForm1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Try
-            DBConnLogin = New DB2Connection("server=localhost; database=" & Globals.DBDatabase _
+            Globals.DBConnLogin = New DB2Connection("server=localhost; database=" & DBDatabase _
  & ";" + _
-"uid= " & Globals.DBUser & ";password=" & Globals.DBPassword & ";")
-            DBConnLogin.Open()
+"uid= " & DBUser & ";password=" & DBPassword & ";")
+            Globals.DBConnLogin.Open()
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try
