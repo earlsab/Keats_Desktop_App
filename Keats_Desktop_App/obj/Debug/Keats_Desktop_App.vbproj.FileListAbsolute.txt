@@ -28,3 +28,4 @@ C:\Users\Petey\Documents\GitHub\Keats_Desktop_App\Keats_Desktop_App\obj\Debug\Ke
 C:\Users\Petey\Documents\GitHub\Keats_Desktop_App\Keats_Desktop_App\obj\Debug\Keats_Desktop_App.Resources.resources
 C:\Users\Petey\Documents\GitHub\Keats_Desktop_App\Keats_Desktop_App\obj\Debug\Keats_Desktop_App.vbproj.GenerateResource.Cache
 C:\Users\Petey\Documents\GitHub\Keats_Desktop_App\Keats_Desktop_App\obj\Debug\Keats_Desktop_App.NewUserInformation.resources
+\\Mac\Home\Documents\Visual Studio 2012\Projects\Keats_Desktop_App\Keats_Desktop_App\obj\Debug\Keats_Desktop_App.NewUserInformation.resources
