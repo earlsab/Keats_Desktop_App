@@ -2,12 +2,12 @@
 
 Module Globals
     Public DBUser = "Petey"
-    Public DBPassword = "1234"
+    Public DBPassword = "Coolguy11"
     Public DBDatabase = "Keats"
+    Public DBConnLogin As Common.DbConnection
 End Module
 
 Public Class LoginForm1
-    Private DBConnLogin As Common.DbConnection
 
     ' TODO: Insert code to perform custom authentication using the provided username and password 
     ' (See http://go.microsoft.com/fwlink/?LinkId=35339).  
@@ -67,8 +67,9 @@ Public Class LoginForm1
 
     Private Sub LoginForm1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Try
-            DBConnLogin = New DB2Connection("server=localhost; database=" & DBDatabase & ";" + _
-                                            "uid= " & DBUser & ";password=" & DBPassword & ";")
+            DBConnLogin = New DB2Connection("server=localhost; database=" & Globals.DBDatabase _
+ & ";" + _
+"uid= " & Globals.DBUser & ";password=" & Globals.DBPassword & ";")
             DBConnLogin.Open()
         Catch ex As Exception
             MsgBox(ex.ToString)
