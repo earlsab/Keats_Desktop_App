@@ -27,3 +27,4 @@ C:\Users\Petey\Documents\GitHub\Keats_Desktop_App\Keats_Desktop_App\obj\Debug\Ke
 C:\Users\Petey\Documents\GitHub\Keats_Desktop_App\Keats_Desktop_App\obj\Debug\Keats_Desktop_App.LoginForm1.resources
 C:\Users\Petey\Documents\GitHub\Keats_Desktop_App\Keats_Desktop_App\obj\Debug\Keats_Desktop_App.Resources.resources
 C:\Users\Petey\Documents\GitHub\Keats_Desktop_App\Keats_Desktop_App\obj\Debug\Keats_Desktop_App.vbproj.GenerateResource.Cache
+C:\Users\Petey\Documents\GitHub\Keats_Desktop_App\Keats_Desktop_App\obj\Debug\Keats_Desktop_App.NewUserInformation.resources
