@@ -4,6 +4,7 @@ Public Class NewUserRegistration
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Dim UserIn As String
+
         UserIn = Globals.DBDatabase
         Me.Username.Text = UserIn
     End Sub
@@ -26,7 +27,23 @@ Public Class NewUserRegistration
     End Sub
 
     Private Sub Register_Click(sender As Object, e As EventArgs) Handles Register.Click
+        Dim NewPass As String
+        Dim NewUN As String
+        Dim StrReg As String
+        Dim CmdReg As DB2Command
+        Dim RdrReg As DB2DataReader
 
+        Try
+            NewUN = Me.Username.Text()
+            NewPass = Me.Password.Text()
+
+            StrReg = "Insert into account(username, password) values('" & NewUN & "','" & NewPass & "')"
+            CmdReg = New DB2Command(StrReg, DBConnLogin)
+            RdrReg = CmdReg.ExecuteReader
+
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+        End Try
     End Sub
 
     Private Sub Label1_Click(sender As Object, e As EventArgs) Handles Label1.Click
