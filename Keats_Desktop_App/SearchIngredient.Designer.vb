@@ -26,7 +26,10 @@ Partial Class SearchIngredient
         Me.SearchBox = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Button1 = New System.Windows.Forms.Button()
-        Me.ListBox1 = New System.Windows.Forms.ListBox()
+        Me.SearchResult = New System.Windows.Forms.DataGridView()
+        Me.IngredientID = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.IngredientName = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        CType(Me.SearchResult, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'SearchBox
@@ -34,7 +37,7 @@ Partial Class SearchIngredient
         Me.SearchBox.AcceptsReturn = True
         Me.SearchBox.Location = New System.Drawing.Point(37, 49)
         Me.SearchBox.Name = "SearchBox"
-        Me.SearchBox.Size = New System.Drawing.Size(637, 20)
+        Me.SearchBox.Size = New System.Drawing.Size(600, 20)
         Me.SearchBox.TabIndex = 0
         '
         'Label1
@@ -48,33 +51,64 @@ Partial Class SearchIngredient
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(680, 47)
+        Me.Button1.Location = New System.Drawing.Point(643, 47)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(75, 23)
         Me.Button1.TabIndex = 2
         Me.Button1.Text = "Search"
         Me.Button1.UseVisualStyleBackColor = True
         '
-        'ListBox1
+        'SearchResult
         '
-        Me.ListBox1.FormattingEnabled = True
-        Me.ListBox1.Location = New System.Drawing.Point(37, 90)
-        Me.ListBox1.Name = "ListBox1"
-        Me.ListBox1.Size = New System.Drawing.Size(637, 290)
-        Me.ListBox1.TabIndex = 3
+        Me.SearchResult.AllowUserToAddRows = False
+        Me.SearchResult.AllowUserToDeleteRows = False
+        Me.SearchResult.AllowUserToResizeColumns = False
+        Me.SearchResult.AllowUserToResizeRows = False
+        Me.SearchResult.BackgroundColor = System.Drawing.SystemColors.ControlLightLight
+        Me.SearchResult.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.SearchResult.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None
+        Me.SearchResult.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.SearchResult.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.IngredientID, Me.IngredientName})
+        Me.SearchResult.Location = New System.Drawing.Point(37, 75)
+        Me.SearchResult.MultiSelect = False
+        Me.SearchResult.Name = "SearchResult"
+        Me.SearchResult.ReadOnly = True
+        Me.SearchResult.RowHeadersVisible = False
+        Me.SearchResult.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing
+        Me.SearchResult.ShowCellToolTips = False
+        Me.SearchResult.ShowEditingIcon = False
+        Me.SearchResult.Size = New System.Drawing.Size(600, 267)
+        Me.SearchResult.TabIndex = 3
+        '
+        'IngredientID
+        '
+        Me.IngredientID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
+        Me.IngredientID.HeaderText = "ID"
+        Me.IngredientID.Name = "IngredientID"
+        Me.IngredientID.ReadOnly = True
+        Me.IngredientID.Visible = False
+        '
+        'IngredientName
+        '
+        Me.IngredientName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
+        Me.IngredientName.HeaderText = "Ingredient Name"
+        Me.IngredientName.Name = "IngredientName"
+        Me.IngredientName.ReadOnly = True
+        Me.IngredientName.Width = 600
         '
         'SearchIngredient
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(906, 669)
-        Me.Controls.Add(Me.ListBox1)
+        Me.ClientSize = New System.Drawing.Size(756, 669)
+        Me.Controls.Add(Me.SearchResult)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.SearchBox)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "SearchIngredient"
         Me.Text = "Search Ingredient"
+        CType(Me.SearchResult, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -82,5 +116,7 @@ Partial Class SearchIngredient
     Friend WithEvents SearchBox As System.Windows.Forms.TextBox
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents Button1 As System.Windows.Forms.Button
-    Friend WithEvents ListBox1 As System.Windows.Forms.ListBox
+    Friend WithEvents SearchResult As System.Windows.Forms.DataGridView
+    Friend WithEvents IngredientID As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents IngredientName As System.Windows.Forms.DataGridViewTextBoxColumn
 End Class
