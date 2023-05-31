@@ -31,9 +31,9 @@ Partial Class NewUserInformation
         Me.Label.AutoSize = True
         Me.Label.Location = New System.Drawing.Point(12, 9)
         Me.Label.Name = "Label"
-        Me.Label.Size = New System.Drawing.Size(170, 17)
+        Me.Label.Size = New System.Drawing.Size(290, 17)
         Me.Label.TabIndex = 0
-        Me.Label.Text = "Thank you for registering!"
+        Me.Label.Text = "We just need to know a little more about you!"
         '
         'Back
         '
@@ -41,7 +41,7 @@ Partial Class NewUserInformation
         Me.Back.Name = "Back"
         Me.Back.Size = New System.Drawing.Size(90, 25)
         Me.Back.TabIndex = 1
-        Me.Back.Text = "Back"
+        Me.Back.Text = "Cancel"
         Me.Back.UseVisualStyleBackColor = True
         '
         'NewUserInformation
