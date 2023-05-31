@@ -31,6 +31,7 @@ Public Class NewUserRegistration
     End Sub
 
     Private Sub Back_Click(sender As Object, e As EventArgs) Handles Back.Click
+        Call TextBoxClear()
         LoginForm1.Show()
         Me.Hide()
     End Sub
@@ -62,20 +63,20 @@ Public Class NewUserRegistration
                 Call TextBoxClear()
 
             Else
+
                 If Me.Password.Text() = Me.ConfirmPassword.Text() Then
 
-                    MsgBox("Are you sure you want to register under the username " & NewUN & "?", MsgBoxStyle.YesNo)
-
-                    If MsgBoxResult.Yes Then
+                    If MsgBox("Are you sure you want to register under the username " & NewUN & "?", MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
 
                         StrReg = "Insert into account(username, password) values('" & NewUN & "','" & NewPass & "')"
 
                         CmdReg = New DB2Command(StrReg, Globals.DBConnLogin)
                         CmdReg.ExecuteNonQuery()
-                        NewUserInformation.Show()
-                        Me.Hide()
 
-                    ElseIf MsgBoxResult.No Then
+                        Me.Hide()
+                        NewUserInformation.Show()
+
+                    Else
 
                         Me.Username.Clear()
                         Me.Username.Focus()
