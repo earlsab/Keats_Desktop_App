@@ -56,23 +56,31 @@ Public Class NewUserRegistration
                 MsgBox("Username already exists!", MsgBoxStyle.Information)
                 Call TextBoxClear()
 
-            ElseIf NewUN = "" Then
+            ElseIf NewUN = "" Or NewPass = "" Then
 
-                MsgBox("Username is blank!", MsgBoxStyle.Information)
+                MsgBox("Username or password fields are blank!", MsgBoxStyle.Information)
                 Call TextBoxClear()
 
             Else
                 If Me.Password.Text() = Me.ConfirmPassword.Text() Then
 
-                    StrReg = "Insert into account(username, password) values('" & NewUN & "','" & NewPass & "')"
+                    MsgBox("Are you sure you want to register under the username " & NewUN & "?", MsgBoxStyle.YesNo)
 
-                    CmdReg = New DB2Command(StrReg, Globals.DBConnLogin)
-                    CmdReg.ExecuteNonQuery()
+                    If MsgBoxResult.Yes Then
 
-                    MsgBox("Registered!", MsgBoxStyle.OkOnly)
-                    NewUserInformation.Show()
-                    Me.Hide()
+                        StrReg = "Insert into account(username, password) values('" & NewUN & "','" & NewPass & "')"
 
+                        CmdReg = New DB2Command(StrReg, Globals.DBConnLogin)
+                        CmdReg.ExecuteNonQuery()
+                        NewUserInformation.Show()
+                        Me.Hide()
+
+                    ElseIf MsgBoxResult.No Then
+
+                        Me.Username.Clear()
+                        Me.Username.Focus()
+
+                    End If
                 Else
 
                     MsgBox("Password does not match!", MsgBoxStyle.Information)
