@@ -74,6 +74,12 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="SearchIngredient.Designer.vb">
+      <DependentUpon>SearchIngredient.vb</DependentUpon>
+    </Compile>
+    <Compile Include="SearchIngredient.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="NewUserInformation.Designer.vb">
       <DependentUpon>NewUserInformation.vb</DependentUpon>
     </Compile>
@@ -116,6 +122,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="SearchIngredient.resx">
+      <DependentUpon>SearchIngredient.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="NewUserInformation.resx">
       <DependentUpon>NewUserInformation.vb</DependentUpon>
     </EmbeddedResource>
