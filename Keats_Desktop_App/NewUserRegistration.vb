@@ -31,6 +31,7 @@ Public Class NewUserRegistration
     End Sub
 
     Private Sub Back_Click(sender As Object, e As EventArgs) Handles Back.Click
+        Call TextBoxClear()
         LoginForm1.Show()
         Me.Hide()
     End Sub
@@ -56,23 +57,31 @@ Public Class NewUserRegistration
                 MsgBox("Username already exists!", MsgBoxStyle.Information)
                 Call TextBoxClear()
 
-            ElseIf NewUN = "" Then
+            ElseIf NewUN = "" Or NewPass = "" Then
 
-                MsgBox("Username is blank!", MsgBoxStyle.Information)
+                MsgBox("Username or password fields are blank!", MsgBoxStyle.Information)
                 Call TextBoxClear()
 
             Else
+
                 If Me.Password.Text() = Me.ConfirmPassword.Text() Then
 
-                    StrReg = "Insert into account(username, password) values('" & NewUN & "','" & NewPass & "')"
+                    If MsgBox("Are you sure you want to register under the username " & NewUN & "?", MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
 
-                    CmdReg = New DB2Command(StrReg, Globals.DBConnLogin)
-                    CmdReg.ExecuteNonQuery()
+                        StrReg = "Insert into account(username, password) values('" & NewUN & "','" & NewPass & "')"
 
-                    MsgBox("Registered!", MsgBoxStyle.OkOnly)
-                    NewUserInformation.Show()
-                    Me.Hide()
+                        CmdReg = New DB2Command(StrReg, Globals.DBConnLogin)
+                        CmdReg.ExecuteNonQuery()
 
+                        Me.Hide()
+                        NewUserInformation.Show()
+
+                    Else
+
+                        Me.Username.Clear()
+                        Me.Username.Focus()
+
+                    End If
                 Else
 
                     MsgBox("Password does not match!", MsgBoxStyle.Information)
