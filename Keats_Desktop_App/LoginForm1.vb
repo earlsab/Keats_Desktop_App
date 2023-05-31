@@ -1,9 +1,9 @@
 ﻿Imports IBM.Data.DB2
 
 Module Globals
-    Public DBUser = "Petey"
-    Public DBPassword = "Coolguy11"
-    Public DBDatabase = "Keats"
+    Public DBUser = "username"
+    Public DBPassword = "password"
+    Public DBDatabase = "keats2"
     Public DBConnLogin As Common.DbConnection
 End Module
 
@@ -35,7 +35,8 @@ Public Class LoginForm1
             If RdrLogin.HasRows Then
                 'RdrLogin.Read()
                 'FrmEnroll.TxtStudId.Text = RdrLogin.GetString(0)
-                MainHomePage.Show()
+                'MainHomePage.Show()
+                SearchIngredient.Show()
                 Me.Hide()
             Else
                 MsgBox("Invalid username/password..", MsgBoxStyle.Information)
