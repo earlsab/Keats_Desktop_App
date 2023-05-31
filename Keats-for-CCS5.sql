@@ -29,7 +29,7 @@ CREATE TABLE
 CREATE TABLE
     ingredient_subvariant(
         id int NOT NULL PRIMARY KEY,
-        name varchar(100) NOT NULL UNIQUE,
+        name varchar(200) NOT NULL UNIQUE,
         name_ph varchar(100) DEFAULT ''
     );
 
