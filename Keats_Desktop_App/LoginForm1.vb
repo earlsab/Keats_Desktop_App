@@ -35,7 +35,8 @@ Public Class LoginForm1
             If RdrLogin.HasRows Then
                 'RdrLogin.Read()
                 'FrmEnroll.TxtStudId.Text = RdrLogin.GetString(0)
-                MainHomePage.Show()
+                'MainHomePage.Show()
+                SearchIngredient.Show()
                 Me.Hide()
             Else
                 MsgBox("Invalid username/password..", MsgBoxStyle.Information)
