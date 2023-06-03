@@ -19,8 +19,6 @@ Public Class MainHomePage
         Dim RdrSum2 As DB2DataReader
         Dim RdrSum3 As DB2DataReader
 
-
-
         Try
             StrSum = "Select * from intake where account_id=" & Globals.UserAccountID
             CmdSum = New DB2Command(StrSum, Globals.DBConnLogin)
@@ -109,6 +107,59 @@ Public Class MainHomePage
 
 
     Private Sub MainHomePage_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Dim StrInsert As String
+        Dim CmdInsert As DB2Command
+        Dim StrLoad As String
+        Dim CmdLoad As DB2Command
+        Dim RdrLoad As DB2DataReader
+        Dim CurrentDate As Date
+        Dim LatestEntryDate As Date
+        Dim FirstEntryState As Boolean
+
+        'ID()
+        'ACCOUNT_ID()
+        'DATE_CREATED()
+        'CALORIES()
+        'PROTEIN()
+        'CARBS()
+        'FATS()
+        'MAX_CALORIES()
+        'MAX_PROTEIN()
+        'MAX_CARBS()
+        'MAX_FATS()
+        'ACTIVITY_LVL_ID()
+        'DIET_PLAN_ID()
+
+        FirstEntryState = False
+        Try
+            StrLoad = "select max(date_created) from daily_nutrients where account_id=" & Globals.UserAccountID
+            CmdLoad = New DB2Command(StrLoad, Globals.DBConnLogin)
+            RdrLoad = CmdLoad.ExecuteReader
+            RdrLoad.Read()
+            LatestEntryDate = RdrLoad.GetDate(0)
+            CurrentDate = DateAndTime.Today()
+
+        Catch ex As Exception
+            FirstEntryState = True
+        End Try
+
+        If DateDiff("d", LatestEntryDate, CurrentDate) > 0 Or FirstEntryState Then
+            Try
+                StrInsert = "insert into daily_nutrients(account_id, date_created, calories, protein, carbs, fats," _
+                & "max_calories, max_protein, max_carbs, max_fats, diet_plan_id, activity_lvl_id)" _
+                & "values(@AccountId, @DateTimeValue, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1)"
+                CmdInsert = New DB2Command(StrInsert, Globals.DBConnLogin)
+                CmdInsert.Parameters.Add("@AccountId", IBM.Data.DB2.DB2Type.Integer).Value = Globals.UserAccountID
+                CmdInsert.Parameters.Add("@DateTimeValue", IBM.Data.DB2.DB2Type.DateTime).Value = DateTime.Now ' Assuming you want to use the current date and time
+                CmdInsert.ExecuteNonQuery()
+                MsgBox("Created New Daily Nutrient Entry")
+            Catch ex As Exception
+                MsgBox("Daily Nutrient Insert Error")
+            End Try
+        Else
+            MsgBox("Did Not Create Daily Nutrient Entry. Existing Entry Found")
+        End If
+
         Try
             Me.DataGridView1.ColumnCount = 4
             Me.DataGridView1.Columns(0).Name = "Time Recorded"
