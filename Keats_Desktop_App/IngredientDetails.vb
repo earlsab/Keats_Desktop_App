@@ -4,6 +4,7 @@ Imports System.Collections.Generic
 Public Class IngredientDetails
     Dim FirstIngredientVariantId As Integer
     Dim FirstIngredientSubvariantId As Integer
+    Dim FirstIngredientMappingId As Integer
     Dim IngredientAmount As Integer = 100
 
     Dim Calories As Single
@@ -109,7 +110,7 @@ Public Class IngredientDetails
         Dim CmdStud As DB2Command
         Dim RdrStud As DB2DataReader
         Try
-            StrStud = "select nutrient.calories, nutrient.protein, nutrient.carbs, nutrient.fats " _
+            StrStud = "select nutrient.calories, nutrient.protein, nutrient.carbs, nutrient.fats, ingredient_mapping.id " _
                 & "FROM ingredient_mapping " _
                 & "JOIN nutrient ON ingredient_mapping.nutrient_id = nutrient.id " _
                 & "WHERE ingredient_mapping.ingredient_id = " & Globals.SelectedIngredientId & " " _
@@ -124,6 +125,8 @@ Public Class IngredientDetails
                 ProteinValue.Text() = RdrStud.GetString(1) * Multiplier
                 CarbsValue.Text() = RdrStud.GetString(2) * Multiplier
                 FatsValue.Text() = RdrStud.GetString(3) * Multiplier
+
+                FirstIngredientMappingId = RdrStud.GetString(4)
 
                 Calories = RdrStud.GetFloat(0)
                 Protein = RdrStud.GetFloat(1)
@@ -147,6 +150,37 @@ Public Class IngredientDetails
     End Sub
 
 
+
+    Private Sub InsertIntake()
+        Dim StrStud As String
+        Dim CmdStud As DB2Command
+        Dim RdrStud As DB2DataReader
+        Try
+            StrStud = "INSERT INTO intake (account_id, date_created, ingredient_mapping_id, amount) " _
+                & "VALUES " _
+                & "JOIN nutrient ON ingredient_mapping.nutrient_id = nutrient.id " _
+                & "WHERE ingredient_mapping.ingredient_id = " & Globals.SelectedIngredientId & " " _
+                & "AND ingredient_mapping.ingredient_variant_id = " & FirstIngredientVariantId & " " _
+                & "AND ingredient_mapping.ingredient_subvariant_id = " & FirstIngredientSubvariantId & ";"
+            CmdStud = New DB2Command(StrStud, Globals.DBConnLogin)
+            RdrStud = CmdStud.ExecuteReader
+            While RdrStud.Read
+                Dim Multiplier As Single = IngredientAmount / 100
+
+                CaloriesValue.Text() = RdrStud.GetString(0) * Multiplier
+                ProteinValue.Text() = RdrStud.GetString(1) * Multiplier
+                CarbsValue.Text() = RdrStud.GetString(2) * Multiplier
+                FatsValue.Text() = RdrStud.GetString(3) * Multiplier
+
+                Calories = RdrStud.GetFloat(0)
+                Protein = RdrStud.GetFloat(1)
+                Carbs = RdrStud.GetFloat(2)
+                Fats = RdrStud.GetFloat(3)
+            End While
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+        End Try
+    End Sub
 
 
     'For disabling text input and only number input on amount
@@ -182,5 +216,9 @@ Public Class IngredientDetails
     Private Sub Back_Click(sender As Object, e As EventArgs) Handles Back.Click
         Me.Hide()
         SearchIngredient.Show()
+    End Sub
+
+    Private Sub Add_Click(sender As Object, e As EventArgs) Handles Add.Click
+
     End Sub
 End Class
