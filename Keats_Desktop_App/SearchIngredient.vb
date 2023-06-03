@@ -33,7 +33,7 @@ Public Class SearchIngredient
         End Try
     End Sub
 
-    Private Sub SearchResult_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles SearchResult.CellContentClick
+    Private Sub SearchResult_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles SearchResult.CellClick
         ' Check if the click is on a valid row (not header or empty row)
         If e.RowIndex >= 0 AndAlso e.RowIndex < SearchResult.Rows.Count Then
             ' Access the clicked row using the RowIndex property
