@@ -35,7 +35,7 @@ Partial Class SearchIngredient
         'SearchBox
         '
         Me.SearchBox.AcceptsReturn = True
-        Me.SearchBox.Location = New System.Drawing.Point(37, 49)
+        Me.SearchBox.Location = New System.Drawing.Point(12, 42)
         Me.SearchBox.Name = "SearchBox"
         Me.SearchBox.Size = New System.Drawing.Size(600, 20)
         Me.SearchBox.TabIndex = 0
@@ -43,7 +43,7 @@ Partial Class SearchIngredient
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(34, 24)
+        Me.Label1.Location = New System.Drawing.Point(9, 17)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(91, 13)
         Me.Label1.TabIndex = 1
@@ -51,7 +51,7 @@ Partial Class SearchIngredient
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(643, 47)
+        Me.Button1.Location = New System.Drawing.Point(618, 40)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(75, 23)
         Me.Button1.TabIndex = 2
@@ -69,7 +69,7 @@ Partial Class SearchIngredient
         Me.SearchResult.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None
         Me.SearchResult.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.SearchResult.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.IngredientID, Me.IngredientName})
-        Me.SearchResult.Location = New System.Drawing.Point(37, 75)
+        Me.SearchResult.Location = New System.Drawing.Point(12, 68)
         Me.SearchResult.MultiSelect = False
         Me.SearchResult.Name = "SearchResult"
         Me.SearchResult.ReadOnly = True
@@ -100,7 +100,7 @@ Partial Class SearchIngredient
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(756, 669)
+        Me.ClientSize = New System.Drawing.Size(701, 350)
         Me.Controls.Add(Me.SearchResult)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.Label1)

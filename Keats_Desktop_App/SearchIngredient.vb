@@ -40,11 +40,12 @@ Public Class SearchIngredient
             Dim clickedRow As DataGridViewRow = SearchResult.Rows(e.RowIndex)
 
             ' Access the data in the row using the Cells property
-            Dim cellValue As Object = clickedRow.Cells(1).Value
+            ' Dim cellValue As Object = clickedRow.Cells(1).Value
             ' Replace columnIndex with the index of the desired column
 
-            ' Do something with the clicked data
-            MsgBox("Clicked value: " & cellValue.ToString())
+            Globals.SelectedIngredientId = clickedRow.Cells(0).Value
+            IngredientDetails.Show()
+            Me.Hide()
         End If
     End Sub
 
