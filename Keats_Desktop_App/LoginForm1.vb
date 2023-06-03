@@ -76,4 +76,8 @@ Public Class LoginForm1
             MsgBox(ex.ToString)
         End Try
     End Sub
+
+    Private Sub PasswordTextBox_TextChanged(sender As Object, e As EventArgs) Handles PasswordTextBox.TextChanged
+
+    End Sub
 End Class
