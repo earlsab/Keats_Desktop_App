@@ -74,10 +74,10 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EditSpecific.Designer.vb">
-      <DependentUpon>EditSpecific.vb</DependentUpon>
+    <Compile Include="EditSpecificIntake.Designer.vb">
+      <DependentUpon>EditSpecificIntake.vb</DependentUpon>
     </Compile>
-    <Compile Include="EditSpecific.vb">
+    <Compile Include="EditSpecificIntake.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="IngredientDetails.Designer.vb">
@@ -132,16 +132,22 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="ViewAll.Designer.vb">
-      <DependentUpon>ViewAll.vb</DependentUpon>
+    <Compile Include="ViewAllSummaries.Designer.vb">
+      <DependentUpon>ViewAllSummaries.vb</DependentUpon>
     </Compile>
-    <Compile Include="ViewAll.vb">
+    <Compile Include="ViewAllSummaries.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewIntakesAll.Designer.vb">
+      <DependentUpon>ViewIntakesAll.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ViewIntakesAll.vb">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="EditSpecific.resx">
-      <DependentUpon>EditSpecific.vb</DependentUpon>
+    <EmbeddedResource Include="EditSpecificIntake.resx">
+      <DependentUpon>EditSpecificIntake.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="IngredientDetails.resx">
       <DependentUpon>IngredientDetails.vb</DependentUpon>
@@ -167,8 +173,11 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="ViewAll.resx">
-      <DependentUpon>ViewAll.vb</DependentUpon>
+    <EmbeddedResource Include="ViewAllSummaries.resx">
+      <DependentUpon>ViewAllSummaries.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewIntakesAll.resx">
+      <DependentUpon>ViewIntakesAll.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
