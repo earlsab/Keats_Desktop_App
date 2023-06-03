@@ -22,6 +22,7 @@ Partial Class NewUserInformation
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(NewUserInformation))
         Me.Back = New System.Windows.Forms.Button()
         Me.TextBoxUsername = New System.Windows.Forms.TextBox()
         Me.ConfirmRegistration = New System.Windows.Forms.Button()
@@ -42,8 +43,8 @@ Partial Class NewUserInformation
         Me.Label = New System.Windows.Forms.Label()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.Label9 = New System.Windows.Forms.Label()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
+        Me.ComboBoxAL = New System.Windows.Forms.ComboBox()
+        Me.ComboBoxDP = New System.Windows.Forms.ComboBox()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -222,29 +223,29 @@ Partial Class NewUserInformation
         Me.Label9.TabIndex = 21
         Me.Label9.Text = "Diet Plan"
         '
-        'TextBox1
+        'ComboBoxAL
         '
-        Me.TextBox1.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.TextBox1.Location = New System.Drawing.Point(98, 314)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(249, 22)
-        Me.TextBox1.TabIndex = 22
+        Me.ComboBoxAL.FormattingEnabled = True
+        Me.ComboBoxAL.Location = New System.Drawing.Point(98, 314)
+        Me.ComboBoxAL.Name = "ComboBoxAL"
+        Me.ComboBoxAL.Size = New System.Drawing.Size(249, 24)
+        Me.ComboBoxAL.TabIndex = 24
         '
-        'TextBox2
+        'ComboBoxDP
         '
-        Me.TextBox2.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.TextBox2.Location = New System.Drawing.Point(98, 342)
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(249, 22)
-        Me.TextBox2.TabIndex = 23
+        Me.ComboBoxDP.FormattingEnabled = True
+        Me.ComboBoxDP.Location = New System.Drawing.Point(98, 344)
+        Me.ComboBoxDP.Name = "ComboBoxDP"
+        Me.ComboBoxDP.Size = New System.Drawing.Size(249, 24)
+        Me.ComboBoxDP.TabIndex = 25
         '
         'NewUserInformation
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(512, 416)
-        Me.Controls.Add(Me.TextBox2)
-        Me.Controls.Add(Me.TextBox1)
+        Me.Controls.Add(Me.ComboBoxDP)
+        Me.Controls.Add(Me.ComboBoxAL)
         Me.Controls.Add(Me.Label9)
         Me.Controls.Add(Me.Label8)
         Me.Controls.Add(Me.TextBoxEm)
@@ -265,6 +266,7 @@ Partial Class NewUserInformation
         Me.Controls.Add(Me.TextBoxUsername)
         Me.Controls.Add(Me.Back)
         Me.Controls.Add(Me.Label)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "NewUserInformation"
         Me.Text = "Register"
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
@@ -292,6 +294,6 @@ Partial Class NewUserInformation
     Friend WithEvents Label As System.Windows.Forms.Label
     Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
     Friend WithEvents Label9 As System.Windows.Forms.Label
-    Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox2 As System.Windows.Forms.TextBox
+    Friend WithEvents ComboBoxAL As System.Windows.Forms.ComboBox
+    Friend WithEvents ComboBoxDP As System.Windows.Forms.ComboBox
 End Class

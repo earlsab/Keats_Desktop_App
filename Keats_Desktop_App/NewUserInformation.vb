@@ -80,6 +80,8 @@ Public Class NewUserInformation
         Dim NewPhoneNo As String
         Dim NewEmail As String
         Dim NewBDay As Date
+        Dim ActivityLvl
+        Dim DietPlan
         Dim StrNewUser As String
         Dim CmdNewUser As DB2Command
         Dim RdrNewUser As DB2DataReader
@@ -89,6 +91,8 @@ Public Class NewUserInformation
             NewHeight = TextBoxH.Text()
             NewPhoneNo = TextBoxPh.Text()
             NewEmail = TextBoxEm.Text()
+            NewBDay = DateTimePicker1.Value()
+
 
 
         Catch ex As Exception
@@ -110,6 +114,10 @@ Public Class NewUserInformation
     End Sub
 
     Private Sub Label9_Click(sender As Object, e As EventArgs) Handles Label9.Click
+
+    End Sub
+
+    Private Sub ComboBox2_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBoxDP.SelectedIndexChanged
 
     End Sub
 End Class
