@@ -1,13 +1,14 @@
 ﻿Imports IBM.Data.DB2
 
 Module Globals
-    Public DBUser = "username"
-    Public DBPassword = "password"
-    Public DBDatabase = "keats2"
+    Public DBUser = "earlsab"
+    Public DBPassword = "1234"
+    Public DBDatabase = "Keats"
     Public DBConnLogin As Common.DbConnection
 
     Public SelectedIngredientId = 0
     Public SelectedIngredientMappingId = 0
+    Public UserAccountID As Integer
 End Module
 
 Public Class LoginForm1
@@ -36,10 +37,9 @@ Public Class LoginForm1
             RdrLogin = CmdLogin.ExecuteReader
             'This but checks if the code is there...
             If RdrLogin.HasRows Then
-                'RdrLogin.Read()
-                'FrmEnroll.TxtStudId.Text = RdrLogin.GetString(0)
-                'MainHomePage.Show()
-                SearchIngredient.Show()
+                RdrLogin.Read()
+                UserAccountID = RdrLogin.GetInt32(0)
+                MainHomePage.Show()
                 Me.Hide()
             Else
                 MsgBox("Invalid username/password..", MsgBoxStyle.Information)
@@ -78,5 +78,9 @@ Public Class LoginForm1
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try
+    End Sub
+
+    Private Sub PasswordTextBox_TextChanged(sender As Object, e As EventArgs) Handles PasswordTextBox.TextChanged
+
     End Sub
 End Class

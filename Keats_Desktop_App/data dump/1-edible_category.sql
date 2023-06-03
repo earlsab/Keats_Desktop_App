@@ -1,4 +1,4 @@
-INSERT INTO edible_category (id,"name") VALUES
+INSERT INTO edible_category (id,name) VALUES
 	 (1,'cereals'),
 	 (2,'starchy roots, and tubers'),
 	 (3,'nuts, dried beans, and seeds'),

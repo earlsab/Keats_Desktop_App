@@ -87,7 +87,6 @@ CREATE TABLE
         amount_unit varchar(4) NOT NULL,
         amount_unit_desc varchar(40) NOT NULL,
         serving_size float4 DEFAULT 0,
-        food_id int,
         ingredient_mapping_id int,
         FOREIGN KEY(ingredient_mapping_id) REFERENCES ingredient_mapping(id) --FOREIGN KEY(food_id) REFERENCES food(id)
     );
