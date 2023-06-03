@@ -36,7 +36,7 @@ Partial Class NewUserRegistration
         'Username
         '
         Me.Username.Location = New System.Drawing.Point(176, 47)
-        Me.Username.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Username.Margin = New System.Windows.Forms.Padding(4)
         Me.Username.Name = "Username"
         Me.Username.Size = New System.Drawing.Size(312, 22)
         Me.Username.TabIndex = 0
@@ -64,7 +64,7 @@ Partial Class NewUserRegistration
         'Password
         '
         Me.Password.Location = New System.Drawing.Point(176, 106)
-        Me.Password.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Password.Margin = New System.Windows.Forms.Padding(4)
         Me.Password.Name = "Password"
         Me.Password.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
         Me.Password.Size = New System.Drawing.Size(312, 22)
@@ -83,7 +83,7 @@ Partial Class NewUserRegistration
         'ConfirmPassword
         '
         Me.ConfirmPassword.Location = New System.Drawing.Point(176, 138)
-        Me.ConfirmPassword.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.ConfirmPassword.Margin = New System.Windows.Forms.Padding(4)
         Me.ConfirmPassword.Name = "ConfirmPassword"
         Me.ConfirmPassword.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
         Me.ConfirmPassword.Size = New System.Drawing.Size(312, 22)
@@ -92,7 +92,7 @@ Partial Class NewUserRegistration
         'Back
         '
         Me.Back.Location = New System.Drawing.Point(280, 199)
-        Me.Back.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Back.Margin = New System.Windows.Forms.Padding(4)
         Me.Back.Name = "Back"
         Me.Back.Size = New System.Drawing.Size(100, 28)
         Me.Back.TabIndex = 6
@@ -102,7 +102,7 @@ Partial Class NewUserRegistration
         'Register
         '
         Me.Register.Location = New System.Drawing.Point(389, 199)
-        Me.Register.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Register.Margin = New System.Windows.Forms.Padding(4)
         Me.Register.Name = "Register"
         Me.Register.Size = New System.Drawing.Size(100, 28)
         Me.Register.TabIndex = 7
@@ -134,7 +134,7 @@ Partial Class NewUserRegistration
         Me.Controls.Add(Me.Password)
         Me.Controls.Add(Me.UsernameLabel)
         Me.Controls.Add(Me.Username)
-        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "NewUserRegistration"
         Me.Text = "Register"
         Me.ResumeLayout(False)
