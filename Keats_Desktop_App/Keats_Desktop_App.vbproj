@@ -74,6 +74,12 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EditSpecific.Designer.vb">
+      <DependentUpon>EditSpecific.vb</DependentUpon>
+    </Compile>
+    <Compile Include="EditSpecific.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="IngredientDetails.Designer.vb">
       <DependentUpon>IngredientDetails.vb</DependentUpon>
     </Compile>
@@ -126,8 +132,17 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="ViewAll.Designer.vb">
+      <DependentUpon>ViewAll.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ViewAll.vb">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="EditSpecific.resx">
+      <DependentUpon>EditSpecific.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="IngredientDetails.resx">
       <DependentUpon>IngredientDetails.vb</DependentUpon>
     </EmbeddedResource>
@@ -151,6 +166,9 @@
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewAll.resx">
+      <DependentUpon>ViewAll.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

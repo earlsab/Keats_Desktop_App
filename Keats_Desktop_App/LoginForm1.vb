@@ -38,7 +38,7 @@ Public Class LoginForm1
             'This but checks if the code is there...
             If RdrLogin.HasRows Then
                 RdrLogin.Read()
-                UserAccountID = RdrLogin.GetInt32(0)
+                Globals.UserAccountID = RdrLogin.GetInt32(0)
                 MainHomePage.Show()
                 Me.Hide()
             Else
@@ -71,9 +71,9 @@ Public Class LoginForm1
 
     Private Sub LoginForm1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Try
-            Globals.DBConnLogin = New DB2Connection("server=localhost; database=" & DBDatabase _
+            Globals.DBConnLogin = New DB2Connection("server=localhost; database=" & Globals.DBDatabase _
  & ";" + _
-"uid= " & DBUser & ";password=" & DBPassword & ";")
+"uid= " & Globals.DBUser & ";password=" & Globals.DBPassword & ";")
             Globals.DBConnLogin.Open()
         Catch ex As Exception
             MsgBox(ex.ToString)
