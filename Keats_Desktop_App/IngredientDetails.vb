@@ -158,8 +158,14 @@ Public Class IngredientDetails
         Dim currentDate As Date = DateTime.Now
         Try
             StrStud = "INSERT INTO intake (account_id, date_created, ingredient_mapping_id, amount) " _
-                & "VALUES (" & Globals.UserAccountID & ", " & currentDate & ", " & FirstIngredientMappingId & ", " & IngredientAmount & " )" & ";"
+                & "VALUES (@AccountId, @DateTimeValue, @IngredientMappingId, @IngredientAmount);"
+
             CmdStud = New DB2Command(StrStud, Globals.DBConnLogin)
+            CmdStud.Parameters.Add("@AccountId", IBM.Data.DB2.DB2Type.Integer).Value = Globals.UserAccountID
+            CmdStud.Parameters.Add("@DateTimeValue", IBM.Data.DB2.DB2Type.DateTime).Value = DateTime.Now ' Assuming you want to use the current date and time
+            CmdStud.Parameters.Add("@IngredientMappingId", IBM.Data.DB2.DB2Type.Integer).Value = FirstIngredientMappingId
+            CmdStud.Parameters.Add("@IngredientAmount", IBM.Data.DB2.DB2Type.Decimal).Value = IngredientAmount
+
             CmdStud.ExecuteNonQuery()
             MainHomePage.Show()
             Me.Hide()
@@ -205,6 +211,6 @@ Public Class IngredientDetails
     End Sub
 
     Private Sub Add_Click(sender As Object, e As EventArgs) Handles Add.Click
-
+        Call InsertIntake()
     End Sub
 End Class
