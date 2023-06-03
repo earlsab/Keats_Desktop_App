@@ -10,7 +10,23 @@ Public Class IngredientDetails
     End Sub
 
 
-
+    Private Sub VariantCellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles IngredientVariant.CellContentClick 
+        If e.RowIndex >= 0 AndAlso e.RowIndex < IngredientVariant.Rows.Count Then
+            Dim clickedRow As DataGridViewRow = IngredientVariant.Rows(e.RowIndex)
+            FirstIngredientVariantId = clickedRow.Cells(0).Value
+            SelectedVariantValue.Text() = clickedRow.Cells(1).Value
+            Call PopulateIngredientSubvariant()
+            Call PopulateNutrients()
+        End If
+    End Sub
+    Private Sub SubvariantCellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles IngredientSubvariant.CellContentClick
+        If e.RowIndex >= 0 AndAlso e.RowIndex < IngredientSubvariant.Rows.Count Then
+            Dim clickedRow As DataGridViewRow = IngredientSubvariant.Rows(e.RowIndex)
+            FirstIngredientSubvariantId = clickedRow.Cells(0).Value
+            SelectedSubvariantValue.Text() = clickedRow.Cells(1).Value
+            Call PopulateNutrients()
+        End If
+    End Sub
     Private Sub PopulateIngredientVariant()
         Dim StrStud As String
         Dim row As String()
@@ -108,7 +124,6 @@ Public Class IngredientDetails
             End While
         Catch ex As Exception
             MsgBox(ex.ToString)
-
         End Try
     End Sub
     Private Sub IngredientDetails_Load(sender As Object, e As EventArgs) Handles MyBase.Load
