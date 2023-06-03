@@ -43,14 +43,7 @@ CREATE TABLE
         calories float4 NOT NULL,
         protein float4 NOT NULL,
         carbs float4 NOT NULL,
-        fats float4 NOT NULL,
-        trans_fat float4 DEFAULT 0,
-        saturated_fat float4 DEFAULT 0,
-        sugars float4 DEFAULT 0,
-        fiber float4 DEFAULT 0,
-        sodium float4 DEFAULT 0,
-        iron float4 DEFAULT 0,
-        calcium float4 DEFAULT 0
+        fats float4 NOT NULL
     );
 
 CREATE TABLE
@@ -198,13 +191,6 @@ CREATE TABLE
         max_fats float4 NOT NULL,
         activity_lvl_id int NOT NULL,
         diet_plan_id int NOT NULL,
-        trans_fat float4 NOT NULL DEFAULT 0,
-        saturated_fat float4 NOT NULL DEFAULT 0,
-        sugars float4 NOT NULL DEFAULT 0,
-        fiber float4 NOT NULL DEFAULT 0,
-        sodium float4 NOT NULL DEFAULT 0,
-        iron float4 NOT NULL DEFAULT 0,
-        calcium float4 NOT NULL DEFAULT 0,
         FOREIGN KEY(activity_lvl_id) REFERENCES activity_lvl(id),
         FOREIGN KEY(diet_plan_id) REFERENCES diet_plan(id)
     );
