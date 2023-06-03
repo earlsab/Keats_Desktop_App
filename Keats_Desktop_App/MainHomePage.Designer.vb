@@ -29,10 +29,10 @@ Partial Class MainHomePage
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Button3 = New System.Windows.Forms.Button()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.MealsLoggedTextBox = New System.Windows.Forms.TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
+        Me.CaloriesTextBox = New System.Windows.Forms.TextBox()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -101,13 +101,13 @@ Partial Class MainHomePage
         Me.Button3.Text = "Profile"
         Me.Button3.UseVisualStyleBackColor = True
         '
-        'TextBox1
+        'MealsLoggedTextBox
         '
-        Me.TextBox1.Location = New System.Drawing.Point(149, 62)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.ReadOnly = True
-        Me.TextBox1.Size = New System.Drawing.Size(159, 20)
-        Me.TextBox1.TabIndex = 8
+        Me.MealsLoggedTextBox.Location = New System.Drawing.Point(149, 62)
+        Me.MealsLoggedTextBox.Name = "MealsLoggedTextBox"
+        Me.MealsLoggedTextBox.ReadOnly = True
+        Me.MealsLoggedTextBox.Size = New System.Drawing.Size(159, 20)
+        Me.MealsLoggedTextBox.TabIndex = 8
         '
         'Label4
         '
@@ -131,13 +131,13 @@ Partial Class MainHomePage
         Me.Label5.TabIndex = 11
         Me.Label5.Text = "Calories Eaten"
         '
-        'TextBox2
+        'CaloriesTextBox
         '
-        Me.TextBox2.Location = New System.Drawing.Point(149, 88)
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.ReadOnly = True
-        Me.TextBox2.Size = New System.Drawing.Size(159, 20)
-        Me.TextBox2.TabIndex = 10
+        Me.CaloriesTextBox.Location = New System.Drawing.Point(149, 88)
+        Me.CaloriesTextBox.Name = "CaloriesTextBox"
+        Me.CaloriesTextBox.ReadOnly = True
+        Me.CaloriesTextBox.Size = New System.Drawing.Size(159, 20)
+        Me.CaloriesTextBox.TabIndex = 10
         '
         'MainHomePage
         '
@@ -145,9 +145,9 @@ Partial Class MainHomePage
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(636, 359)
         Me.Controls.Add(Me.Label5)
-        Me.Controls.Add(Me.TextBox2)
+        Me.Controls.Add(Me.CaloriesTextBox)
         Me.Controls.Add(Me.Label4)
-        Me.Controls.Add(Me.TextBox1)
+        Me.Controls.Add(Me.MealsLoggedTextBox)
         Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Label3)
@@ -169,8 +169,8 @@ Partial Class MainHomePage
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents Button2 As System.Windows.Forms.Button
     Friend WithEvents Button3 As System.Windows.Forms.Button
-    Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
+    Friend WithEvents MealsLoggedTextBox As System.Windows.Forms.TextBox
     Friend WithEvents Label4 As System.Windows.Forms.Label
     Friend WithEvents Label5 As System.Windows.Forms.Label
-    Friend WithEvents TextBox2 As System.Windows.Forms.TextBox
+    Friend WithEvents CaloriesTextBox As System.Windows.Forms.TextBox
 End Class

@@ -130,6 +130,7 @@ Public Class MainHomePage
         'ACTIVITY_LVL_ID()
         'DIET_PLAN_ID()
 
+        ' CREATION OF DAILY NUTRIENTS ENTRY
         FirstEntryState = False
         Try
             StrLoad = "select max(date_created) from daily_nutrients where account_id=" & Globals.UserAccountID
@@ -159,6 +160,19 @@ Public Class MainHomePage
         Else
             MsgBox("Did Not Create Daily Nutrient Entry. Existing Entry Found")
         End If
+
+        ' TABLE POPULATE
+        Try
+            StrLoad = "select calories from daily_nutrients where account_id=" & Globals.UserAccountID & _
+            " AND Date_Created ='" & CurrentDate & "'"
+            CmdLoad = New DB2Command(StrLoad, Globals.DBConnLogin)
+            RdrLoad = CmdLoad.ExecuteReader
+            RdrLoad.Read()
+            Me.CaloriesTextBox.Text = RdrLoad.GetFloat(0)
+        Catch ex As Exception
+            MsgBox("Error Displaying Summary")
+        End Try
+
 
         Try
             Me.DataGridView1.ColumnCount = 4
@@ -199,6 +213,14 @@ Public Class MainHomePage
     End Sub
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+
+    End Sub
+
+    Private Sub TextBox2_TextChanged(sender As Object, e As EventArgs) Handles CaloriesTextBox.TextChanged
+
+    End Sub
+
+    Private Sub MealsLoggedTextBox_TextChanged(sender As Object, e As EventArgs) Handles MealsLoggedTextBox.TextChanged
 
     End Sub
 End Class
