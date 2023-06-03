@@ -8,6 +8,7 @@ Module Globals
 
     Public SelectedIngredientId = 0
     Public SelectedIngredientMappingId = 0
+    Public UserAccountID As Integer
 End Module
 
 Public Class LoginForm1
