@@ -141,7 +141,9 @@ Public Class MainHomePage
 
                 ingredientName = "" & ingredientPrep & "" & ingredientKind & "" & ingredientName & ""
                 row = New String() {RdrSum.GetString(2), ingredientName, RdrSum.GetString(3), ingredientNutrient}
-                Me.DataGridView1.Rows.Add(row)
+                If DateDiff("d", RdrSum.GetDateTime(2), CurrentDate) = 0 Then
+                    Me.DataGridView1.Rows.Add(row)
+                End If
             End While
         Catch ex As Exception
             MsgBox(ex.ToString)
