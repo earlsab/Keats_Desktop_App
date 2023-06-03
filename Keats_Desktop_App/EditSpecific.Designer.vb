@@ -22,8 +22,28 @@ Partial Class EditSpecific
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        components = New System.ComponentModel.Container
+        Me.Back = New System.Windows.Forms.Button()
+        Me.SuspendLayout()
+        '
+        'Back
+        '
+        Me.Back.Location = New System.Drawing.Point(422, 275)
+        Me.Back.Name = "Back"
+        Me.Back.Size = New System.Drawing.Size(75, 23)
+        Me.Back.TabIndex = 0
+        Me.Back.Text = "Back"
+        Me.Back.UseVisualStyleBackColor = True
+        '
+        'EditSpecific
+        '
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.ClientSize = New System.Drawing.Size(518, 325)
+        Me.Controls.Add(Me.Back)
+        Me.Name = "EditSpecific"
         Me.Text = "EditSpecific"
+        Me.ResumeLayout(False)
+
     End Sub
+    Friend WithEvents Back As System.Windows.Forms.Button
 End Class

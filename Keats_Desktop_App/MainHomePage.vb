@@ -200,7 +200,8 @@ Public Class MainHomePage
     End Sub
 
     Private Sub DataGridView1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick
-
+        EditSpecific.Show()
+        Me.Hide()
     End Sub
 
     Private Sub Label4_Click(sender As Object, e As EventArgs) Handles Label4.Click
@@ -222,5 +223,10 @@ Public Class MainHomePage
 
     Private Sub MealsLoggedTextBox_TextChanged(sender As Object, e As EventArgs) Handles MealsLoggedTextBox.TextChanged
 
+    End Sub
+
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        ViewAll.Show()
+        Me.Hide()
     End Sub
 End Class
