@@ -1,10 +1,11 @@
 ﻿Imports IBM.Data.DB2
 
 Module Globals
-    Public DBUser = "Petey"
-    Public DBPassword = "Coolguy11"
+    Public DBUser = "earlsab"
+    Public DBPassword = "1234"
     Public DBDatabase = "Keats"
     Public DBConnLogin As Common.DbConnection
+    Public UserAccountID As Integer
 End Module
 
 Public Class LoginForm1
@@ -33,8 +34,8 @@ Public Class LoginForm1
             RdrLogin = CmdLogin.ExecuteReader
             'This but checks if the code is there...
             If RdrLogin.HasRows Then
-                'RdrLogin.Read()
-                'FrmEnroll.TxtStudId.Text = RdrLogin.GetString(0)
+                RdrLogin.Read()
+                UserAccountID = RdrLogin.GetInt32(0)
                 MainHomePage.Show()
                 Me.Hide()
             Else
