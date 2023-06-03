@@ -103,4 +103,8 @@ Public Class NewUserRegistration
     Private Sub ConfirmPassword_TextChanged(sender As Object, e As EventArgs) Handles ConfirmPassword.TextChanged
 
     End Sub
+
+    Private Sub Password_TextChanged(sender As Object, e As EventArgs) Handles Password.TextChanged
+
+    End Sub
 End Class
