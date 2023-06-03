@@ -21,7 +21,7 @@ Public Class MainHomePage
             RdrLoad = CmdLoad.ExecuteReader
             RdrLoad.Read()
             LatestEntryDate = RdrLoad.GetDate(0)
-            CurrentDate = DateAndTime.Today()
+
 
         Catch ex As Exception
             FirstEntryState = True
@@ -31,7 +31,7 @@ Public Class MainHomePage
             Try
                 StrInsert = "insert into daily_nutrients(account_id, date_created, calories, protein, carbs, fats," _
                 & "max_calories, max_protein, max_carbs, max_fats, diet_plan_id, activity_lvl_id)" _
-                & "values(@AccountId, @DateTimeValue, 0, 0, 0, 0, 0, 0, 0, 0, 1, 21)"
+                & "values(@AccountId, @DateTimeValue, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1)"
                 CmdInsert = New DB2Command(StrInsert, Globals.DBConnLogin)
                 CmdInsert.Parameters.Add("@AccountId", IBM.Data.DB2.DB2Type.Integer).Value = Globals.UserAccountID
                 CmdInsert.Parameters.Add("@DateTimeValue", IBM.Data.DB2.DB2Type.DateTime).Value = DateTime.Now ' Assuming you want to use the current date and time
@@ -151,13 +151,29 @@ Public Class MainHomePage
         End Try
     End Sub
 
-
-    Private Sub MainHomePage_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Public Sub UpdateSummary()
 
         Dim StrLoad As String
         Dim CmdLoad As DB2Command
         Dim RdrLoad As DB2DataReader
 
+        Me.MealsLoggedTextBox.Text = Me.IntakeCount
+        Try
+            StrLoad = "select calories from daily_nutrients where account_id=" & Globals.UserAccountID & _
+            " AND Date_Created ='" & CurrentDate & "'"
+            CmdLoad = New DB2Command(StrLoad, Globals.DBConnLogin)
+            RdrLoad = CmdLoad.ExecuteReader
+            RdrLoad.Read()
+            Me.CaloriesTextBox.Text = RdrLoad.GetFloat(0)
+
+        Catch ex As Exception
+            MsgBox("Error Displaying Summary")
+            MsgBox(ex.ToString)
+        End Try
+    End Sub
+
+
+    Private Sub MainHomePage_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'ID()
         'ACCOUNT_ID()
         'DATE_CREATED()
@@ -171,22 +187,11 @@ Public Class MainHomePage
         'MAX_FATS()
         'ACTIVITY_LVL_ID()
         'DIET_PLAN_ID()
-
+        CurrentDate = DateAndTime.Today()
         Call CreateDailyNutrientEntry()
- 
-        ' TABLE POPULATE
-        Try
-            StrLoad = "select calories from daily_nutrients where account_id=" & Globals.UserAccountID & _
-            " AND Date_Created ='" & CurrentDate & "'"
-            CmdLoad = New DB2Command(StrLoad, Globals.DBConnLogin)
-            RdrLoad = CmdLoad.ExecuteReader
-            RdrLoad.Read()
-            Me.CaloriesTextBox.Text = RdrLoad.GetFloat(0)
 
-        Catch ex As Exception
-            MsgBox("Error Displaying Summary")
-            MsgBox(ex.ToString)
-        End Try
+        ' TABLE POPULATE
+
 
         Try
             Me.DataGridView1.ColumnCount = 4
@@ -195,7 +200,7 @@ Public Class MainHomePage
             Me.DataGridView1.Columns(2).Name = "Serving Size (g)"
             Me.DataGridView1.Columns(3).Name = "Calories"
             Call PopulateDataGrid()
-            Me.MealsLoggedTextBox.Text = Me.IntakeCount
+            Call UpdateSummary()
         Catch ex As Exception
 
         End Try
@@ -215,7 +220,7 @@ Public Class MainHomePage
     End Sub
 
     Private Sub DataGridView1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick
-        EditSpecific.Show()
+        EditSpecificIntake.Show()
     End Sub
 
     Private Sub Label4_Click(sender As Object, e As EventArgs) Handles Label4.Click
@@ -240,7 +245,7 @@ Public Class MainHomePage
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
-        ViewAll.Show()
+        ViewIntakesAll.Show()
         Me.Hide()
     End Sub
 End Class

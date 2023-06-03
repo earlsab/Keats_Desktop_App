@@ -45,11 +45,14 @@ Public Class SearchIngredient
 
             Globals.SelectedIngredientId = clickedRow.Cells(0).Value
             IngredientDetails.Show()
-            Me.Hide()
         End If
     End Sub
 
     Private Sub SearchIngredient_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+    End Sub
+
+    Private Sub SearchResult_CellContentClick_1(sender As Object, e As DataGridViewCellEventArgs) Handles SearchResult.CellContentClick
 
     End Sub
 End Class

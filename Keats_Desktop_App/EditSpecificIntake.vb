@@ -1,7 +1,6 @@
 ﻿Imports IBM.Data.DB2
-Imports System.Collections.Generic
-
-Public Class IngredientDetails
+Public Class EditSpecificIntake
+    ' Most code reused from Ingredient Details
     Dim FirstIngredientVariantId As Integer
     Dim FirstIngredientSubvariantId As Integer
     Dim FirstIngredientMappingId As Integer
@@ -12,23 +11,6 @@ Public Class IngredientDetails
     Dim Carbs As Single
     Dim Fats As Single
 
-    Private Sub VariantCellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles IngredientVariant.CellClick
-        If e.RowIndex >= 0 AndAlso e.RowIndex < IngredientVariant.Rows.Count Then
-            Dim clickedRow As DataGridViewRow = IngredientVariant.Rows(e.RowIndex)
-            FirstIngredientVariantId = clickedRow.Cells(0).Value
-            SelectedVariantValue.Text() = clickedRow.Cells(1).Value
-            Call PopulateIngredientSubvariant()
-            Call PopulateNutrients()
-        End If
-    End Sub
-    Private Sub SubvariantCellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles IngredientSubvariant.CellClick
-        If e.RowIndex >= 0 AndAlso e.RowIndex < IngredientSubvariant.Rows.Count Then
-            Dim clickedRow As DataGridViewRow = IngredientSubvariant.Rows(e.RowIndex)
-            FirstIngredientSubvariantId = clickedRow.Cells(0).Value
-            SelectedSubvariantValue.Text() = clickedRow.Cells(1).Value
-            Call PopulateNutrients()
-        End If
-    End Sub
     Private Sub PopulateIngredientVariant()
         Dim StrStud As String
         Dim row As String()
@@ -167,113 +149,26 @@ Public Class IngredientDetails
             CmdStud.Parameters.Add("@IngredientAmount", IBM.Data.DB2.DB2Type.Decimal).Value = IngredientAmount
 
             CmdStud.ExecuteNonQuery()
-
+            MainHomePage.Show()
+            Me.Hide()
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try
     End Sub
 
-    Private Sub UpdateSummaryTable()
-        Dim StrStud As String
-        Dim StrUpdate As String
-        Dim CmdStud As DB2Command
-        Dim RdrStud As DB2DataReader
-
-        Dim TargetUpdate As Integer
-        Dim OldCalories As Single
-        Dim OldProtein As Single
-        Dim OldCarbs As Single
-        Dim OldFats As Single
-        ' ID
-        'Calories() 3
-        'Protein() 4
-        'Carbs() 5
-        'Fats() 6
-
-        Try
-            StrStud = "select * from daily_nutrients where account_id=" & Globals.UserAccountID & " order by date_created " _
-            & "DESC OPTIMIZE FOR 1 ROW"
-            CmdStud = New DB2Command(StrStud, Globals.DBConnLogin)
-            RdrStud = CmdStud.ExecuteReader
-
-            RdrStud.Read()
-            TargetUpdate = RdrStud.GetInt32(0)
-            OldCalories = RdrStud.GetFloat(3)
-            OldProtein = RdrStud.GetFloat(4)
-            OldCarbs = RdrStud.GetFloat(5)
-            OldFats = RdrStud.GetFloat(6)
-
-            Calories = OldCalories + Calories
-            Protein = OldProtein + Protein
-            Carbs = OldCarbs + Carbs
-            Fats = OldFats + Fats
-
-            StrUpdate = "update daily_nutrients set " _
-                & "calories = " & Calories & ", " _
-                & "protein = " & Protein & ", " _
-                & "carbs = " & Carbs & ", " _
-                & "fats = " & Fats & " " _
-                & "where ID = " & TargetUpdate
-            CmdStud = New DB2Command(StrUpdate, Globals.DBConnLogin)
-            RdrStud = CmdStud.ExecuteReader
-        Catch ex As Exception
-            MsgBox("Error updating summary table")
-        End Try
-    End Sub
 
     'For disabling text input and only number input on amount
-    Private Sub Amount_KeyPress(sender As Object, e As KeyPressEventArgs) Handles AmountValue.KeyPress
-        ' Check if the entered character is a valid number
-        If Not Char.IsDigit(e.KeyChar) AndAlso Not Char.IsControl(e.KeyChar) Then
-            ' Cancel the key press event to prevent the character from being entered
-            e.Handled = True
-        End If
-        If Char.IsDigit(e.KeyChar) Or Asc(e.KeyChar) = 8 Then
-            Dim digit As Integer
-            If Asc(e.KeyChar) = 8 Then
-                Try
-                    digit = Integer.Parse(AmountValue.Text())
-                    If AmountValue.Text.Length > 0 Then
-                        digit = AmountValue.Text.Substring(0, AmountValue.Text.Length - 1)
-                    End If
-                Catch ex As Exception
-                    digit = 0
-                End Try
-            Else
-                digit = Integer.Parse(AmountValue.Text() + e.KeyChar.ToString())
-            End If
-            IngredientAmount = digit
-            Dim Multiplier As Single = digit / 100
-            CaloriesValue.Text() = Calories * Multiplier
-            ProteinValue.Text() = Protein * Multiplier
-            CarbsValue.Text() = Carbs * Multiplier
-            FatsValue.Text() = Fats * Multiplier
-        End If
-    End Sub
 
     Private Sub Back_Click(sender As Object, e As EventArgs) Handles Back.Click
-        Me.Hide()
-        SearchIngredient.Show()
-    End Sub
-
-    Private Sub Add_Click(sender As Object, e As EventArgs) Handles Add.Click
-        Call InsertIntake()
-        Call UpdateSummaryTable()
-        Call MainHomePage.PopulateDataGrid()
-        Call MainHomePage.UpdateSummary()
         MainHomePage.Show()
         Me.Hide()
     End Sub
 
-    Private Sub CaloriesLabel_Click(sender As Object, e As EventArgs) Handles CaloriesLabel.Click
+    Private Sub EditSpecificIntake_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
     End Sub
 
-    Private Sub AmountValue_TextChanged(sender As Object, e As EventArgs) Handles AmountValue.TextChanged
-
-    End Sub
-
-    Private Sub IngredientSubvariant_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles IngredientSubvariant.CellContentClick
+    Private Sub IngredientVariant_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles IngredientVariant.CellContentClick
 
     End Sub
 End Class

@@ -25,6 +25,10 @@ Partial Class MainHomePage
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.AddMealButton = New System.Windows.Forms.Button()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Button2 = New System.Windows.Forms.Button()
@@ -33,10 +37,7 @@ Partial Class MainHomePage
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.CaloriesTextBox = New System.Windows.Forms.TextBox()
-        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Button1 = New System.Windows.Forms.Button()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -65,8 +66,30 @@ Partial Class MainHomePage
         Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2, Me.Column3, Me.Column4})
         Me.DataGridView1.Location = New System.Drawing.Point(27, 179)
         Me.DataGridView1.Name = "DataGridView1"
+        Me.DataGridView1.ReadOnly = True
         Me.DataGridView1.Size = New System.Drawing.Size(643, 157)
         Me.DataGridView1.TabIndex = 3
+        '
+        'Column1
+        '
+        Me.Column1.HeaderText = "Time Recorded"
+        Me.Column1.Name = "Column1"
+        '
+        'Column2
+        '
+        Me.Column2.HeaderText = "Food"
+        Me.Column2.Name = "Column2"
+        Me.Column2.Width = 300
+        '
+        'Column3
+        '
+        Me.Column3.HeaderText = "Serving Size (g)"
+        Me.Column3.Name = "Column3"
+        '
+        'Column4
+        '
+        Me.Column4.HeaderText = "Calories"
+        Me.Column4.Name = "Column4"
         '
         'AddMealButton
         '
@@ -94,7 +117,7 @@ Partial Class MainHomePage
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(171, 24)
         Me.Button2.TabIndex = 6
-        Me.Button2.Text = "View All"
+        Me.Button2.Text = "View All Intake"
         Me.Button2.UseVisualStyleBackColor = True
         '
         'Button3
@@ -144,32 +167,21 @@ Partial Class MainHomePage
         Me.CaloriesTextBox.Size = New System.Drawing.Size(159, 20)
         Me.CaloriesTextBox.TabIndex = 10
         '
-        'Column1
+        'Button1
         '
-        Me.Column1.HeaderText = "Time Recorded"
-        Me.Column1.Name = "Column1"
-        '
-        'Column2
-        '
-        Me.Column2.HeaderText = "Food"
-        Me.Column2.Name = "Column2"
-        Me.Column2.Width = 300
-        '
-        'Column3
-        '
-        Me.Column3.HeaderText = "Serving Size (g)"
-        Me.Column3.Name = "Column3"
-        '
-        'Column4
-        '
-        Me.Column4.HeaderText = "Calories"
-        Me.Column4.Name = "Column4"
+        Me.Button1.Location = New System.Drawing.Point(134, 23)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(126, 23)
+        Me.Button1.TabIndex = 12
+        Me.Button1.Text = "View All Summaries"
+        Me.Button1.UseVisualStyleBackColor = True
         '
         'MainHomePage
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(690, 359)
+        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.CaloriesTextBox)
         Me.Controls.Add(Me.Label4)
@@ -203,4 +215,5 @@ Partial Class MainHomePage
     Friend WithEvents Column2 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column3 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column4 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Button1 As System.Windows.Forms.Button
 End Class
