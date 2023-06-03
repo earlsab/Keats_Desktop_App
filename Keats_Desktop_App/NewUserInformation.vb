@@ -16,7 +16,8 @@ Public Class NewUserInformation
     End Sub
 
     Private Sub NewUserInformation_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
+        TextBoxUsername.Text = NewUserRegistration.Username.Text
+        TextBoxPassw.Text = NewUserRegistration.Password.Text
     End Sub
 
     Private Sub Label1_Click(sender As Object, e As EventArgs) Handles Label.Click
@@ -38,11 +39,6 @@ Public Class NewUserInformation
 
             Me.Hide()
             LoginForm1.Show()
-
-        Else
-
-
-
         End If
     End Sub
 
@@ -82,12 +78,22 @@ Public Class NewUserInformation
         Dim NewWeight As String
         Dim NewHeight As String
         Dim NewPhoneNo As String
+        Dim NewEmail As String
         Dim NewBDay As Date
         Dim StrNewUser As String
         Dim CmdNewUser As DB2Command
         Dim RdrNewUser As DB2DataReader
 
+        Try
+            NewWeight = TextBoxW.Text()
+            NewHeight = TextBoxH.Text()
+            NewPhoneNo = TextBoxPh.Text()
+            NewEmail = TextBoxEm.Text()
 
+
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+        End Try
     End Sub
 
     Private Sub TextBoxPassw_TextChanged(sender As Object, e As EventArgs) Handles TextBoxPassw.TextChanged
@@ -96,6 +102,14 @@ Public Class NewUserInformation
 
     Private Sub TextBoxUssername_TextChanged(sender As Object, e As EventArgs) Handles TextBoxUsername.TextChanged
 
+
+    End Sub
+
+    Private Sub TreeView1_AfterSelect(sender As Object, e As TreeViewEventArgs)
+
+    End Sub
+
+    Private Sub Label9_Click(sender As Object, e As EventArgs) Handles Label9.Click
 
     End Sub
 End Class
