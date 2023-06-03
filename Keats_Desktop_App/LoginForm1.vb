@@ -1,9 +1,9 @@
 ﻿Imports IBM.Data.DB2
 
 Module Globals
-    Public DBUser = "username"
-    Public DBPassword = "password"
-    Public DBDatabase = "Keats2"
+    Public DBUser = "Petey"
+    Public DBPassword = "Coolguy11"
+    Public DBDatabase = "Keats"
     Public DBConnLogin As Common.DbConnection
 
     Public SelectedIngredientId = 0
@@ -38,7 +38,7 @@ Public Class LoginForm1
             'This but checks if the code is there...
             If RdrLogin.HasRows Then
                 RdrLogin.Read()
-                Globals.UserAccountID = RdrLogin.GetInt32(0)
+                UserAccountID = RdrLogin.GetInt32(0)
                 MainHomePage.Show()
                 Me.Hide()
             Else
@@ -71,9 +71,9 @@ Public Class LoginForm1
 
     Private Sub LoginForm1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Try
-            Globals.DBConnLogin = New DB2Connection("server=localhost; database=" & Globals.DBDatabase _
+            Globals.DBConnLogin = New DB2Connection("server=localhost; database=" & DBDatabase _
  & ";" + _
-"uid= " & Globals.DBUser & ";password=" & Globals.DBPassword & ";")
+"uid= " & DBUser & ";password=" & DBPassword & ";")
             Globals.DBConnLogin.Open()
         Catch ex As Exception
             MsgBox(ex.ToString)
