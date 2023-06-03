@@ -25,7 +25,7 @@ Partial Class MainHomePage
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
-        Me.Button1 = New System.Windows.Forms.Button()
+        Me.AddMealButton = New System.Windows.Forms.Button()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Button3 = New System.Windows.Forms.Button()
@@ -33,6 +33,10 @@ Partial Class MainHomePage
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.CaloriesTextBox = New System.Windows.Forms.TextBox()
+        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -58,19 +62,20 @@ Partial Class MainHomePage
         'DataGridView1
         '
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2, Me.Column3, Me.Column4})
         Me.DataGridView1.Location = New System.Drawing.Point(27, 179)
         Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.Size = New System.Drawing.Size(577, 157)
+        Me.DataGridView1.Size = New System.Drawing.Size(643, 157)
         Me.DataGridView1.TabIndex = 3
         '
-        'Button1
+        'AddMealButton
         '
-        Me.Button1.Location = New System.Drawing.Point(391, 55)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(213, 84)
-        Me.Button1.TabIndex = 4
-        Me.Button1.Text = "Add Meal"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.AddMealButton.Location = New System.Drawing.Point(457, 84)
+        Me.AddMealButton.Name = "AddMealButton"
+        Me.AddMealButton.Size = New System.Drawing.Size(213, 84)
+        Me.AddMealButton.TabIndex = 4
+        Me.AddMealButton.Text = "Add Meal"
+        Me.AddMealButton.UseVisualStyleBackColor = True
         '
         'Label3
         '
@@ -94,7 +99,7 @@ Partial Class MainHomePage
         '
         'Button3
         '
-        Me.Button3.Location = New System.Drawing.Point(544, 19)
+        Me.Button3.Location = New System.Drawing.Point(610, 28)
         Me.Button3.Name = "Button3"
         Me.Button3.Size = New System.Drawing.Size(60, 30)
         Me.Button3.TabIndex = 7
@@ -139,11 +144,32 @@ Partial Class MainHomePage
         Me.CaloriesTextBox.Size = New System.Drawing.Size(159, 20)
         Me.CaloriesTextBox.TabIndex = 10
         '
+        'Column1
+        '
+        Me.Column1.HeaderText = "Time Recorded"
+        Me.Column1.Name = "Column1"
+        '
+        'Column2
+        '
+        Me.Column2.HeaderText = "Food"
+        Me.Column2.Name = "Column2"
+        Me.Column2.Width = 300
+        '
+        'Column3
+        '
+        Me.Column3.HeaderText = "Serving Size (g)"
+        Me.Column3.Name = "Column3"
+        '
+        'Column4
+        '
+        Me.Column4.HeaderText = "Calories"
+        Me.Column4.Name = "Column4"
+        '
         'MainHomePage
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(636, 359)
+        Me.ClientSize = New System.Drawing.Size(690, 359)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.CaloriesTextBox)
         Me.Controls.Add(Me.Label4)
@@ -151,7 +177,7 @@ Partial Class MainHomePage
         Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Label3)
-        Me.Controls.Add(Me.Button1)
+        Me.Controls.Add(Me.AddMealButton)
         Me.Controls.Add(Me.DataGridView1)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
@@ -165,7 +191,7 @@ Partial Class MainHomePage
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents DataGridView1 As System.Windows.Forms.DataGridView
-    Friend WithEvents Button1 As System.Windows.Forms.Button
+    Friend WithEvents AddMealButton As System.Windows.Forms.Button
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents Button2 As System.Windows.Forms.Button
     Friend WithEvents Button3 As System.Windows.Forms.Button
@@ -173,4 +199,8 @@ Partial Class MainHomePage
     Friend WithEvents Label4 As System.Windows.Forms.Label
     Friend WithEvents Label5 As System.Windows.Forms.Label
     Friend WithEvents CaloriesTextBox As System.Windows.Forms.TextBox
+    Friend WithEvents Column1 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Column2 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Column3 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Column4 As System.Windows.Forms.DataGridViewTextBoxColumn
 End Class

@@ -1,9 +1,53 @@
 ﻿Imports IBM.Data.DB2
-Public Class MainHomePage
 
-    Private Sub PopulateDataGrid()
+Public Class MainHomePage
+    Dim IntakeCount As Integer
+    Dim CurrentDate As Date
+
+    Private Sub CreateDailyNutrientEntry()
+        Dim StrLoad As String
+        Dim CmdLoad As DB2Command
+        Dim RdrLoad As DB2DataReader
+        Dim StrInsert As String
+        Dim CmdInsert As DB2Command
+
+        Dim LatestEntryDate As Date
+        Dim FirstEntryState As Boolean
+        ' CREATION OF DAILY NUTRIENTS ENTRY
+        FirstEntryState = False
+        Try
+            StrLoad = "select max(date_created) from daily_nutrients where account_id=" & Globals.UserAccountID
+            CmdLoad = New DB2Command(StrLoad, Globals.DBConnLogin)
+            RdrLoad = CmdLoad.ExecuteReader
+            RdrLoad.Read()
+            LatestEntryDate = RdrLoad.GetDate(0)
+            CurrentDate = DateAndTime.Today()
+
+        Catch ex As Exception
+            FirstEntryState = True
+        End Try
+
+        If DateDiff("d", LatestEntryDate, CurrentDate) > 0 Or FirstEntryState Then
+            Try
+                StrInsert = "insert into daily_nutrients(account_id, date_created, calories, protein, carbs, fats," _
+                & "max_calories, max_protein, max_carbs, max_fats, diet_plan_id, activity_lvl_id)" _
+                & "values(@AccountId, @DateTimeValue, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1)"
+                CmdInsert = New DB2Command(StrInsert, Globals.DBConnLogin)
+                CmdInsert.Parameters.Add("@AccountId", IBM.Data.DB2.DB2Type.Integer).Value = Globals.UserAccountID
+                CmdInsert.Parameters.Add("@DateTimeValue", IBM.Data.DB2.DB2Type.DateTime).Value = DateTime.Now ' Assuming you want to use the current date and time
+                CmdInsert.ExecuteNonQuery()
+                MsgBox("Created New Daily Nutrient Entry")
+            Catch ex As Exception
+                MsgBox("Daily Nutrient Insert Error")
+            End Try
+        Else
+            MsgBox("Existing Entry Found. Did Not Create New Daily Nutrient Entry. ")
+        End If
+    End Sub
+    Public Sub PopulateDataGrid()
         Dim StrSum As String
         Dim row() As String
+
         Dim ingredientMappingID As Integer
         Dim ingredientNameID As Integer
         Dim ingredientKindID As Integer
@@ -25,20 +69,19 @@ Public Class MainHomePage
             RdrSum = CmdSum.ExecuteReader
             Me.DataGridView1.Rows.Clear()
 
-
+            Me.IntakeCount = 0
             While RdrSum.Read
+                Me.IntakeCount += 1
                 ' Order of Table
                 ' 0 2ID
                 ' 1 ACCOUNT_ID()
                 ' 2 DATE_CREATED()
                 ' 3 AMOUNT()
-                ' 4 AMOUNT_UNIT()
-                ' 5 AMOUNT_UNIT_DESC()
-                ' 6 SERVING_SIZE()
-                ' 7 INGREDIENT_MAPPING_ID()
+                ' 4 SERVING_SIZE()
+                ' 5 INGREDIENT_MAPPING_ID()
 
                 ' Get details of the ingredient item.
-                ingredientMappingID = RdrSum.GetInt32(7)
+                ingredientMappingID = RdrSum.GetInt32(5)
                 Try
                     StrSum = "Select * from ingredient_mapping where id=" & ingredientMappingID
                     CmdSum = New DB2Command(StrSum, Globals.DBConnLogin)
@@ -107,14 +150,10 @@ Public Class MainHomePage
 
 
     Private Sub MainHomePage_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Dim StrInsert As String
-        Dim CmdInsert As DB2Command
+
         Dim StrLoad As String
         Dim CmdLoad As DB2Command
         Dim RdrLoad As DB2DataReader
-        Dim CurrentDate As Date
-        Dim LatestEntryDate As Date
-        Dim FirstEntryState As Boolean
 
         'ID()
         'ACCOUNT_ID()
@@ -130,37 +169,8 @@ Public Class MainHomePage
         'ACTIVITY_LVL_ID()
         'DIET_PLAN_ID()
 
-        ' CREATION OF DAILY NUTRIENTS ENTRY
-        FirstEntryState = False
-        Try
-            StrLoad = "select max(date_created) from daily_nutrients where account_id=" & Globals.UserAccountID
-            CmdLoad = New DB2Command(StrLoad, Globals.DBConnLogin)
-            RdrLoad = CmdLoad.ExecuteReader
-            RdrLoad.Read()
-            LatestEntryDate = RdrLoad.GetDate(0)
-            CurrentDate = DateAndTime.Today()
-
-        Catch ex As Exception
-            FirstEntryState = True
-        End Try
-
-        If DateDiff("d", LatestEntryDate, CurrentDate) > 0 Or FirstEntryState Then
-            Try
-                StrInsert = "insert into daily_nutrients(account_id, date_created, calories, protein, carbs, fats," _
-                & "max_calories, max_protein, max_carbs, max_fats, diet_plan_id, activity_lvl_id)" _
-                & "values(@AccountId, @DateTimeValue, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1)"
-                CmdInsert = New DB2Command(StrInsert, Globals.DBConnLogin)
-                CmdInsert.Parameters.Add("@AccountId", IBM.Data.DB2.DB2Type.Integer).Value = Globals.UserAccountID
-                CmdInsert.Parameters.Add("@DateTimeValue", IBM.Data.DB2.DB2Type.DateTime).Value = DateTime.Now ' Assuming you want to use the current date and time
-                CmdInsert.ExecuteNonQuery()
-                MsgBox("Created New Daily Nutrient Entry")
-            Catch ex As Exception
-                MsgBox("Daily Nutrient Insert Error")
-            End Try
-        Else
-            MsgBox("Did Not Create Daily Nutrient Entry. Existing Entry Found")
-        End If
-
+        Call CreateDailyNutrientEntry()
+ 
         ' TABLE POPULATE
         Try
             StrLoad = "select calories from daily_nutrients where account_id=" & Globals.UserAccountID & _
@@ -169,10 +179,10 @@ Public Class MainHomePage
             RdrLoad = CmdLoad.ExecuteReader
             RdrLoad.Read()
             Me.CaloriesTextBox.Text = RdrLoad.GetFloat(0)
+
         Catch ex As Exception
             MsgBox("Error Displaying Summary")
         End Try
-
 
         Try
             Me.DataGridView1.ColumnCount = 4
@@ -181,6 +191,7 @@ Public Class MainHomePage
             Me.DataGridView1.Columns(2).Name = "Serving Size (g)"
             Me.DataGridView1.Columns(3).Name = "Calories"
             Call PopulateDataGrid()
+            Me.MealsLoggedTextBox.Text = Me.IntakeCount
         Catch ex As Exception
 
         End Try
@@ -201,14 +212,13 @@ Public Class MainHomePage
 
     Private Sub DataGridView1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick
         EditSpecific.Show()
-        Me.Hide()
     End Sub
 
     Private Sub Label4_Click(sender As Object, e As EventArgs) Handles Label4.Click
 
     End Sub
 
-    Private Sub Button1_Click_1(sender As Object, e As EventArgs) Handles Button1.Click
+    Private Sub Button1_Click_1(sender As Object, e As EventArgs) Handles AddMealButton.Click
         SearchIngredient.Show()
         Me.Hide()
     End Sub
