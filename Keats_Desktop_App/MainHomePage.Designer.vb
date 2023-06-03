@@ -58,16 +58,16 @@ Partial Class MainHomePage
         'DataGridView1
         '
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Location = New System.Drawing.Point(27, 241)
+        Me.DataGridView1.Location = New System.Drawing.Point(27, 179)
         Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.Size = New System.Drawing.Size(577, 106)
+        Me.DataGridView1.Size = New System.Drawing.Size(577, 157)
         Me.DataGridView1.TabIndex = 3
         '
         'Button1
         '
         Me.Button1.Location = New System.Drawing.Point(391, 55)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(213, 132)
+        Me.Button1.Size = New System.Drawing.Size(213, 84)
         Me.Button1.TabIndex = 4
         Me.Button1.Text = "Add Meal"
         Me.Button1.UseVisualStyleBackColor = True
@@ -76,7 +76,7 @@ Partial Class MainHomePage
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(24, 217)
+        Me.Label3.Location = New System.Drawing.Point(24, 155)
         Me.Label3.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(88, 13)
@@ -85,7 +85,7 @@ Partial Class MainHomePage
         '
         'Button2
         '
-        Me.Button2.Location = New System.Drawing.Point(117, 211)
+        Me.Button2.Location = New System.Drawing.Point(117, 149)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(171, 24)
         Me.Button2.TabIndex = 6
@@ -103,8 +103,9 @@ Partial Class MainHomePage
         '
         'TextBox1
         '
-        Me.TextBox1.Location = New System.Drawing.Point(117, 62)
+        Me.TextBox1.Location = New System.Drawing.Point(149, 62)
         Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.ReadOnly = True
         Me.TextBox1.Size = New System.Drawing.Size(159, 20)
         Me.TextBox1.TabIndex = 8
         '
@@ -115,9 +116,9 @@ Partial Class MainHomePage
         Me.Label4.Location = New System.Drawing.Point(38, 65)
         Me.Label4.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(74, 13)
+        Me.Label4.Size = New System.Drawing.Size(106, 13)
         Me.Label4.TabIndex = 9
-        Me.Label4.Text = "Meals Logged"
+        Me.Label4.Text = "No. of Meals Logged"
         '
         'Label5
         '
@@ -126,14 +127,15 @@ Partial Class MainHomePage
         Me.Label5.Location = New System.Drawing.Point(38, 91)
         Me.Label5.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(74, 13)
+        Me.Label5.Size = New System.Drawing.Size(75, 13)
         Me.Label5.TabIndex = 11
-        Me.Label5.Text = "Meals Logged"
+        Me.Label5.Text = "Calories Eaten"
         '
         'TextBox2
         '
-        Me.TextBox2.Location = New System.Drawing.Point(117, 88)
+        Me.TextBox2.Location = New System.Drawing.Point(149, 88)
         Me.TextBox2.Name = "TextBox2"
+        Me.TextBox2.ReadOnly = True
         Me.TextBox2.Size = New System.Drawing.Size(159, 20)
         Me.TextBox2.TabIndex = 10
         '

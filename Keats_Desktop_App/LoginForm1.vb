@@ -5,6 +5,9 @@ Module Globals
     Public DBPassword = "Coolguy11"
     Public DBDatabase = "Keats"
     Public DBConnLogin As Common.DbConnection
+
+    Public SelectedIngredientId = 0
+    Public SelectedIngredientMappingId = 0
     Public UserAccountID As Integer
 End Module
 
