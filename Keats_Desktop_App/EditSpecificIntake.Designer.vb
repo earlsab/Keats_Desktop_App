@@ -23,7 +23,7 @@ Partial Class EditSpecificIntake
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.Back = New System.Windows.Forms.Button()
-        Me.Button1 = New System.Windows.Forms.Button()
+        Me.Delete = New System.Windows.Forms.Button()
         Me.Save = New System.Windows.Forms.Button()
         Me.Amount = New System.Windows.Forms.Label()
         Me.AmountValue = New System.Windows.Forms.TextBox()
@@ -60,14 +60,14 @@ Partial Class EditSpecificIntake
         Me.Back.Text = "Back"
         Me.Back.UseVisualStyleBackColor = True
         '
-        'Button1
+        'Delete
         '
-        Me.Button1.Location = New System.Drawing.Point(397, 338)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(114, 39)
-        Me.Button1.TabIndex = 44
-        Me.Button1.Text = "Delete"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.Delete.Location = New System.Drawing.Point(397, 338)
+        Me.Delete.Name = "Delete"
+        Me.Delete.Size = New System.Drawing.Size(114, 39)
+        Me.Delete.TabIndex = 44
+        Me.Delete.Text = "Delete"
+        Me.Delete.UseVisualStyleBackColor = True
         '
         'Save
         '
@@ -301,7 +301,7 @@ Partial Class EditSpecificIntake
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1049, 399)
-        Me.Controls.Add(Me.Button1)
+        Me.Controls.Add(Me.Delete)
         Me.Controls.Add(Me.Save)
         Me.Controls.Add(Me.Amount)
         Me.Controls.Add(Me.AmountValue)
@@ -331,7 +331,7 @@ Partial Class EditSpecificIntake
 
     End Sub
     Friend WithEvents Back As System.Windows.Forms.Button
-    Friend WithEvents Button1 As System.Windows.Forms.Button
+    Friend WithEvents Delete As System.Windows.Forms.Button
     Friend WithEvents Save As System.Windows.Forms.Button
     Friend WithEvents Amount As System.Windows.Forms.Label
     Friend WithEvents AmountValue As System.Windows.Forms.TextBox

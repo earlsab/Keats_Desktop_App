@@ -219,6 +219,54 @@ Public Class EditSpecificIntake
         End Try
     End Sub
 
+    Private Sub DeleteIntake()
+        Dim StrStud As String
+        Dim CmdStud As DB2Command
+        Dim RdrStud As DB2DataReader
+        Dim currentDate As Date = DateTime.Now
+        Try
+            StrStud = "DELETE FROM intake WHERE id = " & Globals.SelectedIntakeId & ";"
+
+            CmdStud = New DB2Command(StrStud, Globals.DBConnLogin)
+            CmdStud.ExecuteNonQuery()
+            MainHomePage.Show()
+            Me.Hide()
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+        End Try
+    End Sub
+
+    Private Sub DeductDailyNutrient()
+        Dim StrStud As String
+        Dim CmdStud As DB2Command
+        Dim RdrStud As DB2DataReader
+        Dim currentDate As Date = DateTime.Now
+        Try
+            StrStud = "UPDATE daily_nutrients SET calories = calories - @calories ," _
+                & " protein = protein - @protein ," _
+                & " carbs = carbs - @carbs ," _
+                & " fats = fats - @fats " _
+                & " WHERE account_id = @accountId AND date_created = @DateTimeValue;"
+            CmdStud = New DB2Command(StrStud, Globals.DBConnLogin)
+
+            Dim Multiplier As Single = OldIngredientAmount / 100
+            Dim OldCal = Calories * Multiplier
+            Dim OldProtein = Protein * Multiplier
+            Dim OldCarbs = Carbs * Multiplier
+            Dim OldFats = Fats * Multiplier 
+            CmdStud.Parameters.Add("@calories", IBM.Data.DB2.DB2Type.Integer).Value = OldCal
+            CmdStud.Parameters.Add("@protein", IBM.Data.DB2.DB2Type.Integer).Value = OldProtein
+            CmdStud.Parameters.Add("@carbs", IBM.Data.DB2.DB2Type.Integer).Value = OldCarbs
+            CmdStud.Parameters.Add("@fats", IBM.Data.DB2.DB2Type.Integer).Value = OldFats
+            CmdStud.Parameters.Add("@accountId", IBM.Data.DB2.DB2Type.Integer).Value = Globals.UserAccountID
+            CmdStud.Parameters.Add("@dateTimeValue", IBM.Data.DB2.DB2Type.DateTime).Value = DateTime.Now
+            CmdStud.ExecuteNonQuery()
+            MainHomePage.Show()
+            Me.Hide()
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+        End Try
+    End Sub
     'For disabling text input and only number input on amount
     Private Sub Amount_KeyPress(sender As Object, e As KeyPressEventArgs) Handles AmountValue.KeyPress
         ' Check if the entered character is a valid number
@@ -265,6 +313,15 @@ Public Class EditSpecificIntake
     Private Sub Save_Click(sender As Object, e As EventArgs) Handles Save.Click
         Call UpdateIntake()
         Call UpdateDailyNutrient()
+        Call MainHomePage.PopulateDataGrid()
+        Call MainHomePage.UpdateSummary()
+        Me.Close()
+        MainHomePage.Show()
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Delete.Click 
+        Call DeleteIntake()
+        Call DeductDailyNutrient()
         Call MainHomePage.PopulateDataGrid()
         Call MainHomePage.UpdateSummary()
         Me.Close()
