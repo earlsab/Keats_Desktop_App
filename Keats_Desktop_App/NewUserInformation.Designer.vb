@@ -47,17 +47,17 @@ Partial Class NewUserInformation
         Me.TextBox2 = New System.Windows.Forms.TextBox()
         Me.Label13 = New System.Windows.Forms.Label()
         Me.Label14 = New System.Windows.Forms.Label()
-        Me.TextBoxSex = New System.Windows.Forms.TextBox()
-        Me.Label15 = New System.Windows.Forms.Label()
+        Me.ComboBoxAL = New System.Windows.Forms.ComboBox()
+        Me.ComboBoxDP = New System.Windows.Forms.ComboBox()
+        Me.ComboBoxSex = New System.Windows.Forms.ComboBox()
         Me.DataGridViewAL = New System.Windows.Forms.DataGridView()
-        Me.DataGridViewDP = New System.Windows.Forms.DataGridView()
+        Me.Label8 = New System.Windows.Forms.Label()
         CType(Me.DataGridViewAL, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DataGridViewDP, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Back
         '
-        Me.Back.Location = New System.Drawing.Point(1078, 370)
+        Me.Back.Location = New System.Drawing.Point(172, 618)
         Me.Back.Name = "Back"
         Me.Back.Size = New System.Drawing.Size(90, 25)
         Me.Back.TabIndex = 1
@@ -74,7 +74,7 @@ Partial Class NewUserInformation
         '
         'ConfirmRegistration
         '
-        Me.ConfirmRegistration.Location = New System.Drawing.Point(1173, 370)
+        Me.ConfirmRegistration.Location = New System.Drawing.Point(267, 618)
         Me.ConfirmRegistration.Name = "ConfirmRegistration"
         Me.ConfirmRegistration.Size = New System.Drawing.Size(154, 25)
         Me.ConfirmRegistration.TabIndex = 3
@@ -109,7 +109,7 @@ Partial Class NewUserInformation
         'TextBoxH
         '
         Me.TextBoxH.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.TextBoxH.Location = New System.Drawing.Point(98, 327)
+        Me.TextBoxH.Location = New System.Drawing.Point(98, 328)
         Me.TextBoxH.Name = "TextBoxH"
         Me.TextBoxH.Size = New System.Drawing.Size(249, 22)
         Me.TextBoxH.TabIndex = 7
@@ -161,7 +161,7 @@ Partial Class NewUserInformation
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(461, 9)
+        Me.Label5.Location = New System.Drawing.Point(6, 372)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(90, 17)
         Me.Label5.TabIndex = 14
@@ -198,7 +198,7 @@ Partial Class NewUserInformation
         'Label9
         '
         Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(899, 9)
+        Me.Label9.Location = New System.Drawing.Point(27, 402)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(65, 17)
         Me.Label9.TabIndex = 21
@@ -209,18 +209,18 @@ Partial Class NewUserInformation
         Me.Label10.AutoSize = True
         Me.Label10.Location = New System.Drawing.Point(353, 299)
         Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(45, 17)
+        Me.Label10.Size = New System.Drawing.Size(68, 17)
         Me.Label10.TabIndex = 26
-        Me.Label10.Text = "lbs/kg"
+        Me.Label10.Text = "kilograms"
         '
         'Label11
         '
         Me.Label11.AutoSize = True
         Me.Label11.Location = New System.Drawing.Point(353, 327)
         Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(31, 17)
+        Me.Label11.Size = New System.Drawing.Size(51, 17)
         Me.Label11.TabIndex = 27
-        Me.Label11.Text = "ft/m"
+        Me.Label11.Text = "meters"
         '
         'Label12
         '
@@ -265,52 +265,65 @@ Partial Class NewUserInformation
         Me.Label14.TabIndex = 34
         Me.Label14.Text = "Surname"
         '
-        'TextBoxSex
+        'ComboBoxAL
         '
-        Me.TextBoxSex.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.TextBoxSex.Location = New System.Drawing.Point(98, 271)
-        Me.TextBoxSex.Name = "TextBoxSex"
-        Me.TextBoxSex.Size = New System.Drawing.Size(249, 22)
-        Me.TextBoxSex.TabIndex = 35
+        Me.ComboBoxAL.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.ComboBoxAL.FormattingEnabled = True
+        Me.ComboBoxAL.Items.AddRange(New Object() {"inactive", "lightly active", "moderately active", "active", "very active", "extremely active"})
+        Me.ComboBoxAL.Location = New System.Drawing.Point(98, 369)
+        Me.ComboBoxAL.Name = "ComboBoxAL"
+        Me.ComboBoxAL.Size = New System.Drawing.Size(249, 24)
+        Me.ComboBoxAL.TabIndex = 39
         '
-        'Label15
+        'ComboBoxDP
         '
-        Me.Label15.AutoSize = True
-        Me.Label15.Location = New System.Drawing.Point(353, 274)
-        Me.Label15.Name = "Label15"
-        Me.Label15.Size = New System.Drawing.Size(84, 17)
-        Me.Label15.TabIndex = 36
-        Me.Label15.Text = "male/female"
+        Me.ComboBoxDP.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.ComboBoxDP.FormattingEnabled = True
+        Me.ComboBoxDP.Items.AddRange(New Object() {"mild weight loss", "mild fat loss (low carb)", "mild fat loss (low fat)", "weight loss", "fat loss (low carb)", "fat loss (low fat)", "more moderate weight loss", "more moderate fat loss (low carb)", "more moderate fat loss (low fat)", "extreme weight loss", "extreme fat loss (low carb)", "extreme fat loss (low fat)"})
+        Me.ComboBoxDP.Location = New System.Drawing.Point(98, 399)
+        Me.ComboBoxDP.Name = "ComboBoxDP"
+        Me.ComboBoxDP.Size = New System.Drawing.Size(248, 24)
+        Me.ComboBoxDP.TabIndex = 40
+        '
+        'ComboBoxSex
+        '
+        Me.ComboBoxSex.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.ComboBoxSex.FormattingEnabled = True
+        Me.ComboBoxSex.Items.AddRange(New Object() {"Male", "Female"})
+        Me.ComboBoxSex.Location = New System.Drawing.Point(98, 269)
+        Me.ComboBoxSex.Name = "ComboBoxSex"
+        Me.ComboBoxSex.Size = New System.Drawing.Size(248, 24)
+        Me.ComboBoxSex.TabIndex = 41
         '
         'DataGridViewAL
         '
-        Me.DataGridViewAL.BackgroundColor = System.Drawing.SystemColors.Window
+        Me.DataGridViewAL.BackgroundColor = System.Drawing.SystemColors.ButtonFace
         Me.DataGridViewAL.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridViewAL.Location = New System.Drawing.Point(464, 29)
+        Me.DataGridViewAL.Location = New System.Drawing.Point(9, 452)
         Me.DataGridViewAL.Name = "DataGridViewAL"
         Me.DataGridViewAL.RowTemplate.Height = 24
-        Me.DataGridViewAL.Size = New System.Drawing.Size(432, 300)
-        Me.DataGridViewAL.TabIndex = 37
+        Me.DataGridViewAL.Size = New System.Drawing.Size(412, 160)
+        Me.DataGridViewAL.TabIndex = 42
         '
-        'DataGridViewDP
+        'Label8
         '
-        Me.DataGridViewDP.BackgroundColor = System.Drawing.SystemColors.Window
-        Me.DataGridViewDP.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridViewDP.Location = New System.Drawing.Point(902, 31)
-        Me.DataGridViewDP.Name = "DataGridViewDP"
-        Me.DataGridViewDP.RowTemplate.Height = 24
-        Me.DataGridViewDP.Size = New System.Drawing.Size(425, 298)
-        Me.DataGridViewDP.TabIndex = 38
+        Me.Label8.AutoSize = True
+        Me.Label8.Location = New System.Drawing.Point(6, 432)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(172, 17)
+        Me.Label8.TabIndex = 43
+        Me.Label8.Text = "Activity Level Descriptions"
         '
         'NewUserInformation
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1334, 405)
-        Me.Controls.Add(Me.DataGridViewDP)
+        Me.ClientSize = New System.Drawing.Size(429, 655)
+        Me.Controls.Add(Me.Label8)
         Me.Controls.Add(Me.DataGridViewAL)
-        Me.Controls.Add(Me.Label15)
-        Me.Controls.Add(Me.TextBoxSex)
+        Me.Controls.Add(Me.ComboBoxSex)
+        Me.Controls.Add(Me.ComboBoxDP)
+        Me.Controls.Add(Me.ComboBoxAL)
         Me.Controls.Add(Me.Label14)
         Me.Controls.Add(Me.Label13)
         Me.Controls.Add(Me.TextBox2)
@@ -339,7 +352,6 @@ Partial Class NewUserInformation
         Me.Name = "NewUserInformation"
         Me.Text = "Register"
         CType(Me.DataGridViewAL, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DataGridViewDP, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -368,8 +380,9 @@ Partial Class NewUserInformation
     Friend WithEvents TextBox2 As System.Windows.Forms.TextBox
     Friend WithEvents Label13 As System.Windows.Forms.Label
     Friend WithEvents Label14 As System.Windows.Forms.Label
-    Friend WithEvents TextBoxSex As System.Windows.Forms.TextBox
-    Friend WithEvents Label15 As System.Windows.Forms.Label
+    Friend WithEvents ComboBoxAL As System.Windows.Forms.ComboBox
+    Friend WithEvents ComboBoxDP As System.Windows.Forms.ComboBox
+    Friend WithEvents ComboBoxSex As System.Windows.Forms.ComboBox
     Friend WithEvents DataGridViewAL As System.Windows.Forms.DataGridView
-    Friend WithEvents DataGridViewDP As System.Windows.Forms.DataGridView
+    Friend WithEvents Label8 As System.Windows.Forms.Label
 End Class

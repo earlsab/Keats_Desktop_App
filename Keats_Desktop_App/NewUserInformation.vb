@@ -32,7 +32,6 @@ Public Class NewUserInformation
         TextBoxPassw.Text = NewUserRegistration.Password.Text
 
         DataGridViewAL.Refresh()
-        DataGridViewDP.Refresh()
 
         Me.DataGridViewAL.ColumnCount = 2
         Me.DataGridViewAL.Columns(0).Name = "Level"
@@ -47,20 +46,6 @@ Public Class NewUserInformation
         While RdrAL.Read
             row = New String() {RdrAL.GetString(0), RdrAL.GetString(1)}
             Me.DataGridViewAL.Rows.Add(row)
-        End While
-
-        Me.DataGridViewDP.ColumnCount = 2
-        Me.DataGridViewDP.Columns(0).Name = "Plan"
-
-        StrDP = "Select name from diet_plan"
-        CmdDP = New DB2Command(StrDP, Globals.DBConnLogin)
-        RdrDP = CmdDP.ExecuteReader
-
-        Me.DataGridViewDP.Rows.Clear()
-
-        While RdrDP.Read
-            row = New String() {RdrDP.GetString(0)}
-            Me.DataGridViewDP.Rows.Add(row)
         End While
 
     End Sub
@@ -127,23 +112,41 @@ Public Class NewUserInformation
             Dim height As Integer = Integer.Parse(TextBoxH.Text)
             Dim phone As String = TextBoxPh.Text
             Dim birthday As Date = DateTimePicker1.Value
-            Dim sex As String = TextBoxSex.Text
+            Dim sex As String = ComboBoxSex.Text
 
-            DataGridViewAL.DataSource = activityLevelTable
-            DataGridViewDP.DataSource = dietPlanTable
+            Dim DPid As Integer
+            Dim StrDP As String
+            Dim CmdDP As DB2Command
+            Dim RdrDP As DB2DataReader
 
-            Dim activityLevelId As Integer
-            Dim dietPlanId As Integer
+            Dim ALid As Integer
+            Dim StrAL As String
+            Dim CmdAL As DB2Command
+            Dim RdrAL As DB2DataReader
 
-            If DataGridViewAL.SelectedRows.Count > 0 Then
-                Dim selectedRow As DataGridViewRow = DataGridViewAL.SelectedRows(0)
-                activityLevelId = CInt(selectedRow.Cells("Activity Level").Value)
+            StrAL = "SELECT id FROM activity_lvl WHERE name = " & ComboBoxAL.Text
+            CmdAL = New DB2Command(StrAL, Globals.DBConnLogin)
+            RdrAL = CmdAL.ExecuteReader
+
+            If RdrAL.Read() Then
+                ALid = RdrAL.GetInt32(1)
+            Else
+                Throw New Exception("No activity level found.")
             End If
 
-            If DataGridViewDP.SelectedRows.Count > 0 Then
-                Dim selectedRow As DataGridViewRow = DataGridViewDP.SelectedRows(0)
-                dietPlanId = CInt(selectedRow.Cells("Diet Plan").Value)
+            RdrAL.Close()
+
+            StrDP = "SELECT id FROM diet_plan WHERE name = " & ComboBoxDP.Text
+            CmdDP = New DB2Command(StrDP, Globals.DBConnLogin)
+            RdrDP = CmdDP.ExecuteReader
+
+            If RdrDP.Read() Then
+                DPid = RdrDP.GetInt32(1)
+            Else
+                Throw New Exception("No diet plan found.")
             End If
+
+            RdrDP.Close()
 
             Dim insertVitalsQuery As String = "INSERT INTO account_vitals (account_id, weight, height, birthday, sex, activity_lvl_id, diet_plan_id) " &
                  "VALUES (@AccountId, @Weight, @Height, @Birthday, @Sex, @ActivityLevelId, @DietPlanId)"
@@ -153,8 +156,8 @@ Public Class NewUserInformation
                 cmdVitals.Parameters.Add("@Height", IBM.Data.DB2.DB2Type.Integer).Value = height
                 cmdVitals.Parameters.Add("@Birthday", IBM.Data.DB2.DB2Type.Date).Value = birthday
                 cmdVitals.Parameters.Add("@Sex", IBM.Data.DB2.DB2Type.VarChar).Value = sex
-                cmdVitals.Parameters.Add("@ActivityLevelId", IBM.Data.DB2.DB2Type.Integer).Value = activityLevelId
-                cmdVitals.Parameters.Add("@DietPlanId", IBM.Data.DB2.DB2Type.Integer).Value = dietPlanId
+                cmdVitals.Parameters.Add("@GrabAL", IBM.Data.DB2.DB2Type.Integer).Value = ALid
+                cmdVitals.Parameters.Add("@GrabDP", IBM.Data.DB2.DB2Type.Integer).Value = DPid
                 cmdVitals.ExecuteNonQuery()
             End Using
 
@@ -218,6 +221,10 @@ Public Class NewUserInformation
 
 
     Private Sub PictureBox1_Click(sender As Object, e As EventArgs)
+
+    End Sub
+
+    Private Sub Label8_Click(sender As Object, e As EventArgs) Handles Label8.Click
 
     End Sub
 End Class
