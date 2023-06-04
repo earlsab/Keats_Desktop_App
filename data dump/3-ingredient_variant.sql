@@ -999,6 +999,7 @@ INSERT INTO ingredient_variant (id,name,name_ph) VALUES
 	 (6047,'semisweet chocolate',NULL),
 	 (6048,'praline',NULL),
 	 (6049,'peanut brittle',NULL);
+	 
 INSERT INTO ingredient_variant (id,name,name_ph) VALUES
 	 (6050,'peanut bar',NULL),
 	 (6051,'nougat',NULL),

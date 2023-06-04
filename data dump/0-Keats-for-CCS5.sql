@@ -30,14 +30,15 @@ CREATE TABLE
 CREATE TABLE
     ingredient_subvariant(
         id int NOT NULL PRIMARY KEY,
-        name varchar(100) NOT NULL UNIQUE,
-        name_ph varchar(100) DEFAULT ''
+        name varchar(200) NOT NULL UNIQUE,
+        name_ph varchar(200) DEFAULT ''
     );
 
 CREATE TABLE
     nutrient(
         id int NOT NULL PRIMARY KEY,
         amount float4 NOT NULL,
+        serving_size float4 DEFAULT 0,
         calories float4 NOT NULL,
         protein float4 NOT NULL,
         carbs float4 NOT NULL,
