@@ -22,6 +22,7 @@ Partial Class NewUserRegistration
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(NewUserRegistration))
         Me.Username = New System.Windows.Forms.TextBox()
         Me.UsernameLabel = New System.Windows.Forms.Label()
         Me.PasswordLabel = New System.Windows.Forms.Label()
@@ -134,6 +135,7 @@ Partial Class NewUserRegistration
         Me.Controls.Add(Me.Password)
         Me.Controls.Add(Me.UsernameLabel)
         Me.Controls.Add(Me.Username)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "NewUserRegistration"
         Me.Text = "Register"

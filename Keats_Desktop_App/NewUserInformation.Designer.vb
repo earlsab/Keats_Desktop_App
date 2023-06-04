@@ -38,19 +38,26 @@ Partial Class NewUserInformation
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.Label7 = New System.Windows.Forms.Label()
-        Me.TextBoxEm = New System.Windows.Forms.TextBox()
-        Me.Label8 = New System.Windows.Forms.Label()
         Me.Label = New System.Windows.Forms.Label()
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.Label9 = New System.Windows.Forms.Label()
-        Me.ComboBoxAL = New System.Windows.Forms.ComboBox()
-        Me.ComboBoxDP = New System.Windows.Forms.ComboBox()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.Label12 = New System.Windows.Forms.Label()
+        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.TextBox2 = New System.Windows.Forms.TextBox()
+        Me.Label13 = New System.Windows.Forms.Label()
+        Me.Label14 = New System.Windows.Forms.Label()
+        Me.TextBoxSex = New System.Windows.Forms.TextBox()
+        Me.Label15 = New System.Windows.Forms.Label()
+        Me.DataGridViewAL = New System.Windows.Forms.DataGridView()
+        Me.DataGridViewDP = New System.Windows.Forms.DataGridView()
+        CType(Me.DataGridViewAL, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DataGridViewDP, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Back
         '
-        Me.Back.Location = New System.Drawing.Point(258, 382)
+        Me.Back.Location = New System.Drawing.Point(1078, 370)
         Me.Back.Name = "Back"
         Me.Back.Size = New System.Drawing.Size(90, 25)
         Me.Back.TabIndex = 1
@@ -67,7 +74,7 @@ Partial Class NewUserInformation
         '
         'ConfirmRegistration
         '
-        Me.ConfirmRegistration.Location = New System.Drawing.Point(353, 382)
+        Me.ConfirmRegistration.Location = New System.Drawing.Point(1173, 370)
         Me.ConfirmRegistration.Name = "ConfirmRegistration"
         Me.ConfirmRegistration.Size = New System.Drawing.Size(154, 25)
         Me.ConfirmRegistration.TabIndex = 3
@@ -86,7 +93,7 @@ Partial Class NewUserInformation
         'TextBoxPh
         '
         Me.TextBoxPh.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.TextBoxPh.Location = New System.Drawing.Point(98, 169)
+        Me.TextBoxPh.Location = New System.Drawing.Point(98, 217)
         Me.TextBoxPh.Name = "TextBoxPh"
         Me.TextBoxPh.Size = New System.Drawing.Size(249, 22)
         Me.TextBoxPh.TabIndex = 5
@@ -94,7 +101,7 @@ Partial Class NewUserInformation
         'TextBoxW
         '
         Me.TextBoxW.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.TextBoxW.Location = New System.Drawing.Point(98, 258)
+        Me.TextBoxW.Location = New System.Drawing.Point(98, 299)
         Me.TextBoxW.Name = "TextBoxW"
         Me.TextBoxW.Size = New System.Drawing.Size(249, 22)
         Me.TextBoxW.TabIndex = 6
@@ -102,14 +109,14 @@ Partial Class NewUserInformation
         'TextBoxH
         '
         Me.TextBoxH.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.TextBoxH.Location = New System.Drawing.Point(98, 286)
+        Me.TextBoxH.Location = New System.Drawing.Point(98, 327)
         Me.TextBoxH.Name = "TextBoxH"
         Me.TextBoxH.Size = New System.Drawing.Size(249, 22)
         Me.TextBoxH.TabIndex = 7
         '
         'DateTimePicker1
         '
-        Me.DateTimePicker1.Location = New System.Drawing.Point(98, 141)
+        Me.DateTimePicker1.Location = New System.Drawing.Point(98, 189)
         Me.DateTimePicker1.Name = "DateTimePicker1"
         Me.DateTimePicker1.Size = New System.Drawing.Size(249, 22)
         Me.DateTimePicker1.TabIndex = 9
@@ -136,7 +143,7 @@ Partial Class NewUserInformation
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(40, 263)
+        Me.Label3.Location = New System.Drawing.Point(40, 304)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(52, 17)
         Me.Label3.TabIndex = 12
@@ -145,7 +152,7 @@ Partial Class NewUserInformation
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(43, 291)
+        Me.Label4.Location = New System.Drawing.Point(43, 332)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(49, 17)
         Me.Label4.TabIndex = 13
@@ -154,7 +161,7 @@ Partial Class NewUserInformation
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(2, 317)
+        Me.Label5.Location = New System.Drawing.Point(461, 9)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(90, 17)
         Me.Label5.TabIndex = 14
@@ -163,7 +170,7 @@ Partial Class NewUserInformation
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(17, 172)
+        Me.Label6.Location = New System.Drawing.Point(17, 220)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(75, 17)
         Me.Label6.TabIndex = 15
@@ -172,28 +179,11 @@ Partial Class NewUserInformation
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(6, 146)
+        Me.Label7.Location = New System.Drawing.Point(6, 194)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(86, 17)
+        Me.Label7.Size = New System.Drawing.Size(87, 17)
         Me.Label7.TabIndex = 16
-        Me.Label7.Text = "Date of birth"
-        '
-        'TextBoxEm
-        '
-        Me.TextBoxEm.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.TextBoxEm.Location = New System.Drawing.Point(98, 197)
-        Me.TextBoxEm.Name = "TextBoxEm"
-        Me.TextBoxEm.Size = New System.Drawing.Size(249, 22)
-        Me.TextBoxEm.TabIndex = 18
-        '
-        'Label8
-        '
-        Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(50, 200)
-        Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(42, 17)
-        Me.Label8.TabIndex = 19
-        Me.Label8.Text = "Email"
+        Me.Label7.Text = "Date of Birth"
         '
         'Label
         '
@@ -205,51 +195,130 @@ Partial Class NewUserInformation
         Me.Label.TabIndex = 0
         Me.Label.Text = "We just need to know a little more about you!"
         '
-        'PictureBox1
-        '
-        Me.PictureBox1.Image = Global.Keats_Desktop_App.My.Resources.Resources.cloyd
-        Me.PictureBox1.Location = New System.Drawing.Point(362, 23)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(139, 140)
-        Me.PictureBox1.TabIndex = 17
-        Me.PictureBox1.TabStop = False
-        '
         'Label9
         '
         Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(27, 345)
+        Me.Label9.Location = New System.Drawing.Point(899, 9)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(65, 17)
         Me.Label9.TabIndex = 21
         Me.Label9.Text = "Diet Plan"
         '
-        'ComboBoxAL
+        'Label10
         '
-        Me.ComboBoxAL.FormattingEnabled = True
-        Me.ComboBoxAL.Location = New System.Drawing.Point(98, 314)
-        Me.ComboBoxAL.Name = "ComboBoxAL"
-        Me.ComboBoxAL.Size = New System.Drawing.Size(249, 24)
-        Me.ComboBoxAL.TabIndex = 24
+        Me.Label10.AutoSize = True
+        Me.Label10.Location = New System.Drawing.Point(353, 299)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(45, 17)
+        Me.Label10.TabIndex = 26
+        Me.Label10.Text = "lbs/kg"
         '
-        'ComboBoxDP
+        'Label11
         '
-        Me.ComboBoxDP.FormattingEnabled = True
-        Me.ComboBoxDP.Location = New System.Drawing.Point(98, 344)
-        Me.ComboBoxDP.Name = "ComboBoxDP"
-        Me.ComboBoxDP.Size = New System.Drawing.Size(249, 24)
-        Me.ComboBoxDP.TabIndex = 25
+        Me.Label11.AutoSize = True
+        Me.Label11.Location = New System.Drawing.Point(353, 327)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(31, 17)
+        Me.Label11.TabIndex = 27
+        Me.Label11.Text = "ft/m"
+        '
+        'Label12
+        '
+        Me.Label12.AutoSize = True
+        Me.Label12.Location = New System.Drawing.Point(61, 274)
+        Me.Label12.Name = "Label12"
+        Me.Label12.Size = New System.Drawing.Size(31, 17)
+        Me.Label12.TabIndex = 29
+        Me.Label12.Text = "Sex"
+        '
+        'TextBox1
+        '
+        Me.TextBox1.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.TextBox1.Location = New System.Drawing.Point(98, 161)
+        Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.Size = New System.Drawing.Size(249, 22)
+        Me.TextBox1.TabIndex = 31
+        '
+        'TextBox2
+        '
+        Me.TextBox2.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.TextBox2.Location = New System.Drawing.Point(98, 133)
+        Me.TextBox2.Name = "TextBox2"
+        Me.TextBox2.Size = New System.Drawing.Size(249, 22)
+        Me.TextBox2.TabIndex = 32
+        '
+        'Label13
+        '
+        Me.Label13.AutoSize = True
+        Me.Label13.Location = New System.Drawing.Point(19, 136)
+        Me.Label13.Name = "Label13"
+        Me.Label13.Size = New System.Drawing.Size(76, 17)
+        Me.Label13.TabIndex = 33
+        Me.Label13.Text = "First Name"
+        '
+        'Label14
+        '
+        Me.Label14.AutoSize = True
+        Me.Label14.Location = New System.Drawing.Point(27, 164)
+        Me.Label14.Name = "Label14"
+        Me.Label14.Size = New System.Drawing.Size(65, 17)
+        Me.Label14.TabIndex = 34
+        Me.Label14.Text = "Surname"
+        '
+        'TextBoxSex
+        '
+        Me.TextBoxSex.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.TextBoxSex.Location = New System.Drawing.Point(98, 271)
+        Me.TextBoxSex.Name = "TextBoxSex"
+        Me.TextBoxSex.Size = New System.Drawing.Size(249, 22)
+        Me.TextBoxSex.TabIndex = 35
+        '
+        'Label15
+        '
+        Me.Label15.AutoSize = True
+        Me.Label15.Location = New System.Drawing.Point(353, 274)
+        Me.Label15.Name = "Label15"
+        Me.Label15.Size = New System.Drawing.Size(84, 17)
+        Me.Label15.TabIndex = 36
+        Me.Label15.Text = "male/female"
+        '
+        'DataGridViewAL
+        '
+        Me.DataGridViewAL.BackgroundColor = System.Drawing.SystemColors.Window
+        Me.DataGridViewAL.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataGridViewAL.Location = New System.Drawing.Point(464, 29)
+        Me.DataGridViewAL.Name = "DataGridViewAL"
+        Me.DataGridViewAL.RowTemplate.Height = 24
+        Me.DataGridViewAL.Size = New System.Drawing.Size(432, 300)
+        Me.DataGridViewAL.TabIndex = 37
+        '
+        'DataGridViewDP
+        '
+        Me.DataGridViewDP.BackgroundColor = System.Drawing.SystemColors.Window
+        Me.DataGridViewDP.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataGridViewDP.Location = New System.Drawing.Point(902, 31)
+        Me.DataGridViewDP.Name = "DataGridViewDP"
+        Me.DataGridViewDP.RowTemplate.Height = 24
+        Me.DataGridViewDP.Size = New System.Drawing.Size(425, 298)
+        Me.DataGridViewDP.TabIndex = 38
         '
         'NewUserInformation
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(512, 416)
-        Me.Controls.Add(Me.ComboBoxDP)
-        Me.Controls.Add(Me.ComboBoxAL)
+        Me.ClientSize = New System.Drawing.Size(1334, 405)
+        Me.Controls.Add(Me.DataGridViewDP)
+        Me.Controls.Add(Me.DataGridViewAL)
+        Me.Controls.Add(Me.Label15)
+        Me.Controls.Add(Me.TextBoxSex)
+        Me.Controls.Add(Me.Label14)
+        Me.Controls.Add(Me.Label13)
+        Me.Controls.Add(Me.TextBox2)
+        Me.Controls.Add(Me.TextBox1)
+        Me.Controls.Add(Me.Label12)
+        Me.Controls.Add(Me.Label11)
+        Me.Controls.Add(Me.Label10)
         Me.Controls.Add(Me.Label9)
-        Me.Controls.Add(Me.Label8)
-        Me.Controls.Add(Me.TextBoxEm)
-        Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.Label5)
@@ -269,7 +338,8 @@ Partial Class NewUserInformation
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "NewUserInformation"
         Me.Text = "Register"
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DataGridViewAL, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DataGridViewDP, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -289,11 +359,17 @@ Partial Class NewUserInformation
     Friend WithEvents Label5 As System.Windows.Forms.Label
     Friend WithEvents Label6 As System.Windows.Forms.Label
     Friend WithEvents Label7 As System.Windows.Forms.Label
-    Friend WithEvents TextBoxEm As System.Windows.Forms.TextBox
-    Friend WithEvents Label8 As System.Windows.Forms.Label
     Friend WithEvents Label As System.Windows.Forms.Label
-    Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
     Friend WithEvents Label9 As System.Windows.Forms.Label
-    Friend WithEvents ComboBoxAL As System.Windows.Forms.ComboBox
-    Friend WithEvents ComboBoxDP As System.Windows.Forms.ComboBox
+    Friend WithEvents Label10 As System.Windows.Forms.Label
+    Friend WithEvents Label11 As System.Windows.Forms.Label
+    Friend WithEvents Label12 As System.Windows.Forms.Label
+    Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
+    Friend WithEvents TextBox2 As System.Windows.Forms.TextBox
+    Friend WithEvents Label13 As System.Windows.Forms.Label
+    Friend WithEvents Label14 As System.Windows.Forms.Label
+    Friend WithEvents TextBoxSex As System.Windows.Forms.TextBox
+    Friend WithEvents Label15 As System.Windows.Forms.Label
+    Friend WithEvents DataGridViewAL As System.Windows.Forms.DataGridView
+    Friend WithEvents DataGridViewDP As System.Windows.Forms.DataGridView
 End Class
