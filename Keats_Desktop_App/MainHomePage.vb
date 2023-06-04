@@ -137,7 +137,8 @@ Public Class MainHomePage
 
 
                 ingredientName = "" & ingredientPrep & "" & ingredientKind & "" & ingredientName & ""
-                row = New String() {RdrSum.GetString(2), ingredientName, RdrSum.GetString(3), ingredientNutrient, RdrSum.GetInt32(0)}
+                Dim nutrient = ingredientNutrient * (Integer.Parse(RdrSum.GetString(3)) / 100)
+                row = New String() {RdrSum.GetString(2), ingredientName, RdrSum.GetString(3), nutrient, RdrSum.GetInt32(0)}
                 If DateDiff("d", RdrSum.GetDateTime(2), CurrentDate) = 0 Then
                     Me.DataGridView1.Rows.Add(row)
                 End If

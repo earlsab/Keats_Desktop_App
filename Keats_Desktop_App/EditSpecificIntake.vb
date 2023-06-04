@@ -6,6 +6,7 @@ Public Class EditSpecificIntake
     Dim FirstIngredientMappingId As Integer
     Dim FirstIngredientId As Integer = 0
     Dim IngredientAmount As Integer = 100
+    Dim OldIngredientAmount As Integer = 100
 
     Dim Calories As Single
     Dim Protein As Single
@@ -103,6 +104,7 @@ Public Class EditSpecificIntake
             RdrStud = CmdStud.ExecuteReader
             While RdrStud.Read
                 IngredientAmount = Integer.Parse(RdrStud.GetString(0))
+                OldIngredientAmount = Integer.Parse(RdrStud.GetString(0))
                 FirstIngredientId = Integer.Parse(RdrStud.GetString(1))
             End While
 
@@ -161,21 +163,16 @@ Public Class EditSpecificIntake
 
 
 
-    Private Sub InsertIntake()
+    Private Sub UpdateIntake()
         Dim StrStud As String
         Dim CmdStud As DB2Command
         Dim RdrStud As DB2DataReader
         Dim currentDate As Date = DateTime.Now
         Try
-            StrStud = "INSERT INTO intake (account_id, date_created, ingredient_mapping_id, amount) " _
-                & "VALUES (@AccountId, @DateTimeValue, @IngredientMappingId, @IngredientAmount);"
+            StrStud = "UPDATE intake SET amount =  " & IngredientAmount _
+                & " WHERE id = " & Globals.SelectedIntakeId & ";"
 
             CmdStud = New DB2Command(StrStud, Globals.DBConnLogin)
-            CmdStud.Parameters.Add("@AccountId", IBM.Data.DB2.DB2Type.Integer).Value = Globals.UserAccountID
-            CmdStud.Parameters.Add("@DateTimeValue", IBM.Data.DB2.DB2Type.DateTime).Value = DateTime.Now ' Assuming you want to use the current date and time
-            CmdStud.Parameters.Add("@IngredientMappingId", IBM.Data.DB2.DB2Type.Integer).Value = FirstIngredientMappingId
-            CmdStud.Parameters.Add("@IngredientAmount", IBM.Data.DB2.DB2Type.Decimal).Value = IngredientAmount
-
             CmdStud.ExecuteNonQuery()
             MainHomePage.Show()
             Me.Hide()
@@ -184,6 +181,43 @@ Public Class EditSpecificIntake
         End Try
     End Sub
 
+    Private Sub UpdateDailyNutrient()
+        Dim StrStud As String
+        Dim CmdStud As DB2Command
+        Dim RdrStud As DB2DataReader
+        Dim currentDate As Date = DateTime.Now
+        Try
+            StrStud = "UPDATE daily_nutrients SET calories = calories + @calories ," _
+                & " protein = protein + @protein ," _
+                & " carbs = carbs + @carbs ," _
+                & " fats = fats + @fats " _
+                & " WHERE account_id = @accountId AND date_created = @DateTimeValue;"
+            CmdStud = New DB2Command(StrStud, Globals.DBConnLogin)
+
+            Dim Multiplier As Single = OldIngredientAmount / 100
+            Dim OldCal = Calories * Multiplier
+            Dim OldProtein = Protein * Multiplier
+            Dim OldCarbs = Carbs * Multiplier
+            Dim OldFats = Fats * Multiplier
+
+            Dim NewMultiplier As Single = IngredientAmount / 100
+            Dim NewCal = Calories * Multiplier
+            Dim NewProtein = Protein * Multiplier
+            Dim NewCarbs = Carbs * Multiplier
+            Dim NewFats = Fats * Multiplier
+            CmdStud.Parameters.Add("@calories", IBM.Data.DB2.DB2Type.Integer).Value = NewCal - OldCal
+            CmdStud.Parameters.Add("@protein", IBM.Data.DB2.DB2Type.Integer).Value = NewProtein - OldProtein
+            CmdStud.Parameters.Add("@carbs", IBM.Data.DB2.DB2Type.Integer).Value = NewCarbs - OldCarbs
+            CmdStud.Parameters.Add("@fats", IBM.Data.DB2.DB2Type.Integer).Value = NewFats - OldFats
+            CmdStud.Parameters.Add("@accountId", IBM.Data.DB2.DB2Type.Integer).Value = Globals.UserAccountID
+            CmdStud.Parameters.Add("@dateTimeValue", IBM.Data.DB2.DB2Type.DateTime).Value = DateTime.Now
+            CmdStud.ExecuteNonQuery()
+            MainHomePage.Show()
+            Me.Hide()
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+        End Try
+    End Sub
 
     'For disabling text input and only number input on amount
     Private Sub Amount_KeyPress(sender As Object, e As KeyPressEventArgs) Handles AmountValue.KeyPress
@@ -226,5 +260,14 @@ Public Class EditSpecificIntake
 
     Private Sub IngredientVariant_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles IngredientVariant.CellContentClick
 
+    End Sub
+
+    Private Sub Save_Click(sender As Object, e As EventArgs) Handles Save.Click
+        Call UpdateIntake()
+        Call UpdateDailyNutrient()
+        Call MainHomePage.PopulateDataGrid()
+        Call MainHomePage.UpdateSummary()
+        Me.Close()
+        MainHomePage.Show()
     End Sub
 End Class
