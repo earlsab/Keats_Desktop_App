@@ -31,15 +31,13 @@ CREATE TABLE
     ingredient_subvariant(
         id int NOT NULL PRIMARY KEY,
         name varchar(200) NOT NULL UNIQUE,
-        name_ph varchar(100) DEFAULT ''
+        name_ph varchar(200) DEFAULT ''
     );
 
 CREATE TABLE
     nutrient(
         id int NOT NULL PRIMARY KEY,
         amount float4 NOT NULL,
-        amount_unit varchar(4) NOT NULL,
-        amount_unit_desc varchar(40) NOT NULL,
         serving_size float4 DEFAULT 0,
         calories float4 NOT NULL,
         protein float4 NOT NULL,
@@ -69,16 +67,6 @@ CREATE TABLE
     );
 
 CREATE TABLE
-    ingredient_image(
-        id int PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-        ingredient_mapping_id int NOT NULL,
-        name_file varchar(100) NOT NULL,
-        amount float4 NOT NULL,
-        amount_unit varchar(4) NOT NULL,
-        amount_unit_desc varchar(40) NOT NULL
-    );
-
-CREATE TABLE
     intake(
         id int GENERATED ALWAYS AS IDENTITY,
         account_id int NOT NULL,
@@ -86,7 +74,6 @@ CREATE TABLE
         PRIMARY KEY(id, account_id),
         date_created timestamp,
         amount float4 NOT NULL,
-        serving_size float4 DEFAULT 0,
         ingredient_mapping_id int,
         FOREIGN KEY(ingredient_mapping_id) REFERENCES ingredient_mapping(id) --FOREIGN KEY(food_id) REFERENCES food(id)
     );
@@ -105,9 +92,6 @@ CREATE TABLE
     diet_plan(
         id int PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
         name varchar(50) UNIQUE NOT NULL,
-        main_image_link varchar(50),
-        background_color varchar(6),
-        diet_plan_desc varchar(200),
         calorie_percentage int,
         protein_percentage int,
         fats_percentage int,
@@ -118,8 +102,6 @@ CREATE TABLE
     activity_lvl(
         id int PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
         name varchar(50),
-        main_image_link varchar(50),
-        background_color varchar(6),
         activity_lvl_desc varchar(200),
         bmr_multiplier float
     );
