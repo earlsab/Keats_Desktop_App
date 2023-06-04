@@ -62,7 +62,8 @@ Partial Class IngredientDetails
         Me.IngredientVariant.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None
         Me.IngredientVariant.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.IngredientVariant.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.IngredientID, Me.IngredientName})
-        Me.IngredientVariant.Location = New System.Drawing.Point(13, 61)
+        Me.IngredientVariant.Location = New System.Drawing.Point(17, 75)
+        Me.IngredientVariant.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.IngredientVariant.MultiSelect = False
         Me.IngredientVariant.Name = "IngredientVariant"
         Me.IngredientVariant.ReadOnly = True
@@ -70,7 +71,7 @@ Partial Class IngredientDetails
         Me.IngredientVariant.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing
         Me.IngredientVariant.ShowCellToolTips = False
         Me.IngredientVariant.ShowEditingIcon = False
-        Me.IngredientVariant.Size = New System.Drawing.Size(500, 177)
+        Me.IngredientVariant.Size = New System.Drawing.Size(667, 218)
         Me.IngredientVariant.TabIndex = 4
         '
         'IngredientID
@@ -100,7 +101,8 @@ Partial Class IngredientDetails
         Me.IngredientSubvariant.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None
         Me.IngredientSubvariant.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.IngredientSubvariant.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2})
-        Me.IngredientSubvariant.Location = New System.Drawing.Point(519, 61)
+        Me.IngredientSubvariant.Location = New System.Drawing.Point(692, 75)
+        Me.IngredientSubvariant.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.IngredientSubvariant.MultiSelect = False
         Me.IngredientSubvariant.Name = "IngredientSubvariant"
         Me.IngredientSubvariant.ReadOnly = True
@@ -108,7 +110,7 @@ Partial Class IngredientDetails
         Me.IngredientSubvariant.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing
         Me.IngredientSubvariant.ShowCellToolTips = False
         Me.IngredientSubvariant.ShowEditingIcon = False
-        Me.IngredientSubvariant.Size = New System.Drawing.Size(500, 177)
+        Me.IngredientSubvariant.Size = New System.Drawing.Size(667, 218)
         Me.IngredientSubvariant.TabIndex = 5
         '
         'DataGridViewTextBoxColumn1
@@ -130,168 +132,186 @@ Partial Class IngredientDetails
         'SelectedVariant
         '
         Me.SelectedVariant.AutoSize = True
-        Me.SelectedVariant.Location = New System.Drawing.Point(13, 42)
+        Me.SelectedVariant.Location = New System.Drawing.Point(17, 52)
+        Me.SelectedVariant.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.SelectedVariant.Name = "SelectedVariant"
-        Me.SelectedVariant.Size = New System.Drawing.Size(103, 13)
+        Me.SelectedVariant.Size = New System.Drawing.Size(133, 17)
         Me.SelectedVariant.TabIndex = 6
         Me.SelectedVariant.Text = "Selected Part/Type:"
         '
         'SelectedSubvariant
         '
         Me.SelectedSubvariant.AutoSize = True
-        Me.SelectedSubvariant.Location = New System.Drawing.Point(516, 42)
+        Me.SelectedSubvariant.Location = New System.Drawing.Point(688, 52)
+        Me.SelectedSubvariant.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.SelectedSubvariant.Name = "SelectedSubvariant"
-        Me.SelectedSubvariant.Size = New System.Drawing.Size(148, 13)
+        Me.SelectedSubvariant.Size = New System.Drawing.Size(196, 17)
         Me.SelectedSubvariant.TabIndex = 8
         Me.SelectedSubvariant.Text = "Selected Preparation Method:"
         '
         'SelectedSubvariantValue
         '
         Me.SelectedSubvariantValue.AutoSize = True
-        Me.SelectedSubvariantValue.Location = New System.Drawing.Point(670, 42)
+        Me.SelectedSubvariantValue.Location = New System.Drawing.Point(893, 52)
+        Me.SelectedSubvariantValue.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.SelectedSubvariantValue.Name = "SelectedSubvariantValue"
-        Me.SelectedSubvariantValue.Size = New System.Drawing.Size(10, 13)
+        Me.SelectedSubvariantValue.Size = New System.Drawing.Size(12, 17)
         Me.SelectedSubvariantValue.TabIndex = 9
         Me.SelectedSubvariantValue.Text = "."
         '
         'SelectedVariantValue
         '
         Me.SelectedVariantValue.AutoSize = True
-        Me.SelectedVariantValue.Location = New System.Drawing.Point(122, 42)
+        Me.SelectedVariantValue.Location = New System.Drawing.Point(163, 52)
+        Me.SelectedVariantValue.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.SelectedVariantValue.Name = "SelectedVariantValue"
-        Me.SelectedVariantValue.Size = New System.Drawing.Size(10, 13)
+        Me.SelectedVariantValue.Size = New System.Drawing.Size(12, 17)
         Me.SelectedVariantValue.TabIndex = 10
         Me.SelectedVariantValue.Text = "."
         '
         'SelectedIngredientValue
         '
         Me.SelectedIngredientValue.AutoSize = True
-        Me.SelectedIngredientValue.Location = New System.Drawing.Point(202, 14)
+        Me.SelectedIngredientValue.Location = New System.Drawing.Point(269, 17)
+        Me.SelectedIngredientValue.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.SelectedIngredientValue.Name = "SelectedIngredientValue"
-        Me.SelectedIngredientValue.Size = New System.Drawing.Size(10, 13)
+        Me.SelectedIngredientValue.Size = New System.Drawing.Size(12, 17)
         Me.SelectedIngredientValue.TabIndex = 12
         Me.SelectedIngredientValue.Text = "."
         '
         'SelectedIngredient
         '
         Me.SelectedIngredient.AutoSize = True
-        Me.SelectedIngredient.Location = New System.Drawing.Point(94, 14)
+        Me.SelectedIngredient.Location = New System.Drawing.Point(125, 17)
+        Me.SelectedIngredient.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.SelectedIngredient.Name = "SelectedIngredient"
-        Me.SelectedIngredient.Size = New System.Drawing.Size(102, 13)
+        Me.SelectedIngredient.Size = New System.Drawing.Size(134, 17)
         Me.SelectedIngredient.TabIndex = 11
         Me.SelectedIngredient.Text = "Selected Ingredient:"
         '
         'CaloriesLabel
         '
         Me.CaloriesLabel.AutoSize = True
-        Me.CaloriesLabel.Location = New System.Drawing.Point(10, 255)
+        Me.CaloriesLabel.Location = New System.Drawing.Point(13, 314)
+        Me.CaloriesLabel.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.CaloriesLabel.Name = "CaloriesLabel"
-        Me.CaloriesLabel.Size = New System.Drawing.Size(78, 13)
+        Me.CaloriesLabel.Size = New System.Drawing.Size(106, 17)
         Me.CaloriesLabel.TabIndex = 13
         Me.CaloriesLabel.Text = "Calories (KCal):"
         '
         'CaloriesValue
         '
         Me.CaloriesValue.AutoSize = True
-        Me.CaloriesValue.Location = New System.Drawing.Point(94, 255)
+        Me.CaloriesValue.Location = New System.Drawing.Point(125, 314)
+        Me.CaloriesValue.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.CaloriesValue.Name = "CaloriesValue"
-        Me.CaloriesValue.Size = New System.Drawing.Size(10, 13)
+        Me.CaloriesValue.Size = New System.Drawing.Size(12, 17)
         Me.CaloriesValue.TabIndex = 14
         Me.CaloriesValue.Text = "."
         '
         'ProteinValue
         '
         Me.ProteinValue.AutoSize = True
-        Me.ProteinValue.Location = New System.Drawing.Point(223, 255)
+        Me.ProteinValue.Location = New System.Drawing.Point(297, 314)
+        Me.ProteinValue.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.ProteinValue.Name = "ProteinValue"
-        Me.ProteinValue.Size = New System.Drawing.Size(10, 13)
+        Me.ProteinValue.Size = New System.Drawing.Size(12, 17)
         Me.ProteinValue.TabIndex = 16
         Me.ProteinValue.Text = "."
         '
         'ProteinLabel
         '
         Me.ProteinLabel.AutoSize = True
-        Me.ProteinLabel.Location = New System.Drawing.Point(159, 255)
+        Me.ProteinLabel.Location = New System.Drawing.Point(212, 314)
+        Me.ProteinLabel.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.ProteinLabel.Name = "ProteinLabel"
-        Me.ProteinLabel.Size = New System.Drawing.Size(58, 13)
+        Me.ProteinLabel.Size = New System.Drawing.Size(79, 17)
         Me.ProteinLabel.TabIndex = 15
         Me.ProteinLabel.Text = "Protein (g):"
         '
         'CarbsValue
         '
         Me.CarbsValue.AutoSize = True
-        Me.CarbsValue.Location = New System.Drawing.Point(362, 255)
+        Me.CarbsValue.Location = New System.Drawing.Point(483, 314)
+        Me.CarbsValue.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.CarbsValue.Name = "CarbsValue"
-        Me.CarbsValue.Size = New System.Drawing.Size(10, 13)
+        Me.CarbsValue.Size = New System.Drawing.Size(12, 17)
         Me.CarbsValue.TabIndex = 18
         Me.CarbsValue.Text = "."
         '
         'CarbsLabel
         '
         Me.CarbsLabel.AutoSize = True
-        Me.CarbsLabel.Location = New System.Drawing.Point(304, 255)
+        Me.CarbsLabel.Location = New System.Drawing.Point(405, 314)
+        Me.CarbsLabel.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.CarbsLabel.Name = "CarbsLabel"
-        Me.CarbsLabel.Size = New System.Drawing.Size(52, 13)
+        Me.CarbsLabel.Size = New System.Drawing.Size(71, 17)
         Me.CarbsLabel.TabIndex = 17
         Me.CarbsLabel.Text = "Carbs (g):"
         '
         'FatsValue
         '
         Me.FatsValue.AutoSize = True
-        Me.FatsValue.Location = New System.Drawing.Point(503, 255)
+        Me.FatsValue.Location = New System.Drawing.Point(671, 314)
+        Me.FatsValue.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.FatsValue.Name = "FatsValue"
-        Me.FatsValue.Size = New System.Drawing.Size(10, 13)
+        Me.FatsValue.Size = New System.Drawing.Size(12, 17)
         Me.FatsValue.TabIndex = 20
         Me.FatsValue.Text = "."
         '
         'FatsLabel
         '
         Me.FatsLabel.AutoSize = True
-        Me.FatsLabel.Location = New System.Drawing.Point(452, 255)
+        Me.FatsLabel.Location = New System.Drawing.Point(603, 314)
+        Me.FatsLabel.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.FatsLabel.Name = "FatsLabel"
-        Me.FatsLabel.Size = New System.Drawing.Size(45, 13)
+        Me.FatsLabel.Size = New System.Drawing.Size(61, 17)
         Me.FatsLabel.TabIndex = 19
         Me.FatsLabel.Text = "Fats (g):"
         '
         'AmountValue
         '
-        Me.AmountValue.Location = New System.Drawing.Point(826, 252)
+        Me.AmountValue.Location = New System.Drawing.Point(1101, 310)
+        Me.AmountValue.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.AmountValue.Name = "AmountValue"
-        Me.AmountValue.Size = New System.Drawing.Size(112, 20)
+        Me.AmountValue.Size = New System.Drawing.Size(148, 22)
         Me.AmountValue.TabIndex = 21
         '
         'Amount
         '
         Me.Amount.AutoSize = True
-        Me.Amount.Location = New System.Drawing.Point(759, 255)
+        Me.Amount.Location = New System.Drawing.Point(1012, 314)
+        Me.Amount.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Amount.Name = "Amount"
-        Me.Amount.Size = New System.Drawing.Size(61, 13)
+        Me.Amount.Size = New System.Drawing.Size(82, 17)
         Me.Amount.TabIndex = 22
         Me.Amount.Text = "Amount (g):"
         '
         'Add
         '
-        Me.Add.Location = New System.Drawing.Point(944, 250)
+        Me.Add.Location = New System.Drawing.Point(1259, 308)
+        Me.Add.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Add.Name = "Add"
-        Me.Add.Size = New System.Drawing.Size(75, 23)
+        Me.Add.Size = New System.Drawing.Size(100, 28)
         Me.Add.TabIndex = 23
         Me.Add.Text = "Add"
         Me.Add.UseVisualStyleBackColor = True
         '
         'Back
         '
-        Me.Back.Location = New System.Drawing.Point(13, 9)
+        Me.Back.Location = New System.Drawing.Point(17, 11)
+        Me.Back.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Back.Name = "Back"
-        Me.Back.Size = New System.Drawing.Size(75, 23)
+        Me.Back.Size = New System.Drawing.Size(100, 28)
         Me.Back.TabIndex = 24
         Me.Back.Text = "Back"
         Me.Back.UseVisualStyleBackColor = True
         '
         'IngredientDetails
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1031, 286)
+        Me.ClientSize = New System.Drawing.Size(1375, 352)
         Me.Controls.Add(Me.Back)
         Me.Controls.Add(Me.Add)
         Me.Controls.Add(Me.Amount)
@@ -313,6 +333,7 @@ Partial Class IngredientDetails
         Me.Controls.Add(Me.IngredientSubvariant)
         Me.Controls.Add(Me.IngredientVariant)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Name = "IngredientDetails"
         Me.Text = "Ingredient Details"
         CType(Me.IngredientVariant, System.ComponentModel.ISupportInitialize).EndInit()

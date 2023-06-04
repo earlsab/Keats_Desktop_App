@@ -213,4 +213,8 @@ Public Class IngredientDetails
     Private Sub Add_Click(sender As Object, e As EventArgs) Handles Add.Click
         Call InsertIntake()
     End Sub
+
+    Private Sub IngredientVariant_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles IngredientVariant.CellContentClick
+
+    End Sub
 End Class
