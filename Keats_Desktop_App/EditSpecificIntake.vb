@@ -125,7 +125,7 @@ Public Class EditSpecificIntake
             StrStud = "select nutrient.calories, nutrient.protein, nutrient.carbs, nutrient.fats, ingredient_mapping.id " _
                 & "FROM ingredient_mapping " _
                 & "JOIN nutrient ON ingredient_mapping.nutrient_id = nutrient.id " _
-                & "WHERE ingredient_mapping.ingredient_id = " & Globals.SelectedIngredientId & " " _
+                & "WHERE ingredient_mapping.ingredient_id = " & FirstIngredientId & " " _
                 & "AND ingredient_mapping.ingredient_variant_id = " & FirstIngredientVariantId & " " _
                 & "AND ingredient_mapping.ingredient_subvariant_id = " & FirstIngredientSubvariantId & ";"
             CmdStud = New DB2Command(StrStud, Globals.DBConnLogin)
@@ -186,6 +186,34 @@ Public Class EditSpecificIntake
 
 
     'For disabling text input and only number input on amount
+    Private Sub Amount_KeyPress(sender As Object, e As KeyPressEventArgs) Handles AmountValue.KeyPress
+        ' Check if the entered character is a valid number
+        If Not Char.IsDigit(e.KeyChar) AndAlso Not Char.IsControl(e.KeyChar) Then
+            ' Cancel the key press event to prevent the character from being entered
+            e.Handled = True
+        End If
+        If Char.IsDigit(e.KeyChar) Or Asc(e.KeyChar) = 8 Then
+            Dim digit As Integer
+            If Asc(e.KeyChar) = 8 Then
+                Try
+                    digit = Integer.Parse(AmountValue.Text())
+                    If AmountValue.Text.Length > 0 Then
+                        digit = AmountValue.Text.Substring(0, AmountValue.Text.Length - 1)
+                    End If
+                Catch ex As Exception
+                    digit = 0
+                End Try
+            Else
+                digit = Integer.Parse(AmountValue.Text() + e.KeyChar.ToString())
+            End If
+            IngredientAmount = digit
+            Dim Multiplier As Single = digit / 100
+            CaloriesValue.Text() = Calories * Multiplier
+            ProteinValue.Text() = Protein * Multiplier
+            CarbsValue.Text() = Carbs * Multiplier
+            FatsValue.Text() = Fats * Multiplier
+        End If
+    End Sub
 
     Private Sub Back_Click(sender As Object, e As EventArgs) Handles Back.Click
         MainHomePage.Show()
