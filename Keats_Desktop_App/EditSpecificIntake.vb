@@ -216,7 +216,7 @@ Public Class EditSpecificIntake
             Dim NewProtein = Protein * NewMultiplier
             Dim NewCarbs = Carbs * NewMultiplier
             Dim NewFats = Fats * NewMultiplier
-            MsgBox(NewCal - OldCal)
+
             CmdStud.Parameters.Add("@calories", IBM.Data.DB2.DB2Type.Integer).Value = NewCal - OldCal
             CmdStud.Parameters.Add("@protein", IBM.Data.DB2.DB2Type.Integer).Value = NewProtein - OldProtein
             CmdStud.Parameters.Add("@carbs", IBM.Data.DB2.DB2Type.Integer).Value = NewCarbs - OldCarbs
@@ -253,24 +253,33 @@ Public Class EditSpecificIntake
         Dim RdrStud As DB2DataReader
         Dim currentDate As Date = DateTime.Now
         Try
+
+
+            StrStud = "select id from daily_nutrients where account_id=" & Globals.UserAccountID & " order by date_created " _
+            & "DESC OPTIMIZE FOR 1 ROW"
+            CmdStud = New DB2Command(StrStud, Globals.DBConnLogin)
+            RdrStud = CmdStud.ExecuteReader
+
+            RdrStud.Read()
+            Dim TargetUpdate = RdrStud.GetString(0)
+
             StrStud = "UPDATE daily_nutrients SET calories = calories - @calories ," _
                 & " protein = protein - @protein ," _
                 & " carbs = carbs - @carbs ," _
                 & " fats = fats - @fats " _
-                & " WHERE account_id = @accountId AND date_created = @DateTimeValue;"
+                & " WHERE id = @id;"
             CmdStud = New DB2Command(StrStud, Globals.DBConnLogin)
 
             Dim Multiplier As Single = OldIngredientAmount / 100
             Dim OldCal = Calories * Multiplier
             Dim OldProtein = Protein * Multiplier
             Dim OldCarbs = Carbs * Multiplier
-            Dim OldFats = Fats * Multiplier 
+            Dim OldFats = Fats * Multiplier
             CmdStud.Parameters.Add("@calories", IBM.Data.DB2.DB2Type.Integer).Value = OldCal
             CmdStud.Parameters.Add("@protein", IBM.Data.DB2.DB2Type.Integer).Value = OldProtein
             CmdStud.Parameters.Add("@carbs", IBM.Data.DB2.DB2Type.Integer).Value = OldCarbs
             CmdStud.Parameters.Add("@fats", IBM.Data.DB2.DB2Type.Integer).Value = OldFats
-            CmdStud.Parameters.Add("@accountId", IBM.Data.DB2.DB2Type.Integer).Value = Globals.UserAccountID
-            CmdStud.Parameters.Add("@dateTimeValue", IBM.Data.DB2.DB2Type.DateTime).Value = DateTime.Now
+            CmdStud.Parameters.Add("@id", IBM.Data.DB2.DB2Type.Integer).Value = TargetUpdate 
             CmdStud.ExecuteNonQuery()
             MainHomePage.Show()
             Me.Hide()
