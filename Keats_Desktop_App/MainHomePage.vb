@@ -35,14 +35,10 @@ Public Class MainHomePage
                 CmdInsert = New DB2Command(StrInsert, Globals.DBConnLogin)
                 CmdInsert.Parameters.Add("@AccountId", IBM.Data.DB2.DB2Type.Integer).Value = Globals.UserAccountID
                 CmdInsert.Parameters.Add("@DateTimeValue", IBM.Data.DB2.DB2Type.DateTime).Value = DateTime.Now ' Assuming you want to use the current date and time
-                CmdInsert.ExecuteNonQuery()
-                MsgBox("Created New Daily Nutrient Entry")
-            Catch ex As Exception
-                MsgBox("Daily Nutrient Insert Error")
-                MsgBox(ex.ToString)
+                CmdInsert.ExecuteNonQuery() 
+            Catch ex As Exception 
             End Try
-        Else
-            MsgBox("Existing Entry Found. Did Not Create New Daily Nutrient Entry. ")
+        Else 
         End If
     End Sub
     Public Sub PopulateDataGrid()
@@ -141,7 +137,8 @@ Public Class MainHomePage
 
 
                 ingredientName = "" & ingredientPrep & "" & ingredientKind & "" & ingredientName & ""
-                row = New String() {RdrSum.GetString(2), ingredientName, RdrSum.GetString(3), ingredientNutrient}
+                Dim nutrient = ingredientNutrient * (Integer.Parse(RdrSum.GetString(3)) / 100)
+                row = New String() {RdrSum.GetString(2), ingredientName, RdrSum.GetString(3), nutrient, RdrSum.GetInt32(0)}
                 If DateDiff("d", RdrSum.GetDateTime(2), CurrentDate) = 0 Then
                     Me.DataGridView1.Rows.Add(row)
                 End If
@@ -167,8 +164,6 @@ Public Class MainHomePage
             Me.CaloriesTextBox.Text = RdrLoad.GetFloat(0)
 
         Catch ex As Exception
-            MsgBox("Error Displaying Summary")
-            MsgBox(ex.ToString)
         End Try
     End Sub
 
@@ -194,7 +189,7 @@ Public Class MainHomePage
 
 
         Try
-            Me.DataGridView1.ColumnCount = 4
+            Me.DataGridView1.ColumnCount = 5
             Me.DataGridView1.Columns(0).Name = "Time Recorded"
             Me.DataGridView1.Columns(1).Name = "Food"
             Me.DataGridView1.Columns(2).Name = "Serving Size (g)"
@@ -219,8 +214,12 @@ Public Class MainHomePage
 
     End Sub
 
-    Private Sub DataGridView1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick
-        EditSpecificIntake.Show()
+    Private Sub DataGridView1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellClick
+        If e.RowIndex >= 0 AndAlso e.RowIndex < DataGridView1.Rows.Count Then
+            Dim clickedRow As DataGridViewRow = DataGridView1.Rows(e.RowIndex)
+            Globals.SelectedIntakeId = clickedRow.Cells(4).Value
+            EditSpecificIntake.Show()
+        End If
     End Sub
 
     Private Sub Label4_Click(sender As Object, e As EventArgs) Handles Label4.Click

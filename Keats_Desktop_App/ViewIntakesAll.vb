@@ -116,7 +116,11 @@ Public Class ViewIntakesAll
     End Sub
 
     Private Sub DataGridView1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick
-        EditSpecificIntake.Show()
+        If e.RowIndex >= 0 AndAlso e.RowIndex < DataGridView1.Rows.Count Then
+            Dim clickedRow As DataGridViewRow = DataGridView1.Rows(e.RowIndex)
+            Globals.SelectedIngredientId = clickedRow.Cells(0).Value
+            EditSpecificIntake.Show()
+        End If
     End Sub
 
     Private Sub ViewAll_Load(sender As Object, e As EventArgs) Handles MyBase.Load

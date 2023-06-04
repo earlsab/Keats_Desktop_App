@@ -1,12 +1,13 @@
 ﻿Imports IBM.Data.DB2
 
 Module Globals
-    Public DBUser = "earlsab"
-    Public DBPassword = "1234"
-    Public DBDatabase = "Keats"
+    Public DBUser = "username"
+    Public DBPassword = "password"
+    Public DBDatabase = "keats2"
     Public DBConnLogin As Common.DbConnection
     Public UserAccountID As Integer
     Public SelectedIngredientId = 0
+    Public SelectedIntakeId = 0
     Public SelectedIngredientMappingId = 0
 End Module
 

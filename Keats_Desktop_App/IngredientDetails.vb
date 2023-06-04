@@ -138,9 +138,8 @@ Public Class IngredientDetails
         End Try
     End Sub
     Private Sub IngredientDetails_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Dim ingId As Integer
-        ingId = Globals.SelectedIngredientId
-        If Not ingId = 0 Then
+         
+        If Not Globals.SelectedIngredientId = 0 Then
             Call PopulateIngredientVariant()
             Call RetrieveIngredient()
             Call PopulateIngredientSubvariant()
@@ -252,8 +251,7 @@ Public Class IngredientDetails
     End Sub
 
     Private Sub Back_Click(sender As Object, e As EventArgs) Handles Back.Click
-        Me.Hide()
-        SearchIngredient.Show()
+        Me.Close()
     End Sub
 
     Private Sub Add_Click(sender As Object, e As EventArgs) Handles Add.Click
@@ -262,6 +260,7 @@ Public Class IngredientDetails
         Call MainHomePage.PopulateDataGrid()
         Call MainHomePage.UpdateSummary()
         MainHomePage.Show()
+        SearchIngredient.Close()
         Me.Hide()
     End Sub
 

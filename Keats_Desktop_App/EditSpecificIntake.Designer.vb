@@ -24,7 +24,7 @@ Partial Class EditSpecificIntake
     Private Sub InitializeComponent()
         Me.Back = New System.Windows.Forms.Button()
         Me.Button1 = New System.Windows.Forms.Button()
-        Me.Add = New System.Windows.Forms.Button()
+        Me.Save = New System.Windows.Forms.Button()
         Me.Amount = New System.Windows.Forms.Label()
         Me.AmountValue = New System.Windows.Forms.TextBox()
         Me.FatsValue = New System.Windows.Forms.Label()
@@ -69,14 +69,14 @@ Partial Class EditSpecificIntake
         Me.Button1.Text = "Delete"
         Me.Button1.UseVisualStyleBackColor = True
         '
-        'Add
+        'Save
         '
-        Me.Add.Location = New System.Drawing.Point(525, 338)
-        Me.Add.Name = "Add"
-        Me.Add.Size = New System.Drawing.Size(118, 39)
-        Me.Add.TabIndex = 43
-        Me.Add.Text = "Edit"
-        Me.Add.UseVisualStyleBackColor = True
+        Me.Save.Location = New System.Drawing.Point(525, 338)
+        Me.Save.Name = "Save"
+        Me.Save.Size = New System.Drawing.Size(118, 39)
+        Me.Save.TabIndex = 43
+        Me.Save.Text = "Save"
+        Me.Save.UseVisualStyleBackColor = True
         '
         'Amount
         '
@@ -302,7 +302,7 @@ Partial Class EditSpecificIntake
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1049, 399)
         Me.Controls.Add(Me.Button1)
-        Me.Controls.Add(Me.Add)
+        Me.Controls.Add(Me.Save)
         Me.Controls.Add(Me.Amount)
         Me.Controls.Add(Me.AmountValue)
         Me.Controls.Add(Me.FatsValue)
@@ -332,7 +332,7 @@ Partial Class EditSpecificIntake
     End Sub
     Friend WithEvents Back As System.Windows.Forms.Button
     Friend WithEvents Button1 As System.Windows.Forms.Button
-    Friend WithEvents Add As System.Windows.Forms.Button
+    Friend WithEvents Save As System.Windows.Forms.Button
     Friend WithEvents Amount As System.Windows.Forms.Label
     Friend WithEvents AmountValue As System.Windows.Forms.TextBox
     Friend WithEvents FatsValue As System.Windows.Forms.Label
