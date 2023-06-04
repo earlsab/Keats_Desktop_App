@@ -101,8 +101,6 @@ CREATE TABLE
     activity_lvl(
         id int PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
         name varchar(50),
-        main_image_link varchar(50),
-        background_color varchar(6),
         activity_lvl_desc varchar(200),
         bmr_multiplier float
     );
