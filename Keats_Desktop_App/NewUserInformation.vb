@@ -124,24 +124,24 @@ Public Class NewUserInformation
             Dim CmdAL As DB2Command
             Dim RdrAL As DB2DataReader
 
-            StrAL = "SELECT id FROM activity_lvl WHERE name = " & ComboBoxAL.Text
+            StrAL = "SELECT id FROM activity_lvl WHERE name = '" & ComboBoxAL.Text & "'"
             CmdAL = New DB2Command(StrAL, Globals.DBConnLogin)
             RdrAL = CmdAL.ExecuteReader
 
             If RdrAL.Read() Then
-                ALid = RdrAL.GetInt32(1)
+                ALid = RdrAL.GetInt32(0)
             Else
                 Throw New Exception("No activity level found.")
             End If
 
             RdrAL.Close()
 
-            StrDP = "SELECT id FROM diet_plan WHERE name = " & ComboBoxDP.Text
+            StrDP = "SELECT id FROM diet_plan WHERE name = '" & ComboBoxDP.Text & "'"
             CmdDP = New DB2Command(StrDP, Globals.DBConnLogin)
             RdrDP = CmdDP.ExecuteReader
 
             If RdrDP.Read() Then
-                DPid = RdrDP.GetInt32(1)
+                DPid = RdrDP.GetInt32(0)
             Else
                 Throw New Exception("No diet plan found.")
             End If
@@ -149,15 +149,15 @@ Public Class NewUserInformation
             RdrDP.Close()
 
             Dim insertVitalsQuery As String = "INSERT INTO account_vitals (account_id, weight, height, birthday, sex, activity_lvl_id, diet_plan_id) " &
-                 "VALUES (@AccountId, @Weight, @Height, @Birthday, @Sex, @ActivityLevelId, @DietPlanId)"
+                 "VALUES (@AccountId, @Weight, @Height, @Birthday, @Sex, @ALid, @DPid)"
             Using cmdVitals As New DB2Command(insertVitalsQuery, Globals.DBConnLogin)
                 cmdVitals.Parameters.Add("@AccountId", IBM.Data.DB2.DB2Type.Integer).Value = Globals.UserAccountID
                 cmdVitals.Parameters.Add("@Weight", IBM.Data.DB2.DB2Type.Integer).Value = weight
                 cmdVitals.Parameters.Add("@Height", IBM.Data.DB2.DB2Type.Integer).Value = height
                 cmdVitals.Parameters.Add("@Birthday", IBM.Data.DB2.DB2Type.Date).Value = birthday
                 cmdVitals.Parameters.Add("@Sex", IBM.Data.DB2.DB2Type.VarChar).Value = sex
-                cmdVitals.Parameters.Add("@GrabAL", IBM.Data.DB2.DB2Type.Integer).Value = ALid
-                cmdVitals.Parameters.Add("@GrabDP", IBM.Data.DB2.DB2Type.Integer).Value = DPid
+                cmdVitals.Parameters.Add("@ALid", IBM.Data.DB2.DB2Type.Integer).Value = ALid
+                cmdVitals.Parameters.Add("@DPid", IBM.Data.DB2.DB2Type.Integer).Value = DPid
                 cmdVitals.ExecuteNonQuery()
             End Using
 
