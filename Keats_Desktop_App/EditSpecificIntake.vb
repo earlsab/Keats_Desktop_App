@@ -4,6 +4,7 @@ Public Class EditSpecificIntake
     Dim FirstIngredientVariantId As Integer
     Dim FirstIngredientSubvariantId As Integer
     Dim FirstIngredientMappingId As Integer
+    Dim FirstIngredientId As Integer = 0
     Dim IngredientAmount As Integer = 100
 
     Dim Calories As Single
@@ -42,7 +43,7 @@ Public Class EditSpecificIntake
                 & "WHERE ingredient_variant.id IN ( " _
                 & "SELECT ingredient_mapping.ingredient_variant_id " _
                 & "FROM ingredient_mapping " _
-                & "WHERE ingredient_mapping.ingredient_id = " & Globals.SelectedIngredientId & ");"
+                & "WHERE ingredient_mapping.ingredient_id = " & FirstIngredientId & ");"
             CmdStud = New DB2Command(StrStud, Globals.DBConnLogin)
             RdrStud = CmdStud.ExecuteReader
             IngredientVariant.Rows.Clear()
@@ -70,7 +71,7 @@ Public Class EditSpecificIntake
             StrStud = "select ingredient_subvariant.id, ingredient_subvariant.name " _
                 & "FROM ingredient_mapping " _
                 & "JOIN ingredient_subvariant ON ingredient_mapping.ingredient_subvariant_id = ingredient_subvariant.id " _
-                & "WHERE ingredient_mapping.ingredient_id = " & Globals.SelectedIngredientId & " " _
+                & "WHERE ingredient_mapping.ingredient_id = " & FirstIngredientId & " " _
                 & "AND ingredient_mapping.ingredient_variant_id = " & FirstIngredientVariantId & ";"
             CmdStud = New DB2Command(StrStud, Globals.DBConnLogin)
             RdrStud = CmdStud.ExecuteReader
@@ -90,12 +91,23 @@ Public Class EditSpecificIntake
 
         End Try
     End Sub
-    Private Sub RetrieveIngredient()
+    Private Sub RetrieveIngredientAndIntake()
         Dim StrStud As String
         Dim CmdStud As DB2Command
         Dim RdrStud As DB2DataReader
         Try
-            StrStud = "select name FROM ingredient WHERE id = " & Globals.SelectedIngredientId
+            StrStud = "select intake.amount, ingredient_mapping.ingredient_id FROM intake" _
+                & " JOIN ingredient_mapping ON intake.ingredient_mapping_id = ingredient_mapping.id" _
+                & " WHERE intake.id = " & Globals.SelectedIntakeId & "; "
+            CmdStud = New DB2Command(StrStud, Globals.DBConnLogin)
+            RdrStud = CmdStud.ExecuteReader
+            While RdrStud.Read
+                IngredientAmount = Integer.Parse(RdrStud.GetString(0))
+                FirstIngredientId = Integer.Parse(RdrStud.GetString(1))
+            End While
+
+
+            StrStud = "select name FROM ingredient WHERE id = " & FirstIngredientId
             CmdStud = New DB2Command(StrStud, Globals.DBConnLogin)
             RdrStud = CmdStud.ExecuteReader
             While RdrStud.Read
@@ -103,7 +115,6 @@ Public Class EditSpecificIntake
             End While
         Catch ex As Exception
             MsgBox(ex.ToString)
-
         End Try
     End Sub
     Private Sub PopulateNutrients()
@@ -139,11 +150,9 @@ Public Class EditSpecificIntake
         End Try
     End Sub
     Private Sub IngredientDetails_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Dim ingId As Integer
-        ingId = Globals.SelectedIngredientId
-        If Not ingId = 0 Then
+        Call RetrieveIngredientAndIntake() 
+        If Not FirstIngredientId = 0 Then 
             Call PopulateIngredientVariant()
-            Call RetrieveIngredient()
             Call PopulateIngredientSubvariant()
             Call PopulateNutrients()
             AmountValue.Text() = IngredientAmount

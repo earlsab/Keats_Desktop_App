@@ -7,6 +7,7 @@ Module Globals
     Public DBConnLogin As Common.DbConnection
     Public UserAccountID As Integer
     Public SelectedIngredientId = 0
+    Public SelectedIntakeId = 0
     Public SelectedIngredientMappingId = 0
 End Module
 

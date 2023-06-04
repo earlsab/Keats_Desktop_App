@@ -137,7 +137,7 @@ Public Class MainHomePage
 
 
                 ingredientName = "" & ingredientPrep & "" & ingredientKind & "" & ingredientName & ""
-                row = New String() {RdrSum.GetString(2), ingredientName, RdrSum.GetString(3), ingredientNutrient}
+                row = New String() {RdrSum.GetString(2), ingredientName, RdrSum.GetString(3), ingredientNutrient, RdrSum.GetInt32(0)}
                 If DateDiff("d", RdrSum.GetDateTime(2), CurrentDate) = 0 Then
                     Me.DataGridView1.Rows.Add(row)
                 End If
@@ -188,7 +188,7 @@ Public Class MainHomePage
 
 
         Try
-            Me.DataGridView1.ColumnCount = 4
+            Me.DataGridView1.ColumnCount = 5
             Me.DataGridView1.Columns(0).Name = "Time Recorded"
             Me.DataGridView1.Columns(1).Name = "Food"
             Me.DataGridView1.Columns(2).Name = "Serving Size (g)"
@@ -213,10 +213,10 @@ Public Class MainHomePage
 
     End Sub
 
-    Private Sub DataGridView1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick
+    Private Sub DataGridView1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellClick
         If e.RowIndex >= 0 AndAlso e.RowIndex < DataGridView1.Rows.Count Then
             Dim clickedRow As DataGridViewRow = DataGridView1.Rows(e.RowIndex)
-            Globals.SelectedIngredientId = clickedRow.Cells(0).Value
+            Globals.SelectedIntakeId = clickedRow.Cells(4).Value
             EditSpecificIntake.Show()
         End If
     End Sub
