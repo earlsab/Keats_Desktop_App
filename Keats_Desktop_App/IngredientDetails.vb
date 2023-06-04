@@ -261,7 +261,7 @@ Public Class IngredientDetails
         Call MainHomePage.UpdateSummary()
         MainHomePage.Show()
         SearchIngredient.Close()
-        Me.Hide()
+        Me.Close()
     End Sub
 
     Private Sub CaloriesLabel_Click(sender As Object, e As EventArgs) Handles CaloriesLabel.Click

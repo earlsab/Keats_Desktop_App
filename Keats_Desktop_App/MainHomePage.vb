@@ -33,17 +33,11 @@ Public Class MainHomePage
             Dim weight, height, calorie_percentage, protein_percentage, fats_percentage, carbs_percentage As Integer
             Dim bmr_multiplier As Single
             Try
-                StrLoad = "SELECT " _
-                        & "account_vitals.account_id, " _
+                StrLoad = "SELECT " _ 
                         & "account_vitals.weight, " _
                         & "account_vitals.height, " _
                         & "account_vitals.birthday, " _
-                        & "account_vitals.sex, " _
-                        & "account_vitals.activity_lvl_id, " _
-                        & "account_vitals.diet_plan_id, " _
-                        & "activity_lvl.name, " _
                         & "activity_lvl.bmr_multiplier, " _
-                        & "diet_plan.name, " _
                         & "diet_plan.calorie_percentage, " _
                         & "diet_plan.protein_percentage, " _
                         & "diet_plan.fats_percentage, " _
@@ -55,15 +49,16 @@ Public Class MainHomePage
                 CmdLoad = New DB2Command(StrLoad, Globals.DBConnLogin)
                 RdrLoad = CmdLoad.ExecuteReader
                 RdrLoad.Read()
-                weight = RdrLoad.GetInt32(1)
-                height = RdrLoad.GetInt32(2)
-                birthDate = RdrLoad.GetDate(3)
-                bmr_multiplier = RdrLoad.GetFloat(8)
-                calorie_percentage = RdrLoad.GetInt32(10)
-                protein_percentage = RdrLoad.GetInt32(11)
-                fats_percentage = RdrLoad.GetInt32(12)
-                carbs_percentage = RdrLoad.GetInt32(13)
+                weight = Integer.Parse(RdrLoad.GetString(0))
+                height = Integer.Parse(RdrLoad.GetString(1))
+                birthDate = RdrLoad.GetDate(2)
+                bmr_multiplier = Single.Parse(RdrLoad.GetString(3))
+                calorie_percentage = Integer.Parse(RdrLoad.GetString(4))
+                protein_percentage = Integer.Parse(RdrLoad.GetString(5))
+                fats_percentage = Integer.Parse(RdrLoad.GetString(6))
+                carbs_percentage = Integer.Parse(RdrLoad.GetString(7))
             Catch ex As Exception
+                MsgBox(ex.ToString())
                 FirstEntryState = True
             End Try
             Dim age As Integer = DateDiff(DateInterval.Year, birthDate, Today)
@@ -71,7 +66,7 @@ Public Class MainHomePage
             Dim MaxCalories = (bmr_multiplier * Bmr) * (calorie_percentage * 0.01)
             Dim MaxProtein = (MaxCalories * (protein_percentage * 0.01) / 4)
             Dim MaxCarbs = (MaxCalories * (carbs_percentage * 0.01) / 4)
-            Dim MaxFats = (MaxCalories * (fats_percentage * 0.01) / 9)
+            Dim MaxFats = (MaxCalories * (fats_percentage * 0.01) / 9) 
             Try
                 StrInsert = "insert into daily_nutrients(account_id, date_created, calories, protein, carbs, fats," _
                 & "max_calories, max_protein, max_carbs, max_fats, diet_plan_id, activity_lvl_id)" _
@@ -85,6 +80,7 @@ Public Class MainHomePage
                 CmdInsert.Parameters.Add("@maxFats", IBM.Data.DB2.DB2Type.Integer).Value = MaxFats
                 CmdInsert.ExecuteNonQuery()
             Catch ex As Exception
+                MsgBox(ex.ToString())
             End Try
         Else
         End If
