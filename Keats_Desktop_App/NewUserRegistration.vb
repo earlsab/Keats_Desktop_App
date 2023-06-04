@@ -73,6 +73,13 @@ Public Class NewUserRegistration
                         CmdReg = New DB2Command(StrReg, Globals.DBConnLogin)
                         CmdReg.ExecuteNonQuery()
 
+
+                        Dim Str = "Select id from account where username = '" & NewUN & "'"
+                        Dim CmdStr = New DB2Command(Str, Globals.DBConnLogin)
+                        Dim RdrStr = CmdStr.ExecuteReader
+                        While RdrStr.Read
+                            Globals.UserAccountID = RdrStr.GetInt32(0)
+                        End While
                         Me.Hide()
                         NewUserInformation.Show()
 

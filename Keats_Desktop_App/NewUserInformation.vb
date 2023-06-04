@@ -4,6 +4,18 @@ Public Class NewUserInformation
     Dim activityLevelTable As New DataTable()
     Dim dietPlanTable As New DataTable()
 
+
+    Dim firstname As String
+    Dim surname As String
+    Dim weight As Integer
+    Dim height As Integer
+    Dim phone As String
+    Dim birthday As Date
+    Dim sex As String
+
+
+    Dim SelectedActivityLevelId As Integer
+    Dim SelectedDietPlanId As Integer
     Private Sub TextBoxClear()
         Try
 
@@ -30,42 +42,28 @@ Public Class NewUserInformation
 
         TextBoxUsername.Text = NewUserRegistration.Username.Text
         TextBoxPassw.Text = NewUserRegistration.Password.Text
-
-        DataGridViewAL.Refresh()
-        DataGridViewDP.Refresh()
-
-        Me.DataGridViewAL.ColumnCount = 2
-        Me.DataGridViewAL.Columns(0).Name = "Level"
-        Me.DataGridViewAL.Columns(1).Name = "Description"
-
-        StrAL = "Select name, activity_lvl_desc from activity_lvl"
+         
+        DataGridViewAL.ColumnCount = 2
+        StrAL = "Select id, name from activity_lvl"
         CmdAL = New DB2Command(StrAL, Globals.DBConnLogin)
         RdrAL = CmdAL.ExecuteReader
 
-        Me.DataGridViewAL.Rows.Clear()
-
+        DataGridViewAL.Rows.Clear()
         While RdrAL.Read
             row = New String() {RdrAL.GetString(0), RdrAL.GetString(1)}
-            Me.DataGridViewAL.Rows.Add(row)
+            DataGridViewAL.Rows.Add(row)
         End While
 
-        Me.DataGridViewDP.ColumnCount = 2
-        Me.DataGridViewDP.Columns(0).Name = "Plan"
-
-        StrDP = "Select name from diet_plan"
+        DataGridViewDP.ColumnCount = 2
+        StrDP = "Select id, name from diet_plan"
         CmdDP = New DB2Command(StrDP, Globals.DBConnLogin)
         RdrDP = CmdDP.ExecuteReader
 
-        Me.DataGridViewDP.Rows.Clear()
-
+        DataGridViewDP.Rows.Clear() 
         While RdrDP.Read
-            row = New String() {RdrDP.GetString(0)}
-            Me.DataGridViewDP.Rows.Add(row)
+            row = New String() {RdrDP.GetString(0), RdrDP.GetString(1)}
+            DataGridViewDP.Rows.Add(row)
         End While
-
-    End Sub
-
-    Private Sub Label1_Click(sender As Object, e As EventArgs) Handles Label.Click
 
     End Sub
 
@@ -85,139 +83,89 @@ Public Class NewUserInformation
             Me.Hide()
             LoginForm1.Show()
         End If
+    End Sub 
+    Private Sub InsertAccountVitals()
+        firstname = TextBox2.Text()
+        surname = TextBox1.Text()
+        weight = Integer.Parse(TextBoxW.Text)
+        height = Integer.Parse(TextBoxH.Text)
+        phone = TextBoxPh.Text()
+        birthday = DateTimePicker1.Value
+        sex = TextBoxSex.Text()
+
+        DataGridViewAL.DataSource = activityLevelTable
+        DataGridViewDP.DataSource = dietPlanTable 
+        Try
+            Dim StrInsert = "INSERT INTO account_vitals (account_id, weight, height, birthday, sex, activity_lvl_id, diet_plan_id) " & _
+             "VALUES (@AccountId, @Weight, @Height, @Birthday, @Sex, @ActivityLevelId, @DietPlanId)"
+            Dim cmdVitals = New DB2Command(StrInsert, Globals.DBConnLogin)
+            cmdVitals.Parameters.Add("@AccountId", IBM.Data.DB2.DB2Type.Integer).Value = Globals.UserAccountID
+            cmdVitals.Parameters.Add("@Weight", IBM.Data.DB2.DB2Type.Integer).Value = weight
+            cmdVitals.Parameters.Add("@Height", IBM.Data.DB2.DB2Type.Integer).Value = height
+            cmdVitals.Parameters.Add("@Birthday", IBM.Data.DB2.DB2Type.Date).Value = birthday
+            cmdVitals.Parameters.Add("@Sex", IBM.Data.DB2.DB2Type.VarChar).Value = sex
+            cmdVitals.Parameters.Add("@ActivityLevelId", IBM.Data.DB2.DB2Type.Integer).Value = SelectedActivityLevelId
+            cmdVitals.Parameters.Add("@DietPlanId", IBM.Data.DB2.DB2Type.Integer).Value = SelectedDietPlanId
+            cmdVitals.ExecuteNonQuery()
+        Catch ex As Exception
+            MsgBox(ex.ToString())
+        End Try
     End Sub
+    Private Sub ConsumerProfile()
+        Dim vitalsId As Integer
 
-    Private Sub DateTimePicker1_ValueChanged(sender As Object, e As EventArgs) Handles DateTimePicker1.ValueChanged
+        Dim Str = "SELECT id FROM account_vitals WHERE account_id  = '" & Globals.UserAccountID & "'"
+        Dim CmdStr = New DB2Command(Str, Globals.DBConnLogin)
+        Dim RdrStr = CmdStr.ExecuteReader
+        While RdrStr.Read
+            vitalsId = RdrStr.GetInt32(0)
+        End While
 
+
+        Try
+            Dim StrInsert = "INSERT INTO consumer_profile(account_id, name_first, name_last, phone_number, date_updated, date_created, account_vitals_id) " &
+            "VALUES (@AccountId, @FirstName, @LastName, @PhoneNumber, @DateUpdated, @DateCreated, @VitalsId)"
+            Dim cmdProfile = New DB2Command(StrInsert, Globals.DBConnLogin)
+            cmdProfile.Parameters.Add("@AccountId", IBM.Data.DB2.DB2Type.Integer).Value = Globals.UserAccountID
+            cmdProfile.Parameters.Add("@FirstName", IBM.Data.DB2.DB2Type.VarChar).Value = firstname
+            cmdProfile.Parameters.Add("@LastName", IBM.Data.DB2.DB2Type.VarChar).Value = surname
+            cmdProfile.Parameters.Add("@PhoneNumber", IBM.Data.DB2.DB2Type.VarChar).Value = phone
+            cmdProfile.Parameters.Add("@DateUpdated", IBM.Data.DB2.DB2Type.Timestamp).Value = DateTime.Now
+            cmdProfile.Parameters.Add("@DateCreated", IBM.Data.DB2.DB2Type.Timestamp).Value = DateTime.Now
+            cmdProfile.Parameters.Add("@VitalsId", IBM.Data.DB2.DB2Type.Integer).Value = vitalsId
+            cmdProfile.ExecuteNonQuery()
+        Catch ex As Exception
+            MsgBox(ex.ToString())
+        End Try
     End Sub
-
-    Private Sub Label3_Click(sender As Object, e As EventArgs) Handles Label3.Click
-
-    End Sub
-
-    Private Sub Label1_Click_1(sender As Object, e As EventArgs) Handles Label1.Click
-
-    End Sub
-
-    Private Sub Label2_Click(sender As Object, e As EventArgs) Handles Label2.Click
-
-    End Sub
-
-    Private Sub Label7_Click(sender As Object, e As EventArgs) Handles Label7.Click
-
-    End Sub
-
-    Private Sub Label4_Click(sender As Object, e As EventArgs) Handles Label4.Click
-
-    End Sub
-
-    Private Sub Label6_Click(sender As Object, e As EventArgs) Handles Label6.Click
-
-    End Sub
-
-    Private Sub Label5_Click(sender As Object, e As EventArgs) Handles Label5.Click
-
-    End Sub
-
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles ConfirmRegistration.Click
         Try
-            Dim firstname As String = TextBox2.Text
-            Dim surname As String = TextBox1.Text
-            Dim weight As Integer = Integer.Parse(TextBoxW.Text)
-            Dim height As Integer = Integer.Parse(TextBoxH.Text)
-            Dim phone As String = TextBoxPh.Text
-            Dim birthday As Date = DateTimePicker1.Value
-            Dim sex As String = TextBoxSex.Text
-
-            DataGridViewAL.DataSource = activityLevelTable
-            DataGridViewDP.DataSource = dietPlanTable
-
-            Dim activityLevelId As Integer
-            Dim dietPlanId As Integer
-
-            If DataGridViewAL.SelectedRows.Count > 0 Then
-                Dim selectedRow As DataGridViewRow = DataGridViewAL.SelectedRows(0)
-                activityLevelId = CInt(selectedRow.Cells("Activity Level").Value)
-            End If
-
-            If DataGridViewDP.SelectedRows.Count > 0 Then
-                Dim selectedRow As DataGridViewRow = DataGridViewDP.SelectedRows(0)
-                dietPlanId = CInt(selectedRow.Cells("Diet Plan").Value)
-            End If
-
-            Dim insertVitalsQuery As String = "INSERT INTO account_vitals (account_id, weight, height, birthday, sex, activity_lvl_id, diet_plan_id) " &
-                 "VALUES (@AccountId, @Weight, @Height, @Birthday, @Sex, @ActivityLevelId, @DietPlanId)"
-            Using cmdVitals As New DB2Command(insertVitalsQuery, Globals.DBConnLogin)
-                cmdVitals.Parameters.Add("@AccountId", IBM.Data.DB2.DB2Type.Integer).Value = Globals.UserAccountID
-                cmdVitals.Parameters.Add("@Weight", IBM.Data.DB2.DB2Type.Integer).Value = weight
-                cmdVitals.Parameters.Add("@Height", IBM.Data.DB2.DB2Type.Integer).Value = height
-                cmdVitals.Parameters.Add("@Birthday", IBM.Data.DB2.DB2Type.Date).Value = birthday
-                cmdVitals.Parameters.Add("@Sex", IBM.Data.DB2.DB2Type.VarChar).Value = sex
-                cmdVitals.Parameters.Add("@ActivityLevelId", IBM.Data.DB2.DB2Type.Integer).Value = activityLevelId
-                cmdVitals.Parameters.Add("@DietPlanId", IBM.Data.DB2.DB2Type.Integer).Value = dietPlanId
-                cmdVitals.ExecuteNonQuery()
-            End Using
-
-            Dim selectVitalsIdQuery As String = "SELECT id FROM account_vitals WHERE account_id = @AccountId"
-            Dim vitalsId As Integer
-            Using cmdSelectVitalsId As New DB2Command(selectVitalsIdQuery, Globals.DBConnLogin)
-                cmdSelectVitalsId.Parameters.Add("@AccountId", IBM.Data.DB2.DB2Type.Integer).Value = Globals.UserAccountID
-                vitalsId = CInt(cmdSelectVitalsId.ExecuteScalar())
-            End Using
-
-            Dim insertProfileQuery As String = "INSERT INTO consumer_profile(account_id, name_first, name_last, phone_number, date_updated, date_created, account_vitals_id) " &
-                "VALUES (@AccountId, @FirstName, @LastName, @PhoneNumber, @DateUpdated, @DateCreated, @VitalsId)"
-            Using cmdProfile As New DB2Command(insertProfileQuery, Globals.DBConnLogin)
-                cmdProfile.Parameters.Add("@AccountId", IBM.Data.DB2.DB2Type.Integer).Value = Globals.UserAccountID
-                cmdProfile.Parameters.Add("@FirstName", IBM.Data.DB2.DB2Type.VarChar).Value = firstname
-                cmdProfile.Parameters.Add("@LastName", IBM.Data.DB2.DB2Type.VarChar).Value = surname
-                cmdProfile.Parameters.Add("@PhoneNumber", IBM.Data.DB2.DB2Type.VarChar).Value = phone
-                cmdProfile.Parameters.Add("@DateUpdated", IBM.Data.DB2.DB2Type.Timestamp).Value = DateTime.Now
-                cmdProfile.Parameters.Add("@DateCreated", IBM.Data.DB2.DB2Type.Timestamp).Value = DateTime.Now
-                cmdProfile.Parameters.Add("@VitalsId", IBM.Data.DB2.DB2Type.Integer).Value = vitalsId
-                cmdProfile.ExecuteNonQuery()
-            End Using
-
+            Call InsertAccountVitals()
+            Call ConsumerProfile()
             TextBoxClear()
             MessageBox.Show("Registration successful!")
-
+            Me.Close()
+            MainHomePage.Show()
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try
 
     End Sub
+      
 
-    Private Sub TextBoxPassw_TextChanged(sender As Object, e As EventArgs) Handles TextBoxPassw.TextChanged
+    Private Sub DataGridViewAL_CellContentClick_1(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridViewAL.CellClick
 
+        ' Check if the click is on a valid row (not header or empty row)
+        If e.RowIndex >= 0 AndAlso e.RowIndex < DataGridViewAL.Rows.Count Then
+            Dim selectedRow As DataGridViewRow = DataGridViewAL.Rows(e.RowIndex)
+            SelectedActivityLevelId = selectedRow.Cells(0).Value
+        End If 
     End Sub
 
-    Private Sub TextBoxUssername_TextChanged(sender As Object, e As EventArgs) Handles TextBoxUsername.TextChanged
-
-
-    End Sub
-
-    Private Sub TreeView1_AfterSelect(sender As Object, e As TreeViewEventArgs)
-
-    End Sub
-
-    Private Sub Label9_Click(sender As Object, e As EventArgs) Handles Label9.Click
-
-    End Sub
-
-    Private Sub ComboBox2_SelectedIndexChanged(sender As Object, e As EventArgs)
-
-    End Sub
-
-    Private Sub Label10_Click(sender As Object, e As EventArgs) Handles Label10.Click
-
-    End Sub
-
-    Private Sub Label11_Click(sender As Object, e As EventArgs) Handles Label11.Click
-
-    End Sub
-
-
-    Private Sub PictureBox1_Click(sender As Object, e As EventArgs)
-
+    Private Sub DataGridViewDP_CellContentClick_1(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridViewDP.CellClick
+        If e.RowIndex >= 0 AndAlso e.RowIndex < DataGridViewDP.Rows.Count Then
+            Dim selectedRow As DataGridViewRow = DataGridViewDP.Rows(e.RowIndex)
+            SelectedDietPlanId = selectedRow.Cells(0).Value
+        End If 
     End Sub
 End Class
