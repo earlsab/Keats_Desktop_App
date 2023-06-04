@@ -190,28 +190,25 @@ Public Class IngredientDetails
         'Fats() 6
 
         Try
-            StrStud = "select * from daily_nutrients where account_id=" & Globals.UserAccountID & " order by date_created " _
+            StrStud = "select id from daily_nutrients where account_id=" & Globals.UserAccountID & " order by date_created " _
             & "DESC OPTIMIZE FOR 1 ROW"
             CmdStud = New DB2Command(StrStud, Globals.DBConnLogin)
             RdrStud = CmdStud.ExecuteReader
 
             RdrStud.Read()
-            TargetUpdate = RdrStud.GetInt32(0)
-            OldCalories = RdrStud.GetFloat(3)
-            OldProtein = RdrStud.GetFloat(4)
-            OldCarbs = RdrStud.GetFloat(5)
-            OldFats = RdrStud.GetFloat(6)
+            TargetUpdate = RdrStud.GetString(0)
 
-            Calories = OldCalories + Calories
-            Protein = OldProtein + Protein
-            Carbs = OldCarbs + Carbs
-            Fats = OldFats + Fats
+            Dim Multiplier As Single = IngredientAmount / 100
+            Calories = Calories * Multiplier
+            Protein = Protein * Multiplier
+            Carbs = Carbs * Multiplier
+            Fats = Fats * Multiplier
 
             StrUpdate = "update daily_nutrients set " _
-                & "calories = " & Calories & ", " _
-                & "protein = " & Protein & ", " _
-                & "carbs = " & Carbs & ", " _
-                & "fats = " & Fats & " " _
+                & "calories = calories + " & Calories & ", " _
+                & "protein = protein + " & Protein & ", " _
+                & "carbs = carbs + " & Carbs & ", " _
+                & "fats = fats + " & Fats & " " _
                 & "where ID = " & TargetUpdate
             CmdStud = New DB2Command(StrUpdate, Globals.DBConnLogin)
             RdrStud = CmdStud.ExecuteReader

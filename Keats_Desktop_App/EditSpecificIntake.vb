@@ -205,6 +205,7 @@ Public Class EditSpecificIntake
             Dim NewProtein = Protein * Multiplier
             Dim NewCarbs = Carbs * Multiplier
             Dim NewFats = Fats * Multiplier
+            MsgBox(NewCal - OldCal)
             CmdStud.Parameters.Add("@calories", IBM.Data.DB2.DB2Type.Integer).Value = NewCal - OldCal
             CmdStud.Parameters.Add("@protein", IBM.Data.DB2.DB2Type.Integer).Value = NewProtein - OldProtein
             CmdStud.Parameters.Add("@carbs", IBM.Data.DB2.DB2Type.Integer).Value = NewCarbs - OldCarbs
