@@ -54,4 +54,9 @@ Public Class SearchIngredient
     Private Sub SearchResult_CellContentClick_1(sender As Object, e As DataGridViewCellEventArgs) Handles SearchResult.CellContentClick
 
     End Sub
+
+    Private Sub Back_Click(sender As Object, e As EventArgs) Handles Back.Click
+        Me.Close()
+        MainHomePage.Show()
+    End Sub
 End Class

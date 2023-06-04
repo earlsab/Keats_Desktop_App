@@ -32,7 +32,6 @@ Partial Class MainHomePage
         Me.IntakeId = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.AddMealButton = New System.Windows.Forms.Button()
         Me.Label3 = New System.Windows.Forms.Label()
-        Me.Button3 = New System.Windows.Forms.Button()
         Me.MealsLoggedTextBox = New System.Windows.Forms.TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
@@ -138,15 +137,6 @@ Partial Class MainHomePage
         Me.Label3.Size = New System.Drawing.Size(88, 13)
         Me.Label3.TabIndex = 5
         Me.Label3.Text = "Today's Meals"
-        '
-        'Button3
-        '
-        Me.Button3.Location = New System.Drawing.Point(607, 28)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(60, 30)
-        Me.Button3.TabIndex = 7
-        Me.Button3.Text = "Profile"
-        Me.Button3.UseVisualStyleBackColor = True
         '
         'MealsLoggedTextBox
         '
@@ -351,7 +341,6 @@ Partial Class MainHomePage
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.MealsLoggedTextBox)
-        Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.AddMealButton)
         Me.Controls.Add(Me.DataGridView1)
@@ -369,7 +358,6 @@ Partial Class MainHomePage
     Friend WithEvents DataGridView1 As System.Windows.Forms.DataGridView
     Friend WithEvents AddMealButton As System.Windows.Forms.Button
     Friend WithEvents Label3 As System.Windows.Forms.Label
-    Friend WithEvents Button3 As System.Windows.Forms.Button
     Friend WithEvents MealsLoggedTextBox As System.Windows.Forms.TextBox
     Friend WithEvents Label4 As System.Windows.Forms.Label
     Friend WithEvents Label5 As System.Windows.Forms.Label
