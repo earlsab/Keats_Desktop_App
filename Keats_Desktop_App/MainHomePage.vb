@@ -150,20 +150,30 @@ Public Class MainHomePage
 
     Public Sub UpdateSummary()
 
-        Dim StrLoad As String
-        Dim CmdLoad As DB2Command
-        Dim RdrLoad As DB2DataReader
+        Dim StrStud As String 
+        Dim CmdStud As DB2Command
+        Dim RdrStud As DB2DataReader
 
         Me.MealsLoggedTextBox.Text = Me.IntakeCount
-        Try
-            StrLoad = "select calories from daily_nutrients where account_id=" & Globals.UserAccountID & _
-            " AND Date_Created ='" & CurrentDate & "'"
-            CmdLoad = New DB2Command(StrLoad, Globals.DBConnLogin)
-            RdrLoad = CmdLoad.ExecuteReader
-            RdrLoad.Read()
-            Me.CaloriesTextBox.Text = RdrLoad.GetFloat(0)
+        Try 
+            StrStud = "SELECT calories, protein, carbs, fats, max_calories, max_protein, max_carbs, max_fats FROM daily_nutrients WHERE account_id = @AccountId AND Date_Created = @CurrentDate"
+            CmdStud = New DB2Command(StrStud, Globals.DBConnLogin)
+            CmdStud.Parameters.Add("@AccountId", IBM.Data.DB2.DB2Type.Integer).Value = Globals.UserAccountID
+            CmdStud.Parameters.Add("@CurrentDate", IBM.Data.DB2.DB2Type.Date).Value = DateTime.Now.Date
+            RdrStud = CmdStud.ExecuteReader 
+            While RdrStud.Read
+                CaloriesTextBox.Text() = RdrStud.GetString(0)
+                ProteinTextBox.Text() = RdrStud.GetString(1)
+                CarbsTextBox.Text() = RdrStud.GetString(2)
+                FatsTextBox.Text() = RdrStud.GetString(3)
 
+                MaxCalories.Text = RdrStud.GetString(4)
+                MaxProtein.Text = RdrStud.GetString(5)
+                MaxCarbs.Text = RdrStud.GetString(6)
+                MaxFats.Text = RdrStud.GetString(7)
+            End While
         Catch ex As Exception
+            MsgBox(ex.ToString())
         End Try
     End Sub
 
@@ -235,7 +245,7 @@ Public Class MainHomePage
 
     End Sub
 
-    Private Sub TextBox2_TextChanged(sender As Object, e As EventArgs) Handles CaloriesTextBox.TextChanged
+    Private Sub TextBox2_TextChanged(sender As Object, e As EventArgs)
 
     End Sub
 
@@ -247,4 +257,5 @@ Public Class MainHomePage
         ViewIntakesAll.Show()
         Me.Hide()
     End Sub
+     
 End Class
