@@ -28,17 +28,65 @@ Public Class MainHomePage
         End Try
 
         If DateDiff("d", LatestEntryDate, CurrentDate) > 0 Or FirstEntryState Then
+
+            Dim birthDate As Date
+            Dim weight, height, calorie_percentage, protein_percentage, fats_percentage, carbs_percentage As Integer
+            Dim bmr_multiplier As Single
+            Try
+                StrLoad = "SELECT " _
+                        & "account_vitals.account_id, " _
+                        & "account_vitals.weight, " _
+                        & "account_vitals.height, " _
+                        & "account_vitals.birthday, " _
+                        & "account_vitals.sex, " _
+                        & "account_vitals.activity_lvl_id, " _
+                        & "account_vitals.diet_plan_id, " _
+                        & "activity_lvl.name, " _
+                        & "activity_lvl.bmr_multiplier, " _
+                        & "diet_plan.name, " _
+                        & "diet_plan.calorie_percentage, " _
+                        & "diet_plan.protein_percentage, " _
+                        & "diet_plan.fats_percentage, " _
+                        & "diet_plan.carbs_percentage " _
+                        & "FROM account_vitals " _
+                    & "JOIN activity_lvl ON account_vitals.activity_lvl_id = activity_lvl.id " _
+                    & "JOIN diet_plan ON account_vitals.diet_plan_id = diet_plan.id " _
+                    & "WHERE account_vitals.account_id = " & Globals.UserAccountID & ";"
+                CmdLoad = New DB2Command(StrLoad, Globals.DBConnLogin)
+                RdrLoad = CmdLoad.ExecuteReader
+                RdrLoad.Read()
+                weight = RdrLoad.GetInt32(1)
+                height = RdrLoad.GetInt32(2)
+                birthDate = RdrLoad.GetDate(3)
+                bmr_multiplier = RdrLoad.GetFloat(8)
+                calorie_percentage = RdrLoad.GetInt32(10)
+                protein_percentage = RdrLoad.GetInt32(11)
+                fats_percentage = RdrLoad.GetInt32(12)
+                carbs_percentage = RdrLoad.GetInt32(13)
+            Catch ex As Exception
+                FirstEntryState = True
+            End Try
+            Dim age As Integer = DateDiff(DateInterval.Year, birthDate, Today)
+            Dim Bmr = ((10 * weight) + (6.25 * height) - (5 * age) + 5)
+            Dim MaxCalories = (bmr_multiplier * Bmr) * (calorie_percentage * 0.01)
+            Dim MaxProtein = (MaxCalories * (protein_percentage * 0.01) / 4)
+            Dim MaxCarbs = (MaxCalories * (carbs_percentage * 0.01) / 4)
+            Dim MaxFats = (MaxCalories * (fats_percentage * 0.01) / 9)
             Try
                 StrInsert = "insert into daily_nutrients(account_id, date_created, calories, protein, carbs, fats," _
                 & "max_calories, max_protein, max_carbs, max_fats, diet_plan_id, activity_lvl_id)" _
-                & "values(@AccountId, @DateTimeValue, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1)"
+                & "values(@AccountId, @DateTimeValue, 0, 0, 0, 0, @MaxCalories, @maxProtein, @maxCarbs, @maxFats, 1, 1)"
                 CmdInsert = New DB2Command(StrInsert, Globals.DBConnLogin)
                 CmdInsert.Parameters.Add("@AccountId", IBM.Data.DB2.DB2Type.Integer).Value = Globals.UserAccountID
                 CmdInsert.Parameters.Add("@DateTimeValue", IBM.Data.DB2.DB2Type.DateTime).Value = DateTime.Now ' Assuming you want to use the current date and time
-                CmdInsert.ExecuteNonQuery() 
-            Catch ex As Exception 
+                CmdInsert.Parameters.Add("@MaxCalories", IBM.Data.DB2.DB2Type.Integer).Value = MaxCalories
+                CmdInsert.Parameters.Add("@maxProtein", IBM.Data.DB2.DB2Type.Integer).Value = MaxProtein
+                CmdInsert.Parameters.Add("@maxCarbs", IBM.Data.DB2.DB2Type.Integer).Value = MaxCarbs
+                CmdInsert.Parameters.Add("@maxFats", IBM.Data.DB2.DB2Type.Integer).Value = MaxFats
+                CmdInsert.ExecuteNonQuery()
+            Catch ex As Exception
             End Try
-        Else 
+        Else
         End If
     End Sub
     Public Sub PopulateDataGrid()
