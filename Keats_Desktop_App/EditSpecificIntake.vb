@@ -47,14 +47,8 @@ Public Class EditSpecificIntake
                 & "WHERE ingredient_mapping.ingredient_id = " & FirstIngredientId & ");"
             CmdStud = New DB2Command(StrStud, Globals.DBConnLogin)
             RdrStud = CmdStud.ExecuteReader
-            IngredientVariant.Rows.Clear()
-            Dim variantCount = 0
-            While RdrStud.Read
-                If variantCount < 1 Then
-                    FirstIngredientVariantId = RdrStud.GetInt32(0)
-                    SelectedVariantValue.Text() = RdrStud.GetString(1)
-                    variantCount = 1
-                End If
+            IngredientVariant.Rows.Clear() 
+            While RdrStud.Read  
                 row = New String() {RdrStud.GetString(0), RdrStud.GetString(1)}
                 IngredientVariant.Rows.Add(row)
             End While
@@ -76,14 +70,8 @@ Public Class EditSpecificIntake
                 & "AND ingredient_mapping.ingredient_variant_id = " & FirstIngredientVariantId & ";"
             CmdStud = New DB2Command(StrStud, Globals.DBConnLogin)
             RdrStud = CmdStud.ExecuteReader
-            IngredientSubvariant.Rows.Clear()
-            Dim subvariantCount = 0
-            While RdrStud.Read
-                If subvariantCount < 1 Then
-                    FirstIngredientSubvariantId = RdrStud.GetInt32(0)
-                    SelectedSubvariantValue.Text() = RdrStud.GetString(1)
-                    subvariantCount = 1
-                End If
+            IngredientSubvariant.Rows.Clear() 
+            While RdrStud.Read  
                 row = New String() {RdrStud.GetString(0), RdrStud.GetString(1)}
                 IngredientSubvariant.Rows.Add(row)
             End While
@@ -109,6 +97,21 @@ Public Class EditSpecificIntake
             End While
 
 
+            StrStud = "select ingredient_mapping.ingredient_variant_id, ingredient_mapping.ingredient_subvariant_id, " _
+                & " ingredient_variant.name, ingredient_subvariant.name" _
+                & " FROM intake" _
+                & " JOIN ingredient_mapping ON intake.ingredient_mapping_id = ingredient_mapping.id" _
+                & " JOIN ingredient_variant ON ingredient_mapping.ingredient_variant_id = ingredient_variant.id" _
+                & " JOIN ingredient_subvariant ON ingredient_mapping.ingredient_subvariant_id = ingredient_subvariant.id" _
+                & " WHERE intake.id = " & Globals.SelectedIntakeId & "; "
+            CmdStud = New DB2Command(StrStud, Globals.DBConnLogin)
+            RdrStud = CmdStud.ExecuteReader
+            While RdrStud.Read
+                FirstIngredientVariantId = Integer.Parse(RdrStud.GetString(0))
+                FirstIngredientSubvariantId = Integer.Parse(RdrStud.GetString(1))
+                SelectedVariantValue.Text() = RdrStud.GetString(2)
+                SelectedSubvariantValue.Text() = RdrStud.GetString(3)
+            End While
             StrStud = "select name FROM ingredient WHERE id = " & FirstIngredientId
             CmdStud = New DB2Command(StrStud, Globals.DBConnLogin)
             RdrStud = CmdStud.ExecuteReader
