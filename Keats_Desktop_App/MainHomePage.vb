@@ -302,4 +302,8 @@ Public Class MainHomePage
         Me.Hide()
     End Sub
      
+    Private Sub ProfileManager_Click(sender As Object, e As EventArgs) Handles ProfileManager.Click
+        UserProfile.Show()
+        Me.Hide()
+    End Sub
 End Class

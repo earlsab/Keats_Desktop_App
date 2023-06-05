@@ -50,6 +50,7 @@ Partial Class MainHomePage
         Me.MaxCarbs = New System.Windows.Forms.TextBox()
         Me.MaxProtein = New System.Windows.Forms.TextBox()
         Me.MaxCalories = New System.Windows.Forms.TextBox()
+        Me.ProfileManager = New System.Windows.Forms.Button()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -57,19 +58,19 @@ Partial Class MainHomePage
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(21, 28)
-        Me.Label1.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label1.Location = New System.Drawing.Point(28, 34)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(105, 13)
+        Me.Label1.Size = New System.Drawing.Size(136, 17)
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "Today's Summary"
         '
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(63, 126)
+        Me.Label2.Location = New System.Drawing.Point(84, 155)
+        Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(0, 13)
+        Me.Label2.Size = New System.Drawing.Size(0, 17)
         Me.Label2.TabIndex = 2
         '
         'DataGridView1
@@ -80,10 +81,11 @@ Partial Class MainHomePage
         Me.DataGridView1.AllowUserToResizeRows = False
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2, Me.Column3, Me.Column4, Me.IntakeId})
-        Me.DataGridView1.Location = New System.Drawing.Point(24, 248)
+        Me.DataGridView1.Location = New System.Drawing.Point(32, 305)
+        Me.DataGridView1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.ReadOnly = True
-        Me.DataGridView1.Size = New System.Drawing.Size(643, 157)
+        Me.DataGridView1.Size = New System.Drawing.Size(857, 193)
         Me.DataGridView1.TabIndex = 3
         '
         'Column1
@@ -120,9 +122,10 @@ Partial Class MainHomePage
         '
         'AddMealButton
         '
-        Me.AddMealButton.Location = New System.Drawing.Point(499, 84)
+        Me.AddMealButton.Location = New System.Drawing.Point(665, 103)
+        Me.AddMealButton.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.AddMealButton.Name = "AddMealButton"
-        Me.AddMealButton.Size = New System.Drawing.Size(168, 84)
+        Me.AddMealButton.Size = New System.Drawing.Size(224, 103)
         Me.AddMealButton.TabIndex = 4
         Me.AddMealButton.Text = "Add Meal"
         Me.AddMealButton.UseVisualStyleBackColor = True
@@ -131,30 +134,29 @@ Partial Class MainHomePage
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(21, 224)
-        Me.Label3.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label3.Location = New System.Drawing.Point(28, 276)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(88, 13)
+        Me.Label3.Size = New System.Drawing.Size(112, 17)
         Me.Label3.TabIndex = 5
         Me.Label3.Text = "Today's Meals"
         '
         'MealsLoggedTextBox
         '
         Me.MealsLoggedTextBox.Enabled = False
-        Me.MealsLoggedTextBox.Location = New System.Drawing.Point(146, 62)
+        Me.MealsLoggedTextBox.Location = New System.Drawing.Point(195, 76)
+        Me.MealsLoggedTextBox.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.MealsLoggedTextBox.Name = "MealsLoggedTextBox"
         Me.MealsLoggedTextBox.ReadOnly = True
-        Me.MealsLoggedTextBox.Size = New System.Drawing.Size(139, 20)
+        Me.MealsLoggedTextBox.Size = New System.Drawing.Size(184, 22)
         Me.MealsLoggedTextBox.TabIndex = 8
         '
         'Label4
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(35, 65)
-        Me.Label4.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label4.Location = New System.Drawing.Point(47, 80)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(106, 13)
+        Me.Label4.Size = New System.Drawing.Size(139, 17)
         Me.Label4.TabIndex = 9
         Me.Label4.Text = "No. of Meals Logged"
         '
@@ -162,79 +164,79 @@ Partial Class MainHomePage
         '
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(35, 91)
-        Me.Label5.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label5.Location = New System.Drawing.Point(47, 112)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(106, 13)
+        Me.Label5.Size = New System.Drawing.Size(143, 17)
         Me.Label5.TabIndex = 11
         Me.Label5.Text = "Calories Eaten (KCal)"
         '
         'CaloriesTextBox
         '
         Me.CaloriesTextBox.Enabled = False
-        Me.CaloriesTextBox.Location = New System.Drawing.Point(146, 88)
+        Me.CaloriesTextBox.Location = New System.Drawing.Point(195, 108)
+        Me.CaloriesTextBox.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.CaloriesTextBox.Name = "CaloriesTextBox"
         Me.CaloriesTextBox.ReadOnly = True
-        Me.CaloriesTextBox.Size = New System.Drawing.Size(139, 20)
+        Me.CaloriesTextBox.Size = New System.Drawing.Size(184, 22)
         Me.CaloriesTextBox.TabIndex = 14
         '
         'ProteinTextBox
         '
         Me.ProteinTextBox.Enabled = False
-        Me.ProteinTextBox.Location = New System.Drawing.Point(146, 114)
+        Me.ProteinTextBox.Location = New System.Drawing.Point(195, 140)
+        Me.ProteinTextBox.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.ProteinTextBox.Name = "ProteinTextBox"
         Me.ProteinTextBox.ReadOnly = True
-        Me.ProteinTextBox.Size = New System.Drawing.Size(139, 20)
+        Me.ProteinTextBox.Size = New System.Drawing.Size(184, 22)
         Me.ProteinTextBox.TabIndex = 16
         '
         'Label6
         '
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.Location = New System.Drawing.Point(35, 117)
-        Me.Label6.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label6.Location = New System.Drawing.Point(47, 144)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(86, 13)
+        Me.Label6.Size = New System.Drawing.Size(116, 17)
         Me.Label6.TabIndex = 15
         Me.Label6.Text = "Protein Eaten (g)"
         '
         'CarbsTextBox
         '
         Me.CarbsTextBox.Enabled = False
-        Me.CarbsTextBox.Location = New System.Drawing.Point(146, 140)
+        Me.CarbsTextBox.Location = New System.Drawing.Point(195, 172)
+        Me.CarbsTextBox.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.CarbsTextBox.Name = "CarbsTextBox"
         Me.CarbsTextBox.ReadOnly = True
-        Me.CarbsTextBox.Size = New System.Drawing.Size(139, 20)
+        Me.CarbsTextBox.Size = New System.Drawing.Size(184, 22)
         Me.CarbsTextBox.TabIndex = 18
         '
         'Label7
         '
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.Location = New System.Drawing.Point(35, 143)
-        Me.Label7.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label7.Location = New System.Drawing.Point(47, 176)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(80, 13)
+        Me.Label7.Size = New System.Drawing.Size(108, 17)
         Me.Label7.TabIndex = 17
         Me.Label7.Text = "Carbs Eaten (g)"
         '
         'FatsTextBox
         '
         Me.FatsTextBox.Enabled = False
-        Me.FatsTextBox.Location = New System.Drawing.Point(146, 166)
+        Me.FatsTextBox.Location = New System.Drawing.Point(195, 204)
+        Me.FatsTextBox.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.FatsTextBox.Name = "FatsTextBox"
         Me.FatsTextBox.ReadOnly = True
-        Me.FatsTextBox.Size = New System.Drawing.Size(139, 20)
+        Me.FatsTextBox.Size = New System.Drawing.Size(184, 22)
         Me.FatsTextBox.TabIndex = 20
         '
         'Label8
         '
         Me.Label8.AutoSize = True
         Me.Label8.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label8.Location = New System.Drawing.Point(35, 169)
-        Me.Label8.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label8.Location = New System.Drawing.Point(47, 208)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(73, 13)
+        Me.Label8.Size = New System.Drawing.Size(98, 17)
         Me.Label8.TabIndex = 19
         Me.Label8.Text = "Fats Eaten (g)"
         '
@@ -242,10 +244,9 @@ Partial Class MainHomePage
         '
         Me.Label9.AutoSize = True
         Me.Label9.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label9.Location = New System.Drawing.Point(290, 91)
-        Me.Label9.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label9.Location = New System.Drawing.Point(387, 112)
         Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(12, 13)
+        Me.Label9.Size = New System.Drawing.Size(12, 17)
         Me.Label9.TabIndex = 21
         Me.Label9.Text = "/"
         '
@@ -253,10 +254,9 @@ Partial Class MainHomePage
         '
         Me.Label10.AutoSize = True
         Me.Label10.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label10.Location = New System.Drawing.Point(290, 117)
-        Me.Label10.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label10.Location = New System.Drawing.Point(387, 144)
         Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(12, 13)
+        Me.Label10.Size = New System.Drawing.Size(12, 17)
         Me.Label10.TabIndex = 22
         Me.Label10.Text = "/"
         '
@@ -264,10 +264,9 @@ Partial Class MainHomePage
         '
         Me.Label11.AutoSize = True
         Me.Label11.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label11.Location = New System.Drawing.Point(290, 143)
-        Me.Label11.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label11.Location = New System.Drawing.Point(387, 176)
         Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(12, 13)
+        Me.Label11.Size = New System.Drawing.Size(12, 17)
         Me.Label11.TabIndex = 23
         Me.Label11.Text = "/"
         '
@@ -275,54 +274,68 @@ Partial Class MainHomePage
         '
         Me.Label12.AutoSize = True
         Me.Label12.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label12.Location = New System.Drawing.Point(290, 169)
-        Me.Label12.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label12.Location = New System.Drawing.Point(387, 208)
         Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(12, 13)
+        Me.Label12.Size = New System.Drawing.Size(12, 17)
         Me.Label12.TabIndex = 24
         Me.Label12.Text = "/"
         '
         'MaxFats
         '
         Me.MaxFats.Enabled = False
-        Me.MaxFats.Location = New System.Drawing.Point(307, 166)
+        Me.MaxFats.Location = New System.Drawing.Point(409, 204)
+        Me.MaxFats.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.MaxFats.Name = "MaxFats"
         Me.MaxFats.ReadOnly = True
-        Me.MaxFats.Size = New System.Drawing.Size(139, 20)
+        Me.MaxFats.Size = New System.Drawing.Size(184, 22)
         Me.MaxFats.TabIndex = 28
         '
         'MaxCarbs
         '
         Me.MaxCarbs.Enabled = False
-        Me.MaxCarbs.Location = New System.Drawing.Point(307, 140)
+        Me.MaxCarbs.Location = New System.Drawing.Point(409, 172)
+        Me.MaxCarbs.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.MaxCarbs.Name = "MaxCarbs"
         Me.MaxCarbs.ReadOnly = True
-        Me.MaxCarbs.Size = New System.Drawing.Size(139, 20)
+        Me.MaxCarbs.Size = New System.Drawing.Size(184, 22)
         Me.MaxCarbs.TabIndex = 27
         '
         'MaxProtein
         '
         Me.MaxProtein.Enabled = False
-        Me.MaxProtein.Location = New System.Drawing.Point(307, 114)
+        Me.MaxProtein.Location = New System.Drawing.Point(409, 140)
+        Me.MaxProtein.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.MaxProtein.Name = "MaxProtein"
         Me.MaxProtein.ReadOnly = True
-        Me.MaxProtein.Size = New System.Drawing.Size(139, 20)
+        Me.MaxProtein.Size = New System.Drawing.Size(184, 22)
         Me.MaxProtein.TabIndex = 26
         '
         'MaxCalories
         '
         Me.MaxCalories.Enabled = False
-        Me.MaxCalories.Location = New System.Drawing.Point(307, 88)
+        Me.MaxCalories.Location = New System.Drawing.Point(409, 108)
+        Me.MaxCalories.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.MaxCalories.Name = "MaxCalories"
         Me.MaxCalories.ReadOnly = True
-        Me.MaxCalories.Size = New System.Drawing.Size(139, 20)
+        Me.MaxCalories.Size = New System.Drawing.Size(184, 22)
         Me.MaxCalories.TabIndex = 25
+        '
+        'ProfileManager
+        '
+        Me.ProfileManager.Location = New System.Drawing.Point(783, 53)
+        Me.ProfileManager.Margin = New System.Windows.Forms.Padding(4)
+        Me.ProfileManager.Name = "ProfileManager"
+        Me.ProfileManager.Size = New System.Drawing.Size(106, 42)
+        Me.ProfileManager.TabIndex = 29
+        Me.ProfileManager.Text = "Profile"
+        Me.ProfileManager.UseVisualStyleBackColor = True
         '
         'MainHomePage
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(690, 433)
+        Me.ClientSize = New System.Drawing.Size(920, 533)
+        Me.Controls.Add(Me.ProfileManager)
         Me.Controls.Add(Me.MaxFats)
         Me.Controls.Add(Me.MaxCarbs)
         Me.Controls.Add(Me.MaxProtein)
@@ -346,6 +359,7 @@ Partial Class MainHomePage
         Me.Controls.Add(Me.DataGridView1)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
+        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Name = "MainHomePage"
         Me.Text = "MainHomePage"
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
@@ -381,4 +395,5 @@ Partial Class MainHomePage
     Friend WithEvents MaxCarbs As System.Windows.Forms.TextBox
     Friend WithEvents MaxProtein As System.Windows.Forms.TextBox
     Friend WithEvents MaxCalories As System.Windows.Forms.TextBox
+    Friend WithEvents ProfileManager As System.Windows.Forms.Button
 End Class

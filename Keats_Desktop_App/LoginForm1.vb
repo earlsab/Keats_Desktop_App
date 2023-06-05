@@ -1,8 +1,8 @@
 ﻿Imports IBM.Data.DB2
 
 Module Globals
-    Public DBUser = "username"
-    Public DBPassword = "password"
+    Public DBUser = "Petey"
+    Public DBPassword = "Coolguy11"
     Public DBDatabase = "keats2"
     Public DBConnLogin As Common.DbConnection
     Public UserAccountID As Integer
