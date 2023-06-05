@@ -168,4 +168,5 @@ Public Class NewUserInformation
             SelectedDietPlanId = selectedRow.Cells(0).Value
         End If 
     End Sub
+
 End Class
