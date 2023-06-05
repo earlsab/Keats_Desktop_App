@@ -74,24 +74,19 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EditSpecificIntake.Designer.vb">
-      <DependentUpon>EditSpecificIntake.vb</DependentUpon>
+<<<<<<< Updated upstream
+    <Compile Include="UserProfile.Designer.vb">
+      <DependentUpon>UserProfile.vb</DependentUpon>
     </Compile>
-    <Compile Include="EditSpecificIntake.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="IngredientDetails.Designer.vb">
-      <DependentUpon>IngredientDetails.vb</DependentUpon>
-    </Compile>
-    <Compile Include="IngredientDetails.vb">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="UserProfile.vb" />
     <Compile Include="SearchIngredient.Designer.vb">
       <DependentUpon>SearchIngredient.vb</DependentUpon>
     </Compile>
     <Compile Include="SearchIngredient.vb">
       <SubType>Form</SubType>
     </Compile>
+=======
+>>>>>>> Stashed changes
     <Compile Include="NewUserInformation.Designer.vb">
       <DependentUpon>NewUserInformation.vb</DependentUpon>
     </Compile>
@@ -132,29 +127,17 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="ViewAllSummaries.Designer.vb">
-      <DependentUpon>ViewAllSummaries.vb</DependentUpon>
-    </Compile>
-    <Compile Include="ViewAllSummaries.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ViewIntakesAll.Designer.vb">
-      <DependentUpon>ViewIntakesAll.vb</DependentUpon>
-    </Compile>
-    <Compile Include="ViewIntakesAll.vb">
-      <SubType>Form</SubType>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="EditSpecificIntake.resx">
-      <DependentUpon>EditSpecificIntake.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="IngredientDetails.resx">
-      <DependentUpon>IngredientDetails.vb</DependentUpon>
+<<<<<<< Updated upstream
+    <EmbeddedResource Include="UserProfile.resx">
+      <DependentUpon>UserProfile.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SearchIngredient.resx">
       <DependentUpon>SearchIngredient.vb</DependentUpon>
     </EmbeddedResource>
+=======
+>>>>>>> Stashed changes
     <EmbeddedResource Include="NewUserInformation.resx">
       <DependentUpon>NewUserInformation.vb</DependentUpon>
     </EmbeddedResource>
@@ -173,12 +156,6 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="ViewAllSummaries.resx">
-      <DependentUpon>ViewAllSummaries.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ViewIntakesAll.resx">
-      <DependentUpon>ViewIntakesAll.vb</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="My Project\Application.myapp">
@@ -192,6 +169,12 @@
     </None>
     <None Include="App.config" />
   </ItemGroup>
+<<<<<<< Updated upstream
+  <ItemGroup>
+    <None Include="Resources\cloyd.png" />
+  </ItemGroup>
+=======
+>>>>>>> Stashed changes
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

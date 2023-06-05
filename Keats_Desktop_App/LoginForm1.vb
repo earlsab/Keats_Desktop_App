@@ -5,6 +5,10 @@ Module Globals
     Public DBPassword = "password"
     Public DBDatabase = "keats2"
     Public DBConnLogin As Common.DbConnection
+    Public UserAccountID As Integer
+    Public SelectedIngredientId = 0
+    Public SelectedIntakeId = 0
+    Public SelectedIngredientMappingId = 0
 End Module
 
 Public Class LoginForm1
@@ -33,10 +37,9 @@ Public Class LoginForm1
             RdrLogin = CmdLogin.ExecuteReader
             'This but checks if the code is there...
             If RdrLogin.HasRows Then
-                'RdrLogin.Read()
-                'FrmEnroll.TxtStudId.Text = RdrLogin.GetString(0)
-                'MainHomePage.Show()
-                SearchIngredient.Show()
+                RdrLogin.Read()
+                Globals.UserAccountID = RdrLogin.GetInt32(0)
+                MainHomePage.Show()
                 Me.Hide()
             Else
                 MsgBox("Invalid username/password..", MsgBoxStyle.Information)
@@ -68,12 +71,16 @@ Public Class LoginForm1
 
     Private Sub LoginForm1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Try
-            Globals.DBConnLogin = New DB2Connection("server=localhost; database=" & DBDatabase _
+            Globals.DBConnLogin = New DB2Connection("server=localhost; database=" & Globals.DBDatabase _
  & ";" + _
-"uid= " & DBUser & ";password=" & DBPassword & ";")
+"uid= " & Globals.DBUser & ";password=" & Globals.DBPassword & ";")
             Globals.DBConnLogin.Open()
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try
+    End Sub
+
+    Private Sub PasswordTextBox_TextChanged(sender As Object, e As EventArgs) Handles PasswordTextBox.TextChanged
+
     End Sub
 End Class
