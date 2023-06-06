@@ -13,73 +13,9 @@ Public Class EditSpecificIntake
     Dim Carbs As Single
     Dim Fats As Single
 
-    Private Sub VariantCellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles IngredientVariant.CellClick
-        If e.RowIndex >= 0 AndAlso e.RowIndex < IngredientVariant.Rows.Count Then
-            Dim clickedRow As DataGridViewRow = IngredientVariant.Rows(e.RowIndex)
-            FirstIngredientVariantId = clickedRow.Cells(0).Value
-            SelectedVariantValue.Text() = clickedRow.Cells(1).Value
-            Call PopulateIngredientSubvariant()
-            Call PopulateNutrients()
-        End If
-    End Sub
-    Private Sub SubvariantCellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles IngredientSubvariant.CellClick
-        If e.RowIndex >= 0 AndAlso e.RowIndex < IngredientSubvariant.Rows.Count Then
-            Dim clickedRow As DataGridViewRow = IngredientSubvariant.Rows(e.RowIndex)
-            FirstIngredientSubvariantId = clickedRow.Cells(0).Value
-            SelectedSubvariantValue.Text() = clickedRow.Cells(1).Value
-            Call PopulateNutrients()
-        End If
-    End Sub
 
 
-    Private Sub PopulateIngredientVariant()
-        Dim StrStud As String
-        Dim row As String()
-        Dim CmdStud As DB2Command
-        Dim RdrStud As DB2DataReader
-        Try
-            StrStud = "select " _
-                    & "ingredient_variant.id, ingredient_variant.name " _
-                & "FROM ingredient_variant " _
-                & "WHERE ingredient_variant.id IN ( " _
-                & "SELECT ingredient_mapping.ingredient_variant_id " _
-                & "FROM ingredient_mapping " _
-                & "WHERE ingredient_mapping.ingredient_id = " & FirstIngredientId & ");"
-            CmdStud = New DB2Command(StrStud, Globals.DBConnLogin)
-            RdrStud = CmdStud.ExecuteReader
-            IngredientVariant.Rows.Clear() 
-            While RdrStud.Read  
-                row = New String() {RdrStud.GetString(0), RdrStud.GetString(1)}
-                IngredientVariant.Rows.Add(row)
-            End While
-        Catch ex As Exception
-            MsgBox(ex.ToString)
 
-        End Try
-    End Sub
-    Private Sub PopulateIngredientSubvariant()
-        Dim StrStud As String
-        Dim row As String()
-        Dim CmdStud As DB2Command
-        Dim RdrStud As DB2DataReader
-        Try
-            StrStud = "select ingredient_subvariant.id, ingredient_subvariant.name " _
-                & "FROM ingredient_mapping " _
-                & "JOIN ingredient_subvariant ON ingredient_mapping.ingredient_subvariant_id = ingredient_subvariant.id " _
-                & "WHERE ingredient_mapping.ingredient_id = " & FirstIngredientId & " " _
-                & "AND ingredient_mapping.ingredient_variant_id = " & FirstIngredientVariantId & ";"
-            CmdStud = New DB2Command(StrStud, Globals.DBConnLogin)
-            RdrStud = CmdStud.ExecuteReader
-            IngredientSubvariant.Rows.Clear() 
-            While RdrStud.Read  
-                row = New String() {RdrStud.GetString(0), RdrStud.GetString(1)}
-                IngredientSubvariant.Rows.Add(row)
-            End While
-        Catch ex As Exception
-            MsgBox(ex.ToString)
-
-        End Try
-    End Sub
     Private Sub RetrieveIngredientAndIntake()
         Dim StrStud As String
         Dim CmdStud As DB2Command
@@ -154,11 +90,26 @@ Public Class EditSpecificIntake
             MsgBox(ex.ToString)
         End Try
     End Sub
+    Private Sub RetrieveIngredient()
+        Dim StrStud As String
+        Dim CmdStud As DB2Command
+        Dim RdrStud As DB2DataReader
+        Try
+            StrStud = "select name FROM ingredient WHERE id = " & Globals.SelectedIngredientId
+            CmdStud = New DB2Command(StrStud, Globals.DBConnLogin)
+            RdrStud = CmdStud.ExecuteReader
+            While RdrStud.Read
+                SelectedIngredientValue.Text() = RdrStud.GetString(0)
+            End While
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+
+        End Try
+    End Sub
     Private Sub IngredientDetails_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Call RetrieveIngredientAndIntake() 
-        If Not FirstIngredientId = 0 Then 
-            Call PopulateIngredientVariant()
-            Call PopulateIngredientSubvariant()
+        Call RetrieveIngredientAndIntake()
+        If Not FirstIngredientId = 0 Then
+            Call RetrieveIngredient()
             Call PopulateNutrients()
             AmountValue.Text() = IngredientAmount
         End If
@@ -224,7 +175,7 @@ Public Class EditSpecificIntake
             CmdStud.Parameters.Add("@protein", IBM.Data.DB2.DB2Type.Integer).Value = NewProtein - OldProtein
             CmdStud.Parameters.Add("@carbs", IBM.Data.DB2.DB2Type.Integer).Value = NewCarbs - OldCarbs
             CmdStud.Parameters.Add("@fats", IBM.Data.DB2.DB2Type.Integer).Value = NewFats - OldFats
-            CmdStud.Parameters.Add("@id", IBM.Data.DB2.DB2Type.Integer).Value = TargetUpdate 
+            CmdStud.Parameters.Add("@id", IBM.Data.DB2.DB2Type.Integer).Value = TargetUpdate
             CmdStud.ExecuteNonQuery()
             MainHomePage.Show()
             Me.Hide()
@@ -282,7 +233,7 @@ Public Class EditSpecificIntake
             CmdStud.Parameters.Add("@protein", IBM.Data.DB2.DB2Type.Integer).Value = OldProtein
             CmdStud.Parameters.Add("@carbs", IBM.Data.DB2.DB2Type.Integer).Value = OldCarbs
             CmdStud.Parameters.Add("@fats", IBM.Data.DB2.DB2Type.Integer).Value = OldFats
-            CmdStud.Parameters.Add("@id", IBM.Data.DB2.DB2Type.Integer).Value = TargetUpdate 
+            CmdStud.Parameters.Add("@id", IBM.Data.DB2.DB2Type.Integer).Value = TargetUpdate
             CmdStud.ExecuteNonQuery()
             MainHomePage.Show()
             Me.Hide()
@@ -329,7 +280,7 @@ Public Class EditSpecificIntake
 
     End Sub
 
-    Private Sub IngredientVariant_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles IngredientVariant.CellContentClick
+    Private Sub IngredientVariant_CellContentClick(sender As Object, e As DataGridViewCellEventArgs)
 
     End Sub
 
@@ -342,7 +293,7 @@ Public Class EditSpecificIntake
         MainHomePage.Show()
     End Sub
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Delete.Click 
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Delete.Click
         Call DeleteIntake()
         Call DeductDailyNutrient()
         Call MainHomePage.PopulateDataGrid()
@@ -351,7 +302,11 @@ Public Class EditSpecificIntake
         MainHomePage.Show()
     End Sub
 
-    Private Sub IngredientSubvariant_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles IngredientSubvariant.CellContentClick
+    Private Sub IngredientSubvariant_CellContentClick(sender As Object, e As DataGridViewCellEventArgs)
+
+    End Sub
+
+    Private Sub SelectedIngredientValue_Click(sender As Object, e As EventArgs) Handles SelectedIngredientValue.Click
 
     End Sub
 End Class
