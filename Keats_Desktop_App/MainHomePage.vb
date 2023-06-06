@@ -105,7 +105,7 @@ Public Class MainHomePage
         Dim RdrSum3 As DB2DataReader
 
         Try
-            StrSum = "Select ingredient_mapping_id from intake where account_id=" & Globals.UserAccountID
+            StrSum = "Select * from intake where account_id=" & Globals.UserAccountID
             CmdSum = New DB2Command(StrSum, Globals.DBConnLogin)
             RdrSum = CmdSum.ExecuteReader
             Me.DataGridView1.Rows.Clear()
