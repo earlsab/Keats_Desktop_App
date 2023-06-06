@@ -258,12 +258,15 @@ Public Class UserProfile
     Private Sub Button2_Click_1(sender As Object, e As EventArgs) Handles Cancel.Click
         If MsgBox("Are you sure you want to CANCEL EDITTING your profile details?", MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
 
+            Call RefreshTextBoxes()
             Me.Edit.Enabled = True
             Me.SaveEdit.Enabled = False
             Me.Cancel.Enabled = False
             Me.Delete.Enabled = True
             Me.Back.Enabled = True
             Call DisableTextBoxes()
+
+            MessageBox.Show("Don't worry, your changes were not saved.")
 
         End If
     End Sub
