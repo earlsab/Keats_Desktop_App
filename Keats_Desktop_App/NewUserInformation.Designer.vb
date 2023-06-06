@@ -62,7 +62,7 @@ Partial Class NewUserInformation
         'Back
         '
         Me.Back.Location = New System.Drawing.Point(808, 301)
-        Me.Back.Margin = New System.Windows.Forms.Padding(2)
+        Me.Back.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.Back.Name = "Back"
         Me.Back.Size = New System.Drawing.Size(68, 20)
         Me.Back.TabIndex = 1
@@ -74,7 +74,7 @@ Partial Class NewUserInformation
         Me.TextBoxUsername.BackColor = System.Drawing.Color.WhiteSmoke
         Me.TextBoxUsername.Enabled = False
         Me.TextBoxUsername.Location = New System.Drawing.Point(74, 41)
-        Me.TextBoxUsername.Margin = New System.Windows.Forms.Padding(2)
+        Me.TextBoxUsername.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.TextBoxUsername.Name = "TextBoxUsername"
         Me.TextBoxUsername.Size = New System.Drawing.Size(137, 20)
         Me.TextBoxUsername.TabIndex = 2
@@ -82,7 +82,7 @@ Partial Class NewUserInformation
         'ConfirmRegistration
         '
         Me.ConfirmRegistration.Location = New System.Drawing.Point(880, 301)
-        Me.ConfirmRegistration.Margin = New System.Windows.Forms.Padding(2)
+        Me.ConfirmRegistration.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.ConfirmRegistration.Name = "ConfirmRegistration"
         Me.ConfirmRegistration.Size = New System.Drawing.Size(116, 20)
         Me.ConfirmRegistration.TabIndex = 3
@@ -94,7 +94,7 @@ Partial Class NewUserInformation
         Me.TextBoxPassw.BackColor = System.Drawing.Color.WhiteSmoke
         Me.TextBoxPassw.Enabled = False
         Me.TextBoxPassw.Location = New System.Drawing.Point(74, 64)
-        Me.TextBoxPassw.Margin = New System.Windows.Forms.Padding(2)
+        Me.TextBoxPassw.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.TextBoxPassw.Name = "TextBoxPassw"
         Me.TextBoxPassw.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
         Me.TextBoxPassw.Size = New System.Drawing.Size(137, 20)
@@ -104,7 +104,7 @@ Partial Class NewUserInformation
         '
         Me.TextBoxPh.BackColor = System.Drawing.Color.WhiteSmoke
         Me.TextBoxPh.Location = New System.Drawing.Point(74, 176)
-        Me.TextBoxPh.Margin = New System.Windows.Forms.Padding(2)
+        Me.TextBoxPh.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.TextBoxPh.Name = "TextBoxPh"
         Me.TextBoxPh.Size = New System.Drawing.Size(188, 20)
         Me.TextBoxPh.TabIndex = 5
@@ -113,7 +113,7 @@ Partial Class NewUserInformation
         '
         Me.TextBoxW.BackColor = System.Drawing.Color.WhiteSmoke
         Me.TextBoxW.Location = New System.Drawing.Point(74, 243)
-        Me.TextBoxW.Margin = New System.Windows.Forms.Padding(2)
+        Me.TextBoxW.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.TextBoxW.Name = "TextBoxW"
         Me.TextBoxW.Size = New System.Drawing.Size(188, 20)
         Me.TextBoxW.TabIndex = 6
@@ -122,7 +122,7 @@ Partial Class NewUserInformation
         '
         Me.TextBoxH.BackColor = System.Drawing.Color.WhiteSmoke
         Me.TextBoxH.Location = New System.Drawing.Point(74, 266)
-        Me.TextBoxH.Margin = New System.Windows.Forms.Padding(2)
+        Me.TextBoxH.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.TextBoxH.Name = "TextBoxH"
         Me.TextBoxH.Size = New System.Drawing.Size(188, 20)
         Me.TextBoxH.TabIndex = 7
@@ -130,7 +130,7 @@ Partial Class NewUserInformation
         'DateTimePicker1
         '
         Me.DateTimePicker1.Location = New System.Drawing.Point(74, 154)
-        Me.DateTimePicker1.Margin = New System.Windows.Forms.Padding(2)
+        Me.DateTimePicker1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.DateTimePicker1.Name = "DateTimePicker1"
         Me.DateTimePicker1.Size = New System.Drawing.Size(188, 20)
         Me.DateTimePicker1.TabIndex = 9
@@ -261,7 +261,7 @@ Partial Class NewUserInformation
         '
         Me.TextBox1.BackColor = System.Drawing.Color.WhiteSmoke
         Me.TextBox1.Location = New System.Drawing.Point(74, 131)
-        Me.TextBox1.Margin = New System.Windows.Forms.Padding(2)
+        Me.TextBox1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.TextBox1.Name = "TextBox1"
         Me.TextBox1.Size = New System.Drawing.Size(188, 20)
         Me.TextBox1.TabIndex = 31
@@ -270,7 +270,7 @@ Partial Class NewUserInformation
         '
         Me.TextBox2.BackColor = System.Drawing.Color.WhiteSmoke
         Me.TextBox2.Location = New System.Drawing.Point(74, 108)
-        Me.TextBox2.Margin = New System.Windows.Forms.Padding(2)
+        Me.TextBox2.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.TextBox2.Name = "TextBox2"
         Me.TextBox2.Size = New System.Drawing.Size(188, 20)
         Me.TextBox2.TabIndex = 32
@@ -299,7 +299,7 @@ Partial Class NewUserInformation
         '
         Me.TextBoxSex.BackColor = System.Drawing.Color.WhiteSmoke
         Me.TextBoxSex.Location = New System.Drawing.Point(74, 220)
-        Me.TextBoxSex.Margin = New System.Windows.Forms.Padding(2)
+        Me.TextBoxSex.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.TextBoxSex.Name = "TextBoxSex"
         Me.TextBoxSex.Size = New System.Drawing.Size(188, 20)
         Me.TextBoxSex.TabIndex = 35
@@ -324,7 +324,7 @@ Partial Class NewUserInformation
         Me.DataGridViewAL.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridViewAL.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ActivityLvlId, Me.ActivityLvlName})
         Me.DataGridViewAL.Location = New System.Drawing.Point(348, 24)
-        Me.DataGridViewAL.Margin = New System.Windows.Forms.Padding(2)
+        Me.DataGridViewAL.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.DataGridViewAL.Name = "DataGridViewAL"
         Me.DataGridViewAL.RowTemplate.Height = 24
         Me.DataGridViewAL.Size = New System.Drawing.Size(324, 244)
@@ -353,7 +353,7 @@ Partial Class NewUserInformation
         Me.DataGridViewDP.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridViewDP.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DietPlanId, Me.DPName})
         Me.DataGridViewDP.Location = New System.Drawing.Point(676, 25)
-        Me.DataGridViewDP.Margin = New System.Windows.Forms.Padding(2)
+        Me.DataGridViewDP.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.DataGridViewDP.MultiSelect = False
         Me.DataGridViewDP.Name = "DataGridViewDP"
         Me.DataGridViewDP.RowTemplate.Height = 24
@@ -411,7 +411,7 @@ Partial Class NewUserInformation
         Me.Controls.Add(Me.Back)
         Me.Controls.Add(Me.Label)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
-        Me.Margin = New System.Windows.Forms.Padding(2)
+        Me.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.Name = "NewUserInformation"
         Me.Text = "Register"
         CType(Me.DataGridViewAL, System.ComponentModel.ISupportInitialize).EndInit()

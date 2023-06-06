@@ -1,9 +1,6 @@
 ﻿Imports IBM.Data.DB2
-
-Public Class ViewIntakesAll
+Public Class ViewSummaryMeals
     Dim IntakeCount As Integer
-    Dim CurrentDate As Date
-
     Public Sub PopulateDataGrid()
         Dim StrSum As String
         Dim row() As String
@@ -87,6 +84,13 @@ Public Class ViewIntakesAll
                     End Try
 
                     ' Get Nutrients
+                    'ID()
+                    'AMOUNT()
+                    'SERVING_SIZE()
+                    'CALORIES()
+                    'PROTEIN()
+                    'CARBS()
+                    'FATS()
                     StrSum = "Select * from nutrient where id=" & ingredientNutrientID
                     CmdSum = New DB2Command(StrSum, Globals.DBConnLogin)
                     RdrSum3 = CmdSum.ExecuteReader
@@ -99,31 +103,30 @@ Public Class ViewIntakesAll
 
 
                 ingredientName = "" & ingredientPrep & "" & ingredientKind & "" & ingredientName & ""
-                row = New String() {RdrSum.GetString(2), ingredientName, RdrSum.GetString(3), ingredientNutrient}
-
-                Me.DataGridView1.Rows.Add(row)
-
+                Dim nutrient = ingredientNutrient * (Integer.Parse(RdrSum.GetString(3)) / 100)
+                row = New String() {RdrSum.GetString(2), ingredientName, RdrSum.GetString(3), nutrient, RdrSum.GetInt32(0)}
+                If DateDiff("d", RdrSum.GetDateTime(2), Globals.TargetDate) = 0 Then
+                    Me.DataGridView1.Rows.Add(row)
+                End If
             End While
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try
     End Sub
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Back.Click
-        MainHomePage.Show()
+
+
+
+    Private Sub Back_Click(sender As Object, e As EventArgs) Handles Back.Click
         Me.Close()
+        ViewAllSummaries.Show()
     End Sub
 
-
-    Private Sub ViewAll_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Private Sub EditSummary_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Call PopulateDataGrid()
     End Sub
 
-    Private Sub Label1_Click(sender As Object, e As EventArgs) Handles Label1.Click
-
-    End Sub
-
-    Private Sub DataGridView1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick
+    Private Sub DataGridView1_CellContentClick_1(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick
 
     End Sub
 End Class

@@ -22,6 +22,7 @@ Partial Class MainHomePage
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(MainHomePage))
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
@@ -50,6 +51,11 @@ Partial Class MainHomePage
         Me.MaxCarbs = New System.Windows.Forms.TextBox()
         Me.MaxProtein = New System.Windows.Forms.TextBox()
         Me.MaxCalories = New System.Windows.Forms.TextBox()
+        Me.ProfileManager = New System.Windows.Forms.Button()
+        Me.Button2 = New System.Windows.Forms.Button()
+        Me.Button3 = New System.Windows.Forms.Button()
+        Me.Button1 = New System.Windows.Forms.Button()
+        Me.Label13 = New System.Windows.Forms.Label()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -120,9 +126,9 @@ Partial Class MainHomePage
         '
         'AddMealButton
         '
-        Me.AddMealButton.Location = New System.Drawing.Point(499, 84)
+        Me.AddMealButton.Location = New System.Drawing.Point(499, 62)
         Me.AddMealButton.Name = "AddMealButton"
-        Me.AddMealButton.Size = New System.Drawing.Size(168, 84)
+        Me.AddMealButton.Size = New System.Drawing.Size(168, 120)
         Me.AddMealButton.TabIndex = 4
         Me.AddMealButton.Text = "Add Meal"
         Me.AddMealButton.UseVisualStyleBackColor = True
@@ -318,11 +324,63 @@ Partial Class MainHomePage
         Me.MaxCalories.Size = New System.Drawing.Size(139, 20)
         Me.MaxCalories.TabIndex = 25
         '
+        'ProfileManager
+        '
+        Me.ProfileManager.Location = New System.Drawing.Point(499, 22)
+        Me.ProfileManager.Name = "ProfileManager"
+        Me.ProfileManager.Size = New System.Drawing.Size(96, 34)
+        Me.ProfileManager.TabIndex = 29
+        Me.ProfileManager.Text = "Profile"
+        Me.ProfileManager.UseVisualStyleBackColor = True
+        '
+        'Button2
+        '
+        Me.Button2.Location = New System.Drawing.Point(499, 217)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(168, 25)
+        Me.Button2.TabIndex = 31
+        Me.Button2.Text = "View All Intakes"
+        Me.Button2.UseVisualStyleBackColor = True
+        '
+        'Button3
+        '
+        Me.Button3.Location = New System.Drawing.Point(134, 22)
+        Me.Button3.Name = "Button3"
+        Me.Button3.Size = New System.Drawing.Size(168, 25)
+        Me.Button3.TabIndex = 32
+        Me.Button3.Text = "View All Summary"
+        Me.Button3.UseVisualStyleBackColor = True
+        '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(601, 22)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(66, 34)
+        Me.Button1.TabIndex = 33
+        Me.Button1.Text = "Log Out"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
+        'Label13
+        '
+        Me.Label13.AutoSize = True
+        Me.Label13.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label13.Location = New System.Drawing.Point(113, 224)
+        Me.Label13.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label13.Name = "Label13"
+        Me.Label13.Size = New System.Drawing.Size(108, 13)
+        Me.Label13.TabIndex = 34
+        Me.Label13.Text = "(Click to Edit Amount)"
+        '
         'MainHomePage
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(690, 433)
+        Me.Controls.Add(Me.Label13)
+        Me.Controls.Add(Me.Button1)
+        Me.Controls.Add(Me.Button3)
+        Me.Controls.Add(Me.Button2)
+        Me.Controls.Add(Me.ProfileManager)
         Me.Controls.Add(Me.MaxFats)
         Me.Controls.Add(Me.MaxCarbs)
         Me.Controls.Add(Me.MaxProtein)
@@ -346,8 +404,9 @@ Partial Class MainHomePage
         Me.Controls.Add(Me.DataGridView1)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "MainHomePage"
-        Me.Text = "MainHomePage"
+        Me.Text = "Keats"
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
@@ -381,4 +440,9 @@ Partial Class MainHomePage
     Friend WithEvents MaxCarbs As System.Windows.Forms.TextBox
     Friend WithEvents MaxProtein As System.Windows.Forms.TextBox
     Friend WithEvents MaxCalories As System.Windows.Forms.TextBox
+    Friend WithEvents ProfileManager As System.Windows.Forms.Button
+    Friend WithEvents Button2 As System.Windows.Forms.Button
+    Friend WithEvents Button3 As System.Windows.Forms.Button
+    Friend WithEvents Button1 As System.Windows.Forms.Button
+    Friend WithEvents Label13 As System.Windows.Forms.Label
 End Class
