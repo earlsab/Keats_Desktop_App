@@ -30,6 +30,9 @@ Public Class NewUserInformation
     End Sub
 
     Private Sub NewUserInformation_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        ' Default Values
+        SelectedActivityLevelId = 1
+        SelectedDietPlanId = 1
         Dim row As String()
 
         Dim StrAL As String
