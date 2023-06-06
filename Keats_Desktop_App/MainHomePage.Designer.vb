@@ -55,6 +55,7 @@ Partial Class MainHomePage
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Button3 = New System.Windows.Forms.Button()
         Me.Button1 = New System.Windows.Forms.Button()
+        Me.Label13 = New System.Windows.Forms.Label()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -334,7 +335,7 @@ Partial Class MainHomePage
         '
         'Button2
         '
-        Me.Button2.Location = New System.Drawing.Point(134, 217)
+        Me.Button2.Location = New System.Drawing.Point(499, 217)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(168, 25)
         Me.Button2.TabIndex = 31
@@ -359,11 +360,23 @@ Partial Class MainHomePage
         Me.Button1.Text = "Log Out"
         Me.Button1.UseVisualStyleBackColor = True
         '
+        'Label13
+        '
+        Me.Label13.AutoSize = True
+        Me.Label13.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label13.Location = New System.Drawing.Point(113, 224)
+        Me.Label13.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label13.Name = "Label13"
+        Me.Label13.Size = New System.Drawing.Size(108, 13)
+        Me.Label13.TabIndex = 34
+        Me.Label13.Text = "(Click to Edit Amount)"
+        '
         'MainHomePage
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(690, 433)
+        Me.Controls.Add(Me.Label13)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.Button2)
@@ -431,4 +444,5 @@ Partial Class MainHomePage
     Friend WithEvents Button2 As System.Windows.Forms.Button
     Friend WithEvents Button3 As System.Windows.Forms.Button
     Friend WithEvents Button1 As System.Windows.Forms.Button
+    Friend WithEvents Label13 As System.Windows.Forms.Label
 End Class
