@@ -105,7 +105,7 @@ Public Class MainHomePage
         Dim RdrSum3 As DB2DataReader
 
         Try
-            StrSum = "Select * from intake where account_id=" & Globals.UserAccountID
+            StrSum = "Select ingredient_mapping_id from intake where account_id=" & Globals.UserAccountID
             CmdSum = New DB2Command(StrSum, Globals.DBConnLogin)
             RdrSum = CmdSum.ExecuteReader
             Me.DataGridView1.Rows.Clear()
@@ -121,6 +121,7 @@ Public Class MainHomePage
                 ' 4 INGREDIENT_MAPPING_ID()
 
                 ' Get details of the ingredient item.
+
                 ingredientMappingID = RdrSum.GetInt32(4)
                 Try
                     StrSum = "Select * from ingredient_mapping where id=" & ingredientMappingID
@@ -139,30 +140,30 @@ Public Class MainHomePage
                     ingredientNutrientID = RdrSum2.GetInt32(4)
 
                     ' Get Name
-                    StrSum = "Select * from ingredient where id=" & ingredientNameID
+                    StrSum = "Select name from ingredient where id=" & ingredientNameID
                     CmdSum = New DB2Command(StrSum, Globals.DBConnLogin)
                     RdrSum3 = CmdSum.ExecuteReader
                     RdrSum3.Read()
-                    ingredientName = RdrSum3.GetString(1)
+                    ingredientName = RdrSum3.GetString(0)
 
                     Try
                         ' Get Part (if applicable)
-                        StrSum = "Select * from ingredient_variant where id=" & ingredientKindID
+                        StrSum = "Select name from ingredient_variant where id=" & ingredientKindID
                         CmdSum = New DB2Command(StrSum, Globals.DBConnLogin)
                         RdrSum3 = CmdSum.ExecuteReader
                         RdrSum3.Read()
-                        ingredientKind = RdrSum3.GetString(1) + " " 'Adds a space if exists
+                        ingredientKind = RdrSum3.GetString(0) + " " 'Adds a space if exists
                     Catch ex As Exception
 
                     End Try
 
                     Try
                         ' Get Prep Type (if Applicable)
-                        StrSum = "Select * from ingredient_subvariant where id=" & ingredientPrepID
+                        StrSum = "Select name from ingredient_subvariant where id=" & ingredientPrepID
                         CmdSum = New DB2Command(StrSum, Globals.DBConnLogin)
                         RdrSum3 = CmdSum.ExecuteReader
                         RdrSum3.Read()
-                        ingredientPrep = RdrSum3.GetString(1) + " " 'Adds a space if exists
+                        ingredientPrep = RdrSum3.GetString(0) + " " 'Adds a space if exists
                     Catch ex As Exception
 
                     End Try
