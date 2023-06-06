@@ -80,10 +80,10 @@
     <Compile Include="EditSpecificIntake.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="IngredientAdminEdit.Designer.vb">
-      <DependentUpon>IngredientAdminEdit.vb</DependentUpon>
+    <Compile Include="EditSummary.Designer.vb">
+      <DependentUpon>EditSummary.vb</DependentUpon>
     </Compile>
-    <Compile Include="IngredientAdminEdit.vb">
+    <Compile Include="EditSummary.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="IngredientDetails.Designer.vb">
@@ -161,8 +161,8 @@
     <EmbeddedResource Include="EditSpecificIntake.resx">
       <DependentUpon>EditSpecificIntake.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="IngredientAdminEdit.resx">
-      <DependentUpon>IngredientAdminEdit.vb</DependentUpon>
+    <EmbeddedResource Include="EditSummary.resx">
+      <DependentUpon>EditSummary.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="IngredientDetails.resx">
       <DependentUpon>IngredientDetails.vb</DependentUpon>

@@ -37,11 +37,10 @@ Public Class ViewIntakesAll
                 ' 1 ACCOUNT_ID()
                 ' 2 DATE_CREATED()
                 ' 3 AMOUNT()
-                ' 4 SERVING_SIZE()
-                ' 5 INGREDIENT_MAPPING_ID()
+                ' 4 INGREDIENT_MAPPING_ID()
 
                 ' Get details of the ingredient item.
-                ingredientMappingID = RdrSum.GetInt32(5)
+                ingredientMappingID = RdrSum.GetInt32(4)
                 Try
                     StrSum = "Select * from ingredient_mapping where id=" & ingredientMappingID
                     CmdSum = New DB2Command(StrSum, Globals.DBConnLogin)
@@ -92,7 +91,7 @@ Public Class ViewIntakesAll
                     CmdSum = New DB2Command(StrSum, Globals.DBConnLogin)
                     RdrSum3 = CmdSum.ExecuteReader
                     RdrSum3.Read()
-                    ingredientNutrient = RdrSum3.GetFloat(5)
+                    ingredientNutrient = RdrSum3.GetFloat(3)
 
                 Catch ex As Exception
                     MsgBox("Unknown Food Item")

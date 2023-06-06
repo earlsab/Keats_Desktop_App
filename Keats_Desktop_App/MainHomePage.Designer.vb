@@ -52,7 +52,6 @@ Partial Class MainHomePage
         Me.MaxProtein = New System.Windows.Forms.TextBox()
         Me.MaxCalories = New System.Windows.Forms.TextBox()
         Me.ProfileManager = New System.Windows.Forms.Button()
-        Me.Button1 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Button3 = New System.Windows.Forms.Button()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -332,15 +331,6 @@ Partial Class MainHomePage
         Me.ProfileManager.Text = "Profile"
         Me.ProfileManager.UseVisualStyleBackColor = True
         '
-        'Button1
-        '
-        Me.Button1.Location = New System.Drawing.Point(499, 188)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(168, 25)
-        Me.Button1.TabIndex = 30
-        Me.Button1.Text = "Edit Meal List"
-        Me.Button1.UseVisualStyleBackColor = True
-        '
         'Button2
         '
         Me.Button2.Location = New System.Drawing.Point(134, 217)
@@ -366,7 +356,6 @@ Partial Class MainHomePage
         Me.ClientSize = New System.Drawing.Size(690, 433)
         Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.Button2)
-        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.ProfileManager)
         Me.Controls.Add(Me.MaxFats)
         Me.Controls.Add(Me.MaxCarbs)
@@ -428,7 +417,6 @@ Partial Class MainHomePage
     Friend WithEvents MaxProtein As System.Windows.Forms.TextBox
     Friend WithEvents MaxCalories As System.Windows.Forms.TextBox
     Friend WithEvents ProfileManager As System.Windows.Forms.Button
-    Friend WithEvents Button1 As System.Windows.Forms.Button
     Friend WithEvents Button2 As System.Windows.Forms.Button
     Friend WithEvents Button3 As System.Windows.Forms.Button
 End Class

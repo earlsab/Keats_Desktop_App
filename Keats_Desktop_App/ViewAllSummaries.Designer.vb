@@ -23,12 +23,12 @@ Partial Class ViewAllSummaries
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.Back = New System.Windows.Forms.Button()
         Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Back = New System.Windows.Forms.Button()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -41,31 +41,6 @@ Partial Class ViewAllSummaries
         Me.DataGridView1.Size = New System.Drawing.Size(541, 274)
         Me.DataGridView1.TabIndex = 5
         '
-        'Column1
-        '
-        Me.Column1.HeaderText = "Time Recorded"
-        Me.Column1.Name = "Column1"
-        '
-        'Column2
-        '
-        Me.Column2.HeaderText = "Calories"
-        Me.Column2.Name = "Column2"
-        '
-        'Column3
-        '
-        Me.Column3.HeaderText = "Protein"
-        Me.Column3.Name = "Column3"
-        '
-        'Column4
-        '
-        Me.Column4.HeaderText = "Carbohydrates"
-        Me.Column4.Name = "Column4"
-        '
-        'Column5
-        '
-        Me.Column5.HeaderText = "Fats"
-        Me.Column5.Name = "Column5"
-        '
         'Back
         '
         Me.Back.Location = New System.Drawing.Point(529, 301)
@@ -74,6 +49,31 @@ Partial Class ViewAllSummaries
         Me.Back.TabIndex = 6
         Me.Back.Text = "Back"
         Me.Back.UseVisualStyleBackColor = True
+        '
+        'Column1
+        '
+        Me.Column1.HeaderText = "Time Recorded"
+        Me.Column1.Name = "Column1"
+        '
+        'Column2
+        '
+        Me.Column2.HeaderText = "Calories (KCal)"
+        Me.Column2.Name = "Column2"
+        '
+        'Column3
+        '
+        Me.Column3.HeaderText = "Protein (g)"
+        Me.Column3.Name = "Column3"
+        '
+        'Column4
+        '
+        Me.Column4.HeaderText = "Carbohydrates (g)"
+        Me.Column4.Name = "Column4"
+        '
+        'Column5
+        '
+        Me.Column5.HeaderText = "Fats (g)"
+        Me.Column5.Name = "Column5"
         '
         'ViewAllSummaries
         '
@@ -89,10 +89,10 @@ Partial Class ViewAllSummaries
 
     End Sub
     Friend WithEvents DataGridView1 As System.Windows.Forms.DataGridView
+    Friend WithEvents Back As System.Windows.Forms.Button
     Friend WithEvents Column1 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column2 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column3 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column4 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column5 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Back As System.Windows.Forms.Button
 End Class
