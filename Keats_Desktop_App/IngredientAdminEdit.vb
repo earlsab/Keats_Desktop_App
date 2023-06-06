@@ -174,7 +174,27 @@ Public Class IngredientAdminEdit
         End Try
     End Sub
 
+    Private Sub RetrieveIngredient()
+        Dim StrStud As String
+        Dim CmdStud As DB2Command
+        Dim RdrStud As DB2DataReader
+        Try
+            StrStud = "select name FROM ingredient WHERE id = " & Globals.SelectedIngredientId
+            CmdStud = New DB2Command(StrStud, Globals.DBConnLogin)
+            RdrStud = CmdStud.ExecuteReader
+            While RdrStud.Read
+                SelectedIngredientValue.Text() = RdrStud.GetString(0)
+            End While
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+
+        End Try
+    End Sub
+
     Private Sub SearchResult_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles SearchResult.CellContentClick
+        SearchResult.ColumnCount = 2
+        Call PopulateDataGrid()
+
         ' Check if the click is on a valid row (not header or empty row)
         If e.RowIndex >= 0 AndAlso e.RowIndex < SearchResult.Rows.Count Then
             ' Access the clicked row using the RowIndex property
@@ -190,6 +210,14 @@ Public Class IngredientAdminEdit
                 Call PopulateIngredientSubvariant()
                 Call PopulateNutrients()
                 'AmountValue.Text() = IngredientAmount
+            End If
+
+            If Not Globals.SelectedIngredientId = 0 Then
+                Call PopulateIngredientVariant()
+                Call RetrieveIngredient()
+                Call PopulateIngredientSubvariant()
+                Call PopulateNutrients()
+                AmountValue.Text() = IngredientAmount
             End If
         End If
     End Sub
@@ -218,6 +246,22 @@ Public Class IngredientAdminEdit
     End Sub
 
     Private Sub Delete_Click(sender As Object, e As EventArgs) Handles Delete.Click
+
+    End Sub
+
+    Private Sub Label2_Click(sender As Object, e As EventArgs) Handles Label2.Click
+
+    End Sub
+
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+
+    End Sub
+
+    Private Sub SearchBox_TextChanged(sender As Object, e As EventArgs) Handles SearchBox.TextChanged
+
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
 
     End Sub
 End Class

@@ -50,6 +50,9 @@ Partial Class IngredientAdminEdit
         Me.SelectedVariantValue = New System.Windows.Forms.Label()
         Me.SelectedIngredientValue = New System.Windows.Forms.Label()
         Me.SelectedIngredient = New System.Windows.Forms.Label()
+        Me.Button2 = New System.Windows.Forms.Button()
+        Me.SearchBox = New System.Windows.Forms.TextBox()
+        Me.Label2 = New System.Windows.Forms.Label()
         CType(Me.SearchResult, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.IngredientVariant, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.IngredientSubvariant, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -66,7 +69,7 @@ Partial Class IngredientAdminEdit
         Me.SearchResult.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None
         Me.SearchResult.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.SearchResult.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.IngredientID, Me.IngredientName})
-        Me.SearchResult.Location = New System.Drawing.Point(16, 77)
+        Me.SearchResult.Location = New System.Drawing.Point(18, 126)
         Me.SearchResult.MultiSelect = False
         Me.SearchResult.Name = "SearchResult"
         Me.SearchResult.ReadOnly = True
@@ -104,7 +107,7 @@ Partial Class IngredientAdminEdit
         Me.IngredientVariant.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None
         Me.IngredientVariant.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.IngredientVariant.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2})
-        Me.IngredientVariant.Location = New System.Drawing.Point(411, 77)
+        Me.IngredientVariant.Location = New System.Drawing.Point(413, 126)
         Me.IngredientVariant.MultiSelect = False
         Me.IngredientVariant.Name = "IngredientVariant"
         Me.IngredientVariant.ReadOnly = True
@@ -142,7 +145,7 @@ Partial Class IngredientAdminEdit
         Me.IngredientSubvariant.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None
         Me.IngredientSubvariant.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.IngredientSubvariant.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn3, Me.DataGridViewTextBoxColumn4})
-        Me.IngredientSubvariant.Location = New System.Drawing.Point(688, 77)
+        Me.IngredientSubvariant.Location = New System.Drawing.Point(690, 126)
         Me.IngredientSubvariant.MultiSelect = False
         Me.IngredientSubvariant.Name = "IngredientSubvariant"
         Me.IngredientSubvariant.ReadOnly = True
@@ -172,7 +175,7 @@ Partial Class IngredientAdminEdit
         'FatsValue
         '
         Me.FatsValue.AutoSize = True
-        Me.FatsValue.Location = New System.Drawing.Point(544, 401)
+        Me.FatsValue.Location = New System.Drawing.Point(546, 450)
         Me.FatsValue.Name = "FatsValue"
         Me.FatsValue.Size = New System.Drawing.Size(10, 13)
         Me.FatsValue.TabIndex = 48
@@ -181,7 +184,7 @@ Partial Class IngredientAdminEdit
         'FatsLabel
         '
         Me.FatsLabel.AutoSize = True
-        Me.FatsLabel.Location = New System.Drawing.Point(493, 401)
+        Me.FatsLabel.Location = New System.Drawing.Point(495, 450)
         Me.FatsLabel.Name = "FatsLabel"
         Me.FatsLabel.Size = New System.Drawing.Size(45, 13)
         Me.FatsLabel.TabIndex = 47
@@ -190,7 +193,7 @@ Partial Class IngredientAdminEdit
         'CarbsValue
         '
         Me.CarbsValue.AutoSize = True
-        Me.CarbsValue.Location = New System.Drawing.Point(551, 376)
+        Me.CarbsValue.Location = New System.Drawing.Point(553, 425)
         Me.CarbsValue.Name = "CarbsValue"
         Me.CarbsValue.Size = New System.Drawing.Size(10, 13)
         Me.CarbsValue.TabIndex = 46
@@ -199,7 +202,7 @@ Partial Class IngredientAdminEdit
         'CarbsLabel
         '
         Me.CarbsLabel.AutoSize = True
-        Me.CarbsLabel.Location = New System.Drawing.Point(493, 376)
+        Me.CarbsLabel.Location = New System.Drawing.Point(495, 425)
         Me.CarbsLabel.Name = "CarbsLabel"
         Me.CarbsLabel.Size = New System.Drawing.Size(52, 13)
         Me.CarbsLabel.TabIndex = 45
@@ -208,7 +211,7 @@ Partial Class IngredientAdminEdit
         'ProteinValue
         '
         Me.ProteinValue.AutoSize = True
-        Me.ProteinValue.Location = New System.Drawing.Point(380, 401)
+        Me.ProteinValue.Location = New System.Drawing.Point(382, 450)
         Me.ProteinValue.Name = "ProteinValue"
         Me.ProteinValue.Size = New System.Drawing.Size(10, 13)
         Me.ProteinValue.TabIndex = 44
@@ -217,7 +220,7 @@ Partial Class IngredientAdminEdit
         'ProteinLabel
         '
         Me.ProteinLabel.AutoSize = True
-        Me.ProteinLabel.Location = New System.Drawing.Point(316, 401)
+        Me.ProteinLabel.Location = New System.Drawing.Point(318, 450)
         Me.ProteinLabel.Name = "ProteinLabel"
         Me.ProteinLabel.Size = New System.Drawing.Size(58, 13)
         Me.ProteinLabel.TabIndex = 43
@@ -226,7 +229,7 @@ Partial Class IngredientAdminEdit
         'CaloriesValue
         '
         Me.CaloriesValue.AutoSize = True
-        Me.CaloriesValue.Location = New System.Drawing.Point(400, 375)
+        Me.CaloriesValue.Location = New System.Drawing.Point(402, 424)
         Me.CaloriesValue.Name = "CaloriesValue"
         Me.CaloriesValue.Size = New System.Drawing.Size(10, 13)
         Me.CaloriesValue.TabIndex = 42
@@ -235,7 +238,7 @@ Partial Class IngredientAdminEdit
         'CaloriesLabel
         '
         Me.CaloriesLabel.AutoSize = True
-        Me.CaloriesLabel.Location = New System.Drawing.Point(316, 375)
+        Me.CaloriesLabel.Location = New System.Drawing.Point(318, 424)
         Me.CaloriesLabel.Name = "CaloriesLabel"
         Me.CaloriesLabel.Size = New System.Drawing.Size(78, 13)
         Me.CaloriesLabel.TabIndex = 41
@@ -243,7 +246,7 @@ Partial Class IngredientAdminEdit
         '
         'Delete
         '
-        Me.Delete.Location = New System.Drawing.Point(667, 386)
+        Me.Delete.Location = New System.Drawing.Point(669, 435)
         Me.Delete.Name = "Delete"
         Me.Delete.Size = New System.Drawing.Size(114, 39)
         Me.Delete.TabIndex = 50
@@ -252,7 +255,7 @@ Partial Class IngredientAdminEdit
         '
         'Save
         '
-        Me.Save.Location = New System.Drawing.Point(795, 386)
+        Me.Save.Location = New System.Drawing.Point(797, 435)
         Me.Save.Name = "Save"
         Me.Save.Size = New System.Drawing.Size(118, 39)
         Me.Save.TabIndex = 49
@@ -262,12 +265,12 @@ Partial Class IngredientAdminEdit
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(107, 37)
+        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Location = New System.Drawing.Point(13, 82)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(94, 13)
+        Me.Label1.Size = New System.Drawing.Size(96, 13)
         Me.Label1.TabIndex = 51
-        Me.Label1.Text = "Ingredients List"
+        Me.Label1.Text = "Search Ingredients"
         '
         'Button1
         '
@@ -290,7 +293,7 @@ Partial Class IngredientAdminEdit
         'SelectedSubvariantValue
         '
         Me.SelectedSubvariantValue.AutoSize = True
-        Me.SelectedSubvariantValue.Location = New System.Drawing.Point(167, 412)
+        Me.SelectedSubvariantValue.Location = New System.Drawing.Point(169, 461)
         Me.SelectedSubvariantValue.Name = "SelectedSubvariantValue"
         Me.SelectedSubvariantValue.Size = New System.Drawing.Size(10, 13)
         Me.SelectedSubvariantValue.TabIndex = 56
@@ -299,7 +302,7 @@ Partial Class IngredientAdminEdit
         'SelectedSubvariant
         '
         Me.SelectedSubvariant.AutoSize = True
-        Me.SelectedSubvariant.Location = New System.Drawing.Point(13, 412)
+        Me.SelectedSubvariant.Location = New System.Drawing.Point(15, 461)
         Me.SelectedSubvariant.Name = "SelectedSubvariant"
         Me.SelectedSubvariant.Size = New System.Drawing.Size(148, 13)
         Me.SelectedSubvariant.TabIndex = 55
@@ -308,7 +311,7 @@ Partial Class IngredientAdminEdit
         'SelectedVariant
         '
         Me.SelectedVariant.AutoSize = True
-        Me.SelectedVariant.Location = New System.Drawing.Point(13, 386)
+        Me.SelectedVariant.Location = New System.Drawing.Point(15, 435)
         Me.SelectedVariant.Name = "SelectedVariant"
         Me.SelectedVariant.Size = New System.Drawing.Size(103, 13)
         Me.SelectedVariant.TabIndex = 54
@@ -317,7 +320,7 @@ Partial Class IngredientAdminEdit
         'SelectedVariantValue
         '
         Me.SelectedVariantValue.AutoSize = True
-        Me.SelectedVariantValue.Location = New System.Drawing.Point(122, 386)
+        Me.SelectedVariantValue.Location = New System.Drawing.Point(124, 435)
         Me.SelectedVariantValue.Name = "SelectedVariantValue"
         Me.SelectedVariantValue.Size = New System.Drawing.Size(10, 13)
         Me.SelectedVariantValue.TabIndex = 57
@@ -326,7 +329,7 @@ Partial Class IngredientAdminEdit
         'SelectedIngredientValue
         '
         Me.SelectedIngredientValue.AutoSize = True
-        Me.SelectedIngredientValue.Location = New System.Drawing.Point(121, 360)
+        Me.SelectedIngredientValue.Location = New System.Drawing.Point(123, 409)
         Me.SelectedIngredientValue.Name = "SelectedIngredientValue"
         Me.SelectedIngredientValue.Size = New System.Drawing.Size(10, 13)
         Me.SelectedIngredientValue.TabIndex = 59
@@ -335,17 +338,47 @@ Partial Class IngredientAdminEdit
         'SelectedIngredient
         '
         Me.SelectedIngredient.AutoSize = True
-        Me.SelectedIngredient.Location = New System.Drawing.Point(13, 360)
+        Me.SelectedIngredient.Location = New System.Drawing.Point(15, 409)
         Me.SelectedIngredient.Name = "SelectedIngredient"
         Me.SelectedIngredient.Size = New System.Drawing.Size(102, 13)
         Me.SelectedIngredient.TabIndex = 58
         Me.SelectedIngredient.Text = "Selected Ingredient:"
         '
+        'Button2
+        '
+        Me.Button2.Location = New System.Drawing.Point(321, 98)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(75, 23)
+        Me.Button2.TabIndex = 61
+        Me.Button2.Text = "Search"
+        Me.Button2.UseVisualStyleBackColor = True
+        '
+        'SearchBox
+        '
+        Me.SearchBox.AcceptsReturn = True
+        Me.SearchBox.Location = New System.Drawing.Point(16, 100)
+        Me.SearchBox.Name = "SearchBox"
+        Me.SearchBox.Size = New System.Drawing.Size(288, 20)
+        Me.SearchBox.TabIndex = 60
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Location = New System.Drawing.Point(108, 37)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(90, 13)
+        Me.Label2.TabIndex = 62
+        Me.Label2.Text = "Ingredient Edit"
+        '
         'IngredientAdminEdit
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(939, 445)
+        Me.ClientSize = New System.Drawing.Size(939, 497)
+        Me.Controls.Add(Me.Label2)
+        Me.Controls.Add(Me.Button2)
+        Me.Controls.Add(Me.SearchBox)
         Me.Controls.Add(Me.SelectedIngredientValue)
         Me.Controls.Add(Me.SelectedIngredient)
         Me.Controls.Add(Me.SelectedSubvariantValue)
@@ -405,4 +438,7 @@ Partial Class IngredientAdminEdit
     Friend WithEvents SelectedVariantValue As System.Windows.Forms.Label
     Friend WithEvents SelectedIngredientValue As System.Windows.Forms.Label
     Friend WithEvents SelectedIngredient As System.Windows.Forms.Label
+    Friend WithEvents Button2 As System.Windows.Forms.Button
+    Friend WithEvents SearchBox As System.Windows.Forms.TextBox
+    Friend WithEvents Label2 As System.Windows.Forms.Label
 End Class
