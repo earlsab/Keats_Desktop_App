@@ -338,7 +338,7 @@ Partial Class MainHomePage
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(168, 25)
         Me.Button1.TabIndex = 30
-        Me.Button1.Text = "Edit Meals Nutrients"
+        Me.Button1.Text = "Edit Meal List"
         Me.Button1.UseVisualStyleBackColor = True
         '
         'Button2

@@ -350,4 +350,8 @@ Public Class EditSpecificIntake
         Me.Close()
         MainHomePage.Show()
     End Sub
+
+    Private Sub IngredientSubvariant_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles IngredientSubvariant.CellContentClick
+
+    End Sub
 End Class
