@@ -111,16 +111,19 @@ Public Class ViewIntakesAll
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Back.Click
         MainHomePage.Show()
-        Me.Hide()
+        Me.Close()
     End Sub
 
 
     Private Sub ViewAll_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Call PopulateDataGrid()
-
     End Sub
 
     Private Sub Label1_Click(sender As Object, e As EventArgs) Handles Label1.Click
+
+    End Sub
+
+    Private Sub DataGridView1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick
 
     End Sub
 End Class
