@@ -1,5 +1,5 @@
 ﻿Imports IBM.Data.DB2
-Public Class EditSummary
+Public Class ViewSummaryMeals
     Dim IntakeCount As Integer
     Public Sub PopulateDataGrid()
         Dim StrSum As String
@@ -114,13 +114,7 @@ Public Class EditSummary
         End Try
     End Sub
 
-    Private Sub DataGridView1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellClick
-        If e.RowIndex >= 0 AndAlso e.RowIndex < DataGridView1.Rows.Count Then
-            Dim clickedRow As DataGridViewRow = DataGridView1.Rows(e.RowIndex)
-            Globals.SelectedIntakeId = clickedRow.Cells(4).Value
-            EditSpecificIntake.Show()
-        End If
-    End Sub
+
 
 
     Private Sub Back_Click(sender As Object, e As EventArgs) Handles Back.Click
@@ -130,5 +124,9 @@ Public Class EditSummary
 
     Private Sub EditSummary_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Call PopulateDataGrid()
+    End Sub
+
+    Private Sub DataGridView1_CellContentClick_1(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick
+
     End Sub
 End Class

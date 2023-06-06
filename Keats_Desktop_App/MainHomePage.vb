@@ -3,7 +3,6 @@
 Public Class MainHomePage
     Dim IntakeCount As Integer
     Dim CurrentDate As Date
-
     Private Sub CreateDailyNutrientEntry()
 
         Dim StrLoad As String
@@ -201,17 +200,17 @@ Public Class MainHomePage
 
     Public Sub UpdateSummary()
 
-        Dim StrStud As String 
+        Dim StrStud As String
         Dim CmdStud As DB2Command
         Dim RdrStud As DB2DataReader
 
         Me.MealsLoggedTextBox.Text = Me.IntakeCount
-        Try 
+        Try
             StrStud = "SELECT calories, protein, carbs, fats, max_calories, max_protein, max_carbs, max_fats FROM daily_nutrients WHERE account_id = @AccountId AND Date_Created = @CurrentDate"
             CmdStud = New DB2Command(StrStud, Globals.DBConnLogin)
             CmdStud.Parameters.Add("@AccountId", IBM.Data.DB2.DB2Type.Integer).Value = Globals.UserAccountID
-            CmdStud.Parameters.Add("@CurrentDate", IBM.Data.DB2.DB2Type.Date).Value = DateTime.Now.Date
-            RdrStud = CmdStud.ExecuteReader 
+            CmdStud.Parameters.Add("@CurrentDate", IBM.Data.DB2.DB2Type.Date).Value = DateTime.Now
+            RdrStud = CmdStud.ExecuteReader
             While RdrStud.Read
                 CaloriesTextBox.Text() = RdrStud.GetString(0)
                 ProteinTextBox.Text() = RdrStud.GetString(1)
@@ -243,9 +242,9 @@ Public Class MainHomePage
         'MAX_FATS()
         'ACTIVITY_LVL_ID()
         'DIET_PLAN_ID()
-        If AlreadyLoggedIn = False Then
-            CurrentDate = DateAndTime.Today()
-        End If
+
+        CurrentDate = DateAndTime.Today()
+
 
         Call CreateDailyNutrientEntry()
 
@@ -325,20 +324,17 @@ Public Class MainHomePage
 
     End Sub
 
-    Private Sub DateTimePicker1_ValueChanged(sender As Object, e As EventArgs) Handles DateTimePicker1.ValueChanged
-        CurrentDate = DateTimePicker1.Value
-    End Sub
-
     Private Sub Button1_Click_2(sender As Object, e As EventArgs) Handles Button1.Click
-        Globals.AlreadyLoggedIn = True
-        Call CreateDailyNutrientEntry()
-
-        ' TABLE POPULATE
-        Try
-            Call PopulateDataGrid()
-            Call UpdateSummary()
-        Catch ex As Exception
-            MsgBox(ex.ToString())
-        End Try
+        NewUserInformation.Close()
+        NewUserRegistration.Close()
+        SearchIngredient.Close()
+        UserProfile.Close()
+        ViewAllSummaries.Close()
+        ViewIntakesAll.Close()
+        ViewSummaryMeals.Close()
+        IngredientDetails.Close()
+        EditSpecificIntake.Close()
+        LoginForm1.Show()
+        Me.Close()
     End Sub
 End Class

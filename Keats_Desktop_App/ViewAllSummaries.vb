@@ -70,7 +70,7 @@ Public Class ViewAllSummaries
             ' Replace columnIndex with the index of the desired column
 
             Globals.TargetDate = clickedRow.Cells(0).Value
-            EditSummary.Show()
+            ViewSummaryMeals.Show()
         End If
     End Sub
 
