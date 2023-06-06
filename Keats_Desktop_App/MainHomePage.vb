@@ -3,8 +3,8 @@
 Public Class MainHomePage
     Dim IntakeCount As Integer
     Dim CurrentDate As Date
-
     Private Sub CreateDailyNutrientEntry()
+
         Dim StrLoad As String
         Dim CmdLoad As DB2Command
         Dim RdrLoad As DB2DataReader
@@ -33,7 +33,7 @@ Public Class MainHomePage
             Dim weight, height, calorie_percentage, protein_percentage, fats_percentage, carbs_percentage As Integer
             Dim bmr_multiplier As Single
             Try
-                StrLoad = "SELECT " _ 
+                StrLoad = "SELECT " _
                         & "account_vitals.weight, " _
                         & "account_vitals.height, " _
                         & "account_vitals.birthday, " _
@@ -66,7 +66,7 @@ Public Class MainHomePage
             Dim MaxCalories = (bmr_multiplier * Bmr) * (calorie_percentage * 0.01)
             Dim MaxProtein = (MaxCalories * (protein_percentage * 0.01) / 4)
             Dim MaxCarbs = (MaxCalories * (carbs_percentage * 0.01) / 4)
-            Dim MaxFats = (MaxCalories * (fats_percentage * 0.01) / 9) 
+            Dim MaxFats = (MaxCalories * (fats_percentage * 0.01) / 9)
             Try
                 StrInsert = "insert into daily_nutrients(account_id, date_created, calories, protein, carbs, fats," _
                 & "max_calories, max_protein, max_carbs, max_fats, diet_plan_id, activity_lvl_id)" _
@@ -105,7 +105,7 @@ Public Class MainHomePage
         Dim RdrSum3 As DB2DataReader
 
         Try
-            StrSum = "Select ingredient_mapping_id from intake where account_id=" & Globals.UserAccountID
+            StrSum = "Select * from intake where account_id=" & Globals.UserAccountID
             CmdSum = New DB2Command(StrSum, Globals.DBConnLogin)
             RdrSum = CmdSum.ExecuteReader
             Me.DataGridView1.Rows.Clear()
@@ -201,17 +201,17 @@ Public Class MainHomePage
 
     Public Sub UpdateSummary()
 
-        Dim StrStud As String 
+        Dim StrStud As String
         Dim CmdStud As DB2Command
         Dim RdrStud As DB2DataReader
 
         Me.MealsLoggedTextBox.Text = Me.IntakeCount
-        Try 
+        Try
             StrStud = "SELECT calories, protein, carbs, fats, max_calories, max_protein, max_carbs, max_fats FROM daily_nutrients WHERE account_id = @AccountId AND Date_Created = @CurrentDate"
             CmdStud = New DB2Command(StrStud, Globals.DBConnLogin)
             CmdStud.Parameters.Add("@AccountId", IBM.Data.DB2.DB2Type.Integer).Value = Globals.UserAccountID
-            CmdStud.Parameters.Add("@CurrentDate", IBM.Data.DB2.DB2Type.Date).Value = DateTime.Now.Date
-            RdrStud = CmdStud.ExecuteReader 
+            CmdStud.Parameters.Add("@CurrentDate", IBM.Data.DB2.DB2Type.Date).Value = DateTime.Now
+            RdrStud = CmdStud.ExecuteReader
             While RdrStud.Read
                 CaloriesTextBox.Text() = RdrStud.GetString(0)
                 ProteinTextBox.Text() = RdrStud.GetString(1)
@@ -243,22 +243,20 @@ Public Class MainHomePage
         'MAX_FATS()
         'ACTIVITY_LVL_ID()
         'DIET_PLAN_ID()
+
         CurrentDate = DateAndTime.Today()
+
+
         Call CreateDailyNutrientEntry()
 
         ' TABLE POPULATE
 
 
         Try
-            Me.DataGridView1.ColumnCount = 5
-            Me.DataGridView1.Columns(0).Name = "Time Recorded"
-            Me.DataGridView1.Columns(1).Name = "Food"
-            Me.DataGridView1.Columns(2).Name = "Serving Size (g)"
-            Me.DataGridView1.Columns(3).Name = "Calories"
             Call PopulateDataGrid()
             Call UpdateSummary()
         Catch ex As Exception
-
+            MsgBox(ex.ToString())
         End Try
 
     End Sub
@@ -304,13 +302,40 @@ Public Class MainHomePage
 
     End Sub
 
-    Private Sub Button2_Click(sender As Object, e As EventArgs)
-        ViewIntakesAll.Show()
-        Me.Hide()
-    End Sub
-     
     Private Sub ProfileManager_Click(sender As Object, e As EventArgs) Handles ProfileManager.Click
         UserProfile.Show()
         Me.Hide()
+    End Sub
+
+    Private Sub Button3_Click_1(sender As Object, e As EventArgs) Handles Button3.Click
+        ViewAllSummaries.Show()
+        Me.Hide()
+    End Sub
+
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        ViewIntakesAll.Show()
+        Me.Hide()
+    End Sub
+
+    Private Sub DataGridView1_CellContentClick_1(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick
+
+    End Sub
+
+    Private Sub MaxCalories_TextChanged(sender As Object, e As EventArgs) Handles MaxCalories.TextChanged
+
+    End Sub
+
+    Private Sub Button1_Click_2(sender As Object, e As EventArgs) Handles Button1.Click
+        NewUserInformation.Close()
+        NewUserRegistration.Close()
+        SearchIngredient.Close()
+        UserProfile.Close()
+        ViewAllSummaries.Close()
+        ViewIntakesAll.Close()
+        ViewSummaryMeals.Close()
+        IngredientDetails.Close()
+        EditSpecificIntake.Close()
+        LoginForm1.Show()
+        Me.Close()
     End Sub
 End Class

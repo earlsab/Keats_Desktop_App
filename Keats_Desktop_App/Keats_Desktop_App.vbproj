@@ -80,6 +80,12 @@
     <Compile Include="EditSpecificIntake.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="ViewSummaryMeals.Designer.vb">
+      <DependentUpon>ViewSummaryMeals.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ViewSummaryMeals.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="IngredientDetails.Designer.vb">
       <DependentUpon>IngredientDetails.vb</DependentUpon>
     </Compile>
@@ -155,6 +161,9 @@
     <EmbeddedResource Include="EditSpecificIntake.resx">
       <DependentUpon>EditSpecificIntake.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ViewSummaryMeals.resx">
+      <DependentUpon>ViewSummaryMeals.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="IngredientDetails.resx">
       <DependentUpon>IngredientDetails.vb</DependentUpon>
     </EmbeddedResource>
@@ -200,6 +209,12 @@
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\Keats Logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\LoginTab.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

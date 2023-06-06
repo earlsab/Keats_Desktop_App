@@ -276,4 +276,8 @@ Public Class IngredientDetails
     Private Sub IngredientVariant_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles IngredientVariant.CellContentClick
 
     End Sub
+
+    Private Sub SelectedVariantValue_Click(sender As Object, e As EventArgs) Handles SelectedVariantValue.Click
+
+    End Sub
 End Class
