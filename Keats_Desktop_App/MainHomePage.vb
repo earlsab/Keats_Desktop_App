@@ -5,6 +5,7 @@ Public Class MainHomePage
     Dim CurrentDate As Date
 
     Private Sub CreateDailyNutrientEntry()
+
         Dim StrLoad As String
         Dim CmdLoad As DB2Command
         Dim RdrLoad As DB2DataReader
@@ -33,7 +34,7 @@ Public Class MainHomePage
             Dim weight, height, calorie_percentage, protein_percentage, fats_percentage, carbs_percentage As Integer
             Dim bmr_multiplier As Single
             Try
-                StrLoad = "SELECT " _ 
+                StrLoad = "SELECT " _
                         & "account_vitals.weight, " _
                         & "account_vitals.height, " _
                         & "account_vitals.birthday, " _
@@ -66,7 +67,7 @@ Public Class MainHomePage
             Dim MaxCalories = (bmr_multiplier * Bmr) * (calorie_percentage * 0.01)
             Dim MaxProtein = (MaxCalories * (protein_percentage * 0.01) / 4)
             Dim MaxCarbs = (MaxCalories * (carbs_percentage * 0.01) / 4)
-            Dim MaxFats = (MaxCalories * (fats_percentage * 0.01) / 9) 
+            Dim MaxFats = (MaxCalories * (fats_percentage * 0.01) / 9)
             Try
                 StrInsert = "insert into daily_nutrients(account_id, date_created, calories, protein, carbs, fats," _
                 & "max_calories, max_protein, max_carbs, max_fats, diet_plan_id, activity_lvl_id)" _
@@ -242,7 +243,10 @@ Public Class MainHomePage
         'MAX_FATS()
         'ACTIVITY_LVL_ID()
         'DIET_PLAN_ID()
-        CurrentDate = DateAndTime.Today()
+        If AlreadyLoggedIn = False Then
+            CurrentDate = DateAndTime.Today()
+        End If
+
         Call CreateDailyNutrientEntry()
 
         ' TABLE POPULATE
@@ -252,7 +256,7 @@ Public Class MainHomePage
             Call PopulateDataGrid()
             Call UpdateSummary()
         Catch ex As Exception
-
+            MsgBox(ex.ToString())
         End Try
 
     End Sub
@@ -315,5 +319,26 @@ Public Class MainHomePage
 
     Private Sub DataGridView1_CellContentClick_1(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick
 
+    End Sub
+
+    Private Sub MaxCalories_TextChanged(sender As Object, e As EventArgs) Handles MaxCalories.TextChanged
+
+    End Sub
+
+    Private Sub DateTimePicker1_ValueChanged(sender As Object, e As EventArgs) Handles DateTimePicker1.ValueChanged
+        CurrentDate = DateTimePicker1.Value
+    End Sub
+
+    Private Sub Button1_Click_2(sender As Object, e As EventArgs) Handles Button1.Click
+        Globals.AlreadyLoggedIn = True
+        Call CreateDailyNutrientEntry()
+
+        ' TABLE POPULATE
+        Try
+            Call PopulateDataGrid()
+            Call UpdateSummary()
+        Catch ex As Exception
+            MsgBox(ex.ToString())
+        End Try
     End Sub
 End Class

@@ -6,9 +6,11 @@ Module Globals
     Public DBDatabase = "keats"
     Public DBConnLogin As Common.DbConnection
     Public UserAccountID As Integer
+    Public TargetDate As Date
     Public SelectedIngredientId = 0
     Public SelectedIntakeId = 0
     Public SelectedIngredientMappingId = 0
+    Public AlreadyLoggedIn As Boolean
 End Module
 
 Public Class LoginForm1
@@ -70,6 +72,7 @@ Public Class LoginForm1
     End Sub
 
     Private Sub LoginForm1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Globals.AlreadyLoggedIn = False
         Try
             Globals.DBConnLogin = New DB2Connection("server=localhost; database=" & Globals.DBDatabase _
  & ";" + _

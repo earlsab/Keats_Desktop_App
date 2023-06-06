@@ -244,7 +244,7 @@ Public Class UserProfile
             Call DisableTextBoxes()
             Call RefreshTextBoxes()
 
-            MessageBox.Show("New details now saved!")
+            MessageBox.Show("New details now saved! The changes for your suggested nutrient intake should reflect the next day.")
         End If
     End Sub
 

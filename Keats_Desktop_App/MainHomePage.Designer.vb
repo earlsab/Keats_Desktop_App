@@ -54,6 +54,9 @@ Partial Class MainHomePage
         Me.ProfileManager = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Button3 = New System.Windows.Forms.Button()
+        Me.Label13 = New System.Windows.Forms.Label()
+        Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
+        Me.Button1 = New System.Windows.Forms.Button()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -349,11 +352,39 @@ Partial Class MainHomePage
         Me.Button3.Text = "View All Summary"
         Me.Button3.UseVisualStyleBackColor = True
         '
+        'Label13
+        '
+        Me.Label13.AutoSize = True
+        Me.Label13.Location = New System.Drawing.Point(21, 432)
+        Me.Label13.Name = "Label13"
+        Me.Label13.Size = New System.Drawing.Size(242, 13)
+        Me.Label13.TabIndex = 33
+        Me.Label13.Text = "For Simulation Purposes - Change ""Today's Date"""
+        '
+        'DateTimePicker1
+        '
+        Me.DateTimePicker1.Location = New System.Drawing.Point(278, 429)
+        Me.DateTimePicker1.Name = "DateTimePicker1"
+        Me.DateTimePicker1.Size = New System.Drawing.Size(200, 20)
+        Me.DateTimePicker1.TabIndex = 34
+        '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(499, 429)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(91, 20)
+        Me.Button1.TabIndex = 35
+        Me.Button1.Text = "Change Date"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
         'MainHomePage
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(690, 433)
+        Me.ClientSize = New System.Drawing.Size(690, 474)
+        Me.Controls.Add(Me.Button1)
+        Me.Controls.Add(Me.DateTimePicker1)
+        Me.Controls.Add(Me.Label13)
         Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.ProfileManager)
@@ -419,4 +450,7 @@ Partial Class MainHomePage
     Friend WithEvents ProfileManager As System.Windows.Forms.Button
     Friend WithEvents Button2 As System.Windows.Forms.Button
     Friend WithEvents Button3 As System.Windows.Forms.Button
+    Friend WithEvents Label13 As System.Windows.Forms.Label
+    Friend WithEvents DateTimePicker1 As System.Windows.Forms.DateTimePicker
+    Friend WithEvents Button1 As System.Windows.Forms.Button
 End Class

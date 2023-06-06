@@ -69,7 +69,7 @@ Public Class ViewAllSummaries
             ' Dim cellValue As Object = clickedRow.Cells(1).Value
             ' Replace columnIndex with the index of the desired column
 
-            Globals.SelectedIngredientId = clickedRow.Cells(0).Value
+            Globals.TargetDate = clickedRow.Cells(0).Value
             EditSummary.Show()
         End If
     End Sub
