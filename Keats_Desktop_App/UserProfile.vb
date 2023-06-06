@@ -32,7 +32,7 @@ Public Class UserProfile
         Dim StrEdit As String
         Dim CmdEdit As DB2Command
 
-        StrAL = "SELECT id FROM activity_lvl WHERE name = '" & ComboBox1.Text & "'"
+        StrAL = "Select id FROM activity_lvl where name = '" & ComboBox1.Text & "'"
         CmdAL = New DB2Command(StrAL, Globals.DBConnLogin)
         RdrAL = CmdAL.ExecuteReader
 
@@ -41,7 +41,7 @@ Public Class UserProfile
 
         RdrAL.Close()
 
-        StrDP = "SELECT id FROM diet_plan WHERE name = '" & ComboBox2.Text & "'"
+        StrDP = "Select id FROM diet_plan where name = '" & ComboBox2.Text & "'"
         CmdDP = New DB2Command(StrDP, Globals.DBConnLogin)
         RdrDP = CmdDP.ExecuteReader
 
@@ -98,6 +98,23 @@ Public Class UserProfile
     End Sub
 
     Private Sub DeleteUserProfile()
+        Dim StrDelete As String
+        Dim CmdDelete As DB2Command
+        Dim CheckDelete As Integer
+
+        StrDelete = "Delete from consumer_profile where account_id = " & Globals.UserAccountID & "; " &
+            "delete from intake where account_id = " & Globals.UserAccountID & "; " &
+            "delete from daily_nutrients where account_id = " & Globals.UserAccountID & "; " &
+            "delete from account_vitals where account_id = " & Globals.UserAccountID & "; " &
+            "delete from account where id = " & Globals.UserAccountID
+        CmdDelete = New DB2Command(StrDelete, Globals.DBConnLogin)
+        CheckDelete = CmdDelete.ExecuteNonQuery()
+
+        If CheckDelete > 0 Then
+            MessageBox.Show("Delete was successful. Rows of data deleted: " & CheckDelete)
+        Else
+            MessageBox.Show("Delete not completed...")
+        End If
 
     End Sub
 
@@ -253,8 +270,11 @@ Public Class UserProfile
 
     Private Sub Button2_Click_2(sender As Object, e As EventArgs) Handles Delete.Click
 
-        If MsgBox("Are you sure you want to DELETE profile?", MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
+        If MsgBox("WARNING: Are you sure you want to DELETE profile?", MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
             Call DeleteUserProfile()
+            Me.Close()
+            LoginForm1.Show()
+
         End If
 
     End Sub
